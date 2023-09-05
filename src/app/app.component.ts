@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'PerfectMatchFront';
+pagPrincipal: boolean = true;
+
+
+prinPag(){
+  this.pagPrincipal = true;
+}
+otherPag(){
+this.pagPrincipal = false;
+}
 }
