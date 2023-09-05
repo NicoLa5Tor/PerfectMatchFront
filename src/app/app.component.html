@@ -1,31 +1,6 @@
-<head>
-  
-</head>
-<body>
-  <header>
-    <div class="container-menu">
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>
-          <mat-icon>dialpad</mat-icon>
-          <span routerLink="/" (click)="prinPag()">Home</span>
-        </button>
-        <button mat-menu-item>
-          <mat-icon>dialpad</mat-icon>
-          <span routerLink="createPost" (click)="otherPag()">Crear Post</span>
-        </button>
-      </mat-menu>
-    </div>
-     <h2>PerfectMatch</h2>
-  </header>
-  <section>
-    <router-outlet *ngIf="pagPrincipal == false">
 
-    </router-outlet>
-  </section>
-  <footer>
+<app-navbar></app-navbar>
+<div class="container" style="margin-top:10px">
+<app-property-card></app-property-card>
+</div>
 
-  </footer> 
-</body>

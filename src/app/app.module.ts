@@ -3,6 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { NavbarComponent } from './View/navbar/navbar.component';
+import { PropertyCardComponent } from './View/Property/property-card/property-card.component';
+=======
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 
@@ -37,11 +41,12 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PostComponent } from './Principal/CreatePost/post/post.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    PostComponent
- 
+    NavbarComponent,
+    PropertyCardComponent
   ],
   imports: [
     BrowserModule,
