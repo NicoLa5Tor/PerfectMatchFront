@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Publication } from 'src/app/Models/publication';
+import { ApiPublicationService } from 'src/app/Services/api-publication.service';
 
 @Component({
   selector: 'app-add-publication',
@@ -6,58 +8,61 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-publication.component.css']
 })
 export class AddPublicationComponent {
-  public image:string="";
-   public Img:any="";
-   imgs:Array<string>=[];
-  saveData(event:any)
+  /**
+   *
+   */
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+ const =(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event: { preventDefault: () => void; stopPropagation: () => void; }) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+
+
+  constructor(private _apipublication:ApiPublicationService) {}
+  
+   imgs:Array<string>=new Array<string>(5);
+   numImg:number=0;
+   publication:Publication={animalName:"",Images:[""]};
+  saveData()
   {
-    console.log(event);
-    //this.imgToBase64(this.Img);
-    console.log(this.Img);
-    console.log(this.Img);
+    console.log(this.publication);
+    this._apipublication.AddPublications(this.publication);
   }
   
-  getImage(event:any)
+  getImage(event:any,num :number)
   {
-    this.Img = event.target.files[0];
-    this.imgToBase64(this.Img);
-    
-    console.log(this.Img);
-    this.image=(this.Img);
-    this.image=(this.Img.arguments);
-    blob:Blob;
-    Blob.arguments;
-    console.log(typeof(this.image))
+    this.numImg=num;
+    this.imgToBase64(event.target.files[0]);
   }
-  
   private imgToBase64(file: Blob) {
     if (file) {
       const reader = new FileReader();
       
       reader.onload = this.toBase64.bind(this);
+      
       reader.readAsBinaryString(file);
       return file;
     }
     return null;
   }
   toBase64(e : any) {
-    this.image=('data:image/png;base64,' + btoa(e.target.result));
+    this.publication.Images[this.numImg]= ( btoa(e.target.result));
   }
   
-  /*extraerBase64 = async (file:any) =>  new Promise((resolve,reject)=>{
-    try{
-      const unsafeImg = file;
-      //const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
-      const reader = new FileReader();
-      reader.readAsDataURL(unsafeImg);
-      reader.onload = () => {
-        resolve({
-          blob:file,
-          base:null
-        })
-      }
-    }catch(e){
-      return null;
-    }
-  })*/
 }
+

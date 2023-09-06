@@ -1,23 +1,24 @@
-export interface Publication {
-        idPublication ?:number,
+export class Publication {
+        idPublication ?:number;
 
         //public int? IdOwner { get; set; }
 
-        animalName ?:string,
+        animalName ?:string="";
 
-        //City { get; set; }
+        city ?:string="";
 
-        weigth ?:number,
+        weight ?:number;
 
-        sex?:boolean,
+        sex?:boolean;
 
-        Age ?: number,
+        age ?: number;
 
-        //AnimalType:string,
+        animalType?:string;
 
-        //Breed :string,
+        breed ?:string;
 
-        description ?:string
+        description ?:string;
+        owner?:number;
 
         //public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
 
@@ -29,6 +30,6 @@ export interface Publication {
 
         //Owner:User;
 
-        // Images :Image[];
+         Images :Array<string>=new Array<string>(5);
 
 }

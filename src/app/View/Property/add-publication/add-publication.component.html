@@ -1,54 +1,155 @@
 
-<form>
-    <input type="file"  name="Img"  (change)="getImage($event)">
-    <input type="file"  name="Img"  (change)="getImage($event)">
-    <input type="file"  name="Img"  (change)="getImage($event)">
-    <input type="file"  name="Img"  (change)="getImage($event)">
-    <input type="file" class="file-p"  name="Img"  (change)="getImage($event)">
+<!--<form class="container p-2 needs-validation" novalidate>
 
+    <h1>Add publication</h1>
     <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="inputEmail4">Email</label>
-          <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+        <div class="form-group col-md-6 p-1">
+          <input class="form-control" type="file"  name="Img"  (change)="getImage($event,0) ">
+        </div>
+        <div class="form-group col-md-6 p-1">
+          <input class="form-control" type="file"  name="Img"  (change)="getImage($event,1)">
+        </div>
+        <div class="form-group col-md-6 p-1">
+          <input class="form-control" type="file"  name="Img"  (change)="getImage($event,2)">
+        </div>
+        <div class="form-group col-md-6 p-1">
+            <mat-form-field>
+              <mat-label>Name</mat-label>
+            <input matInput type="text" class="form-control" [(ngModel)]="publication.animalName" name="animalName" required>
+          </mat-form-field>
+          <div class="invalid-feedback">
+            Es necesario
+          </div>
         </div>
         <div class="form-group col-md-6">
-          <label for="inputPassword4">Password</label>
-          <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+            <mat-form-field>
+              <mat-label>City</mat-label>
+            <input matInput type="text" class="form-control" [(ngModel)]="publication.city" name="city" required>
+          </mat-form-field>
         </div>
-      </div>
-      <div class="form-group">
-        <label for="inputAddress">Address</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-      </div>
-      <div class="form-group">
-        <label for="inputAddress2">Address 2</label>
-        <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-      </div>
-      <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="inputCity">City</label>
-          <input type="text" class="form-control" id="inputCity">
+          <mat-form-field>
+            <mat-label>Weight</mat-label>
+          <input matInput type="text" class="form-control" [(ngModel)]="publication.weight" name="weight" required>
+          </mat-form-field>
         </div>
-        <div class="form-group col-md-4">
-          <label for="inputState">State</label>
-          <select id="inputState" class="form-control">
-            <option selected>Choose...</option>
-            <option>...</option>
-          </select>
+        <div class="form-group col-md-6">
+          <mat-form-field>
+            <mat-label>Sex</mat-label>
+          <input matInput type="text" class="form-control" [(ngModel)]="publication.sex"  name="sex">
+          </mat-form-field>
         </div>
-        <div class="form-group col-md-2">
-          <label for="inputZip">Zip</label>
-          <input type="text" class="form-control" id="inputZip">
+        <div class="form-group col-md-6">
+          <mat-form-field>
+            <mat-label>Age</mat-label>
+          <input matInput type="text" class="form-control" [(ngModel)]="publication.age"  name="age">
+          </mat-form-field>
         </div>
+        <div class="form-group col-md-6">
+          <mat-form-field>
+            <mat-label>AnimalType</mat-label>
+          <input matInput type="text" class="form-control" [(ngModel)]="publication.animalType"  name="animalType">
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-6">
+          <mat-form-field>
+            <mat-label>Breed</mat-label>
+          <input matInput type="text" class="form-control" [(ngModel)]="publication.breed"  name="breed">
+          </mat-form-field>
+        </div>
+        
+        
+        <div class="form-group col-md-6">
+          <mat-form-field>
+          <mat-label for="exampleFormControlTextarea1">Description</mat-label>
+          <textarea matInput class="form-control" [(ngModel)]="publication.description"  name="description" rows="3"></textarea>
+          </mat-form-field>
+        </div>
+        
+
       </div>
-      <div class="form-group">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="gridCheck">
-          <label class="form-check-label" for="gridCheck">
-            Check me out
-          </label>
-        </div>
+    <button class="btn btn-success w-25 h-25" type="submit">Add</button>
+</form>-->
+<form class="row g-3 needs-validation" novalidate>
+  <div class="col-md-4">
+    <label for="validationCustom01" class="form-label">First name</label>
+    <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label for="validationCustom02" class="form-label">Last name</label>
+    <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label for="validationCustomUsername" class="form-label">Username</label>
+    <div class="input-group has-validation">
+      <span class="input-group-text" id="inputGroupPrepend">@</span>
+      <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+      <div class="invalid-feedback">
+        Please choose a username.
       </div>
-    <input type="button" (click)="saveData($event)" value="SUbmit">
+    </div>
+  </div>
+  <div class="col-md-6">
+    <label for="validationCustom03" class="form-label">City</label>
+    <input type="text" class="form-control" id="validationCustom03" required>
+    <div class="invalid-feedback">
+      Please provide a valid city.
+    </div>
+  </div>
+  <div class="col-md-3">
+    <label for="validationCustom04" class="form-label">State</label>
+    <select class="form-select" id="validationCustom04" required>
+      <option selected disabled value="">Choose...</option>
+      <option>...</option>
+    </select>
+    <div class="invalid-feedback">
+      Please select a valid state.
+    </div>
+  </div>
+  <div class="col-md-3">
+    <label for="validationCustom05" class="form-label">Zip</label>
+    <input type="text" class="form-control" id="validationCustom05" required>
+    <div class="invalid-feedback">
+      Please provide a valid zip.
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+      <label class="form-check-label" for="invalidCheck">
+        Agree to terms and conditions
+      </label>
+      <div class="invalid-feedback">
+        You must agree before submitting.
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <input class="btn btn-primary" type="submit" value="Submit form">
+  </div>
 </form>
-<img src={{image}}>
+<script>
+(function () {
+  'use strict'
+
+  var forms = document.querySelectorAll('.needs-validation')
+
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+</script>

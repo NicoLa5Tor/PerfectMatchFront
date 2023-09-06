@@ -14,6 +14,7 @@ export class PropertyCardComponent {
   }
   @Input() objeto:Publication={
     animalName:"Pedro",
-    description:"No hay description"
+    description:"No hay description",
+    Images:[]
   };
 }
