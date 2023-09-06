@@ -1,43 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Publication } from 'src/app/Models/publication';
+import { ApiPublicationService } from 'src/app/Services/api-publication.service';
 
 @Component({
   selector: 'app-property-list',
   templateUrl: './property-list.component.html',
   styleUrls: ['./property-list.component.css']
 })
-export class PropertyListComponent {
-  objetos:Array<any>=[{
-    "Name": "Pedro",
-    "Price": 12000
-   },
-   {
-    "Name": "Lazaro",
-    "Price": 12000
-   },
-   {
-    "Name": "Andres",
-    "Price": 12000
-   },
-   {
-    "Name": "Josefo",
-    "Price": 12000
-   },
-   {
-    "Name": "Julian",
-    "Price": 12000
-   },
-   {
-    "Name": "Pedro",
-    "Price": 12000
-   },
-   {
-    "Name": "Pedro",
-    "Price": 12000
-   },{
-    "Name": "Pedro",
-    "Price": 12000
-   },{
-    "Name": "Pedro",
-    "Price": 12000
-   }]
+export class PropertyListComponent implements OnInit {
+  objetos:Array<Publication>=[]; 
+  constructor(private api:ApiPublicationService){
+    
+  }
+  ngOnInit(): void {
+    this.getPublications();
+  }
+  getPublications()
+  {
+    this.api.getPublications().subscribe(response=>{this.objetos=response;console.log(this.objetos)} );
+  }
 }

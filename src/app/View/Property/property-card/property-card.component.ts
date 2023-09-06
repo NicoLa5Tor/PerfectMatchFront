@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Publication } from 'src/app/Models/publication';
 
 @Component({
   selector: 'app-property-card',
@@ -6,9 +7,13 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./property-card.component.css']
 })
 export class PropertyCardComponent {
-  @Input() card: any
- objeto={
-  "Name": "Pedro",
-  "Price": 12000
- }
+
+  constructor() {
+    console.log(this.objeto);
+    
+  }
+  @Input() objeto:Publication={
+    animalName:"Pedro",
+    description:"No hay description"
+  };
 }
