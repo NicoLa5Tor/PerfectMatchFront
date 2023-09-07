@@ -12,14 +12,14 @@ const httpOption = {
   providedIn: 'root'
 })
 export class ApiPublicationService {
- url="https://localhost:7098/api/publications";
+  url="https://localhost:7286/Publication/";
   constructor(private _http:HttpClient) { }
   public getPublications():Observable<Publication[]>
   {
-    return this._http.get<Publication[]>(this.url);
+    return this._http.get<Publication[]>(this.url+"List");
   }
   public AddPublications(publication:Publication)
   {
-    this._http.post(this.url,publication,httpOption);
+    this._http.post(this.url+"Add",publication,httpOption);
   }
 }

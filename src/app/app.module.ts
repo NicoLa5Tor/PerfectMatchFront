@@ -40,6 +40,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PropertyListComponent } from './View/Property/property-list/property-list.component';
 import { AddPublicationComponent } from './View/Property/add-publication/add-publication.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,8 @@ import { AddPublicationComponent } from './View/Property/add-publication/add-pub
     MatGridListModule,
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
+    NgbModule,
     FormsModule
 
   ],

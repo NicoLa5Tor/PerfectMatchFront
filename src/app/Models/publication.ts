@@ -1,24 +1,26 @@
-export class Publication {
+import { Image } from "./Image";
+export interface Publication {
         idPublication ?:number;
 
         //public int? IdOwner { get; set; }
 
-        animalName ?:string="";
+        animalName :string,
 
-        city ?:string="";
+        city :string,
+        idCity :number,
+        weight? :number,
 
-        weight ?:number;
+        sex:boolean,
 
-        sex?:boolean;
 
-        age ?: number;
+        age ?: number,
+        idAnimalType:number,
+        animalType:string,
+        idBreed:number,
+        breed :string,
 
-        animalType?:string;
-
-        breed ?:string;
-
-        description ?:string;
-        owner?:number;
+        description :string,
+        owner?:number,
 
         //public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
 
@@ -30,6 +32,6 @@ export class Publication {
 
         //Owner:User;
 
-         Images :Array<string>=new Array<string>(5);
+         Images :Array<Image>
 
 }
