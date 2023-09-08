@@ -1,0 +1,74 @@
+
+<form class="container p-2 starter-template" (ngSubmit)="saveData()" novalidate>
+
+    <h1 class="text-success">Add publication</h1>
+
+    <h3  *ngIf="MessageErr!=''" class="text-light bg-danger p-1">{{MessageErr}}</h3>
+    <div class="form-row">
+      <div class="form-group col-md-10 p-1">
+          <input class="form-control" type="file"  name="Img"  (change)="getImage($event, 0) ">
+        </div>
+        <div class="form-group col-md-10 p-1">
+          <input class="form-control" type="file"  name="Img"  (change)="getImage($event, 1)">
+        </div>
+        <div class="form-group col-md-10 p-1 mb-3">
+          <input class="form-control" type="file"  name="Img"  (change)="getImage($event, 2)">
+        </div>
+        <div class="form-group col-md-10">
+          <mat-form-field class="w-100">
+              <mat-label>Name</mat-label>
+            <input matInput type="text" class="form-control" [(ngModel)]="publication.animalName" name="animalName" required>
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-10 p-1">
+          <div class="w-100">
+            <label>Select City</label>
+            <select  class="form-select form-select-lg mb-3" [(ngModel)]="publication.idCity" name="city" >
+              <option *ngFor="let city of Citys" [value]="city.idCity">{{city.cityName}}</option>
+            </select>
+            </div>
+        </div>
+        <div class="form-group col-md-10">
+          <mat-form-field class="w-100">
+            <mat-label>Weight</mat-label>
+          <input matInput type="text" class="form-control" [(ngModel)]="publication.weight" name="weight" required>
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-10">
+          <mat-form-field class="w-100">
+            <mat-label>Sex</mat-label>
+          <input matInput type="text" class="form-control" [(ngModel)]="publication.sex"  name="sex" required>
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-10">
+          <mat-form-field class="w-100">
+            <mat-label>Age</mat-label>
+          <input matInput type="text" class="form-control" [(ngModel)]="publication.age"  name="age" required>
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-10 p-1">
+          <div class="w-100">
+            <label>Select AnimalType</label>
+            <select  class="form-select form-select-lg mb-3" [(ngModel)]="publication.idAnimalType"  name="animalType">
+              <option *ngFor="let type of AnimalTypes" [value]="type.idAnimalType">{{type.animalTypeName}}</option>
+            </select>
+            </div>
+        </div>
+        <div class="form-group col-md-10 p-1">
+          <div class="w-100">
+            <label>Select Breed</label>
+            <select  class="form-select form-select-lg mb-3" [(ngModel)]="publication.idBreed"  name="breed">
+              <option *ngFor="let breed of Breeds" [value]="breed.idBreed">{{breed.breedName}}</option>
+            </select>
+            </div>
+        </div>
+        
+        <div class="form-group col-md-10">
+          <mat-form-field class="w-100">
+          <mat-label for="exampleFormControlTextarea1">Description</mat-label>
+          <textarea matInput class="form-control w-100" [(ngModel)]="publication.description"  name="description" rows="3" required></textarea>
+          </mat-form-field>
+        </div>
+    <button  type="submit" class="btn btn-success w-25">Add</button>
+      </div>
+</form>

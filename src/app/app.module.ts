@@ -37,15 +37,18 @@ import {MatDialogModule,MatDialog} from '@angular/material/dialog';
 import {MatGridListModule} from '@angular/material/grid-list';
 
 //para el dialogo
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PropertyListComponent } from './View/Property/property-list/property-list.component';
+import { AddPublicationComponent } from './View/Property/add-publication/add-publication.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     PropertyCardComponent,
-    PropertyListComponent
+    PropertyListComponent,
+    AddPublicationComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,10 @@ import { PropertyListComponent } from './View/Property/property-list/property-li
     MatDialogModule,
     MatGridListModule,
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    NgbModule,
+    FormsModule
 
   ],
   providers: [],

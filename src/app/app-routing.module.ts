@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { PostComponent } from './Principal/CreatePost/post/post.component';
+import { AddPublicationComponent } from './View/Property/add-publication/add-publication.component';
+import { PropertyListComponent } from './View/Property/property-list/property-list.component';
 
 const routes: Routes = [
 
-{path: "",component:AppComponent},
-{path:"createPost",component:PostComponent}
+{path: "",component:PropertyListComponent},
+{path:"form",component:AddPublicationComponent}
 ];
 
 @NgModule({
