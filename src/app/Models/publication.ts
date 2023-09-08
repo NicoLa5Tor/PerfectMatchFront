@@ -32,6 +32,6 @@ export interface Publication {
 
         //Owner:User;
 
-         Images :Array<Image>
+         images :Array<Image>
 
 }

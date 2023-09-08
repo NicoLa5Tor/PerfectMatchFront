@@ -14,6 +14,6 @@ export class PropertyCardComponent {
   }
   @Input() objeto:Publication={
     animalName:"", age:0, animalType:"", breed:"", city:"", description:"",
-  owner:1, weight:0, idPublication:0, Images: [], sex:true, idAnimalType:0, idBreed:0, idCity:0 };
+  owner:1, weight:0, idPublication:0, images: [], sex:true, idAnimalType:0, idBreed:0, idCity:0 };
   
 }

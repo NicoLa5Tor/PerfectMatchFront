@@ -5,13 +5,13 @@
 
     <h3  *ngIf="MessageErr!=''" class="text-light bg-danger p-1">{{MessageErr}}</h3>
     <div class="form-row">
-      <div class="form-group col-md-6 p-1">
+      <div class="form-group col-md-10 p-1">
           <input class="form-control" type="file"  name="Img"  (change)="getImage($event, 0) ">
         </div>
-        <div class="form-group col-md-6 p-1">
+        <div class="form-group col-md-10 p-1">
           <input class="form-control" type="file"  name="Img"  (change)="getImage($event, 1)">
         </div>
-        <div class="form-group col-md-6 p-1">
+        <div class="form-group col-md-10 p-1 mb-3">
           <input class="form-control" type="file"  name="Img"  (change)="getImage($event, 2)">
         </div>
         <div class="form-group col-md-10">

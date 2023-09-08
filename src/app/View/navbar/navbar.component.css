@@ -1,4 +1,13 @@
 
-.opaco{
+.opaco {
     background: linear-gradient(#E59866 , #E67E22);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+.acomodo{
+    display: content;
+    margin: 0 220px;
+    padding: 0;
+
 }

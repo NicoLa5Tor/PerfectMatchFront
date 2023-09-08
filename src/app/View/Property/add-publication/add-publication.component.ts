@@ -20,7 +20,7 @@ export class AddPublicationComponent implements OnInit {
    imgs:Array<string>=new Array<string>(5);
    numImg:number=0;
    publication:Publication={sex:true, idAnimalType:0, idBreed:0, idCity:0, animalName:"", 
-   animalType:"", breed:"", city:"", description:"",owner:1,idPublication:0,Images: []};
+   animalType:"", breed:"", city:"", description:"",owner:1,idPublication:0,images: []};
    Breeds:Breed[]=[]//{breedName:"",idAnimalType:0,idBreed:0,NameType:""};
    Citys:City[]=[]//{CityName:"",idCity:0};
    AnimalTypes:AnimalType[]=[]//{animalTypeName:"",idAnimalType:0};
@@ -47,7 +47,7 @@ export class AddPublicationComponent implements OnInit {
       this.MessageErr = "animalname";
       return;
     }
-    if( this.publication.Images.length == 0 )
+    if( this.publication.images.length == 0 )
     {
     
       console.log("2");
@@ -104,8 +104,10 @@ export class AddPublicationComponent implements OnInit {
       return;
     }
     
-    console.log("this.publication)");
-    //this._apipublication.AddPublications(this.publication);
+    console.log(this.publication);
+    console.log("n");
+    this._apipublication.AddPublications(this.publication).subscribe(r=>console.log(r));
+    ;
   }
   
   getImage(event:any,num :number)
@@ -113,7 +115,7 @@ export class AddPublicationComponent implements OnInit {
     console.log(event)
     this.numImg=num;
     this.imgToBase64(event.target.files[0]);
-    console.log(this.publication.Images);
+    console.log(this.publication.images);
   }
   private imgToBase64(file: Blob) {
     if (file) {
@@ -127,11 +129,11 @@ export class AddPublicationComponent implements OnInit {
     return null;
   }
   toBase64(e : any) {
-    if(this.publication.Images[this.numImg] != undefined)
+    if(this.publication.images[this.numImg] != undefined)
     {
-      this.publication.Images[this.numImg].dataImage = ( btoa(e.target.result));
+      this.publication.images[this.numImg].dataImage = ( btoa(e.target.result));
     }else{
-      this.publication.Images[this.numImg] = {dataImage:( btoa(e.target.result)),idImage:0,idPublication:0}
+      this.publication.images[this.numImg] = {dataImage:( btoa(e.target.result)),idImage:0,idPublication:0}
     }
     
   }

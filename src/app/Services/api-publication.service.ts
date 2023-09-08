@@ -18,8 +18,8 @@ export class ApiPublicationService {
   {
     return this._http.get<Publication[]>(this.url+"List");
   }
-  public AddPublications(publication:Publication)
+  public AddPublications(publication:Publication):Observable<Publication>
   {
-    this._http.post(this.url+"Add",publication,httpOption);
+    return this._http.post<Publication>(this.url+"Add",publication,httpOption);
   }
 }
