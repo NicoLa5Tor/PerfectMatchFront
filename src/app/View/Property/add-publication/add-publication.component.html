@@ -35,11 +35,13 @@
           <input matInput type="text" class="form-control" [(ngModel)]="publication.weight" name="weight" required>
           </mat-form-field>
         </div>
-        <div class="form-group col-md-10">
-          <mat-form-field class="w-100">
-            <mat-label>Sex</mat-label>
-          <input matInput type="text" class="form-control" [(ngModel)]="publication.sex"  name="sex" required>
-          </mat-form-field>
+        <div class="form-group col-md-10 p-1">
+            <div class="w-100">
+          <label>Gender</label>
+          <select  class="form-select form-select-lg mb-3" [(ngModel)]="publication.idGender" name="gender" >
+            <option *ngFor="let gender of Genders" [value]="gender.idGender">{{gender.genderName}}</option>
+          </select>
+          </div>
         </div>
         <div class="form-group col-md-10">
           <mat-form-field class="w-100">

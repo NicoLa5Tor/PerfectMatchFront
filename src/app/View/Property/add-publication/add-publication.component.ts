@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { AnimalType } from 'src/app/Models/AnimalType';
 import { Breed } from 'src/app/Models/Breed';
 import { City } from 'src/app/Models/City';
+import { gender } from 'src/app/Models/Gender';
 import { Image } from 'src/app/Models/Image';
 import { Publication } from 'src/app/Models/publication';
 import { ApiAnimalTypeService } from 'src/app/Services/api-animalType.services';
 import { ApiBreedService } from 'src/app/Services/api-breed.service';
 import { ApiCityService } from 'src/app/Services/api-city.services';
+import { ApiGenderService } from 'src/app/Services/api-gender.ervices.type';
 import { ApiPublicationService } from 'src/app/Services/api-publication.service';
 
 @Component({
@@ -15,22 +17,25 @@ import { ApiPublicationService } from 'src/app/Services/api-publication.service'
   styleUrls: ['./add-publication.component.css']
 })
 export class AddPublicationComponent implements OnInit {
-  constructor(private _apipublication:ApiPublicationService,private _ApiBreed:ApiBreedService,private _ApiAnimalType:ApiAnimalTypeService, private _ApiCity:ApiCityService) {}
+  constructor(private _apipublication:ApiPublicationService,private _ApiBreed:ApiBreedService,
+    private _ApiAnimalType:ApiAnimalTypeService, private _ApiCity:ApiCityService,
+    private _ApiGenderService:ApiGenderService) {}
   MessageErr="";
    imgs:Array<string>=new Array<string>(5);
    numImg:number=0;
-   publication:Publication={sex:true, idAnimalType:0, idBreed:0, idCity:0, animalName:"", nameOwner:"",
-   nameType:"", nameBreed:"", nameCity:"", description:"",idOwner:1,idPublication:0,images: []};
+   publication:Publication={idGender:0, idAnimalType:0, idBreed:0, idCity:0, animalName:"", nameOwner:"",
+   typeName:"", breedName:"", cityName:"", description:"",idOwner:1,idPublication:0,images: []};
    Breeds:Breed[]=[];
    Breeds1:Breed[]=[];
    Citys:City[]=[];
    AnimalTypes:AnimalType[]=[];
+   Genders:gender[]=[];
 
     ngOnInit(): void {
       this.getAnimalTypes();
       this.getBreeds();
       this.getCitys();
-      
+      this.getGenders();
     }
   saveData()
   {
@@ -81,7 +86,7 @@ export class AddPublicationComponent implements OnInit {
         this.MessageErr = "description";
         return;
       }  
-      if( this.publication.sex != true && this.publication.sex != false)
+      if( this.publication.idGender != undefined)
       {
 
         console.log("8");
@@ -137,6 +142,11 @@ export class AddPublicationComponent implements OnInit {
   getAnimalTypes(){
     this._ApiAnimalType.getAnimalType().subscribe(r=>this.AnimalTypes=r)
   }
+  getGenders(){
+    this._ApiGenderService.getGenders().subscribe(r=>this.Genders=r)
+  }
+  
+
   updateBreed(){
     this.Breeds1=[];
     for(let breed of this.Breeds)
