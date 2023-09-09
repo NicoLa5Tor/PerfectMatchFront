@@ -14,6 +14,7 @@
         <div class="form-group col-md-10 p-1 mb-3">
           <input class="form-control" type="file"  name="Img"  (change)="getImage($event, 2)">
         </div>
+        
         <div class="form-group col-md-10">
           <mat-form-field class="w-100">
               <mat-label>Name</mat-label>
@@ -49,7 +50,7 @@
         <div class="form-group col-md-10 p-1">
           <div class="w-100">
             <label>Select AnimalType</label>
-            <select  class="form-select form-select-lg mb-3" [(ngModel)]="publication.idAnimalType"  name="animalType">
+            <select  class="form-select form-select-lg mb-3" [(ngModel)]="publication.idAnimalType" (change)="updateBreed()"  name="animalType">
               <option *ngFor="let type of AnimalTypes" [value]="type.idAnimalType">{{type.animalTypeName}}</option>
             </select>
             </div>
@@ -57,10 +58,12 @@
         <div class="form-group col-md-10 p-1">
           <div class="w-100">
             <label>Select Breed</label>
-            <select  class="form-select form-select-lg mb-3" [(ngModel)]="publication.idBreed"  name="breed">
-              <option *ngFor="let breed of Breeds" [value]="breed.idBreed">{{breed.breedName}}</option>
+            <select  class="form-select form-select-lg mb-3" [(ngModel)]="publication.idBreed" name="breed">
+              
+                <option *ngFor="let breed of Breeds1"  [value]="breed.idBreed">{{breed.breedName}}</option>
+              
             </select>
-            </div>
+          </div>
         </div>
         
         <div class="form-group col-md-10">

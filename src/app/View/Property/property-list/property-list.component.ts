@@ -17,6 +17,6 @@ export class PropertyListComponent implements OnInit {
   }
   getPublications()
   {
-    this.api.getPublications().subscribe(response=>{this.objetos=response;console.log(this.objetos)} );
+    this.api.getPublications().subscribe(response=>{this.objetos=response} );
   }
 }

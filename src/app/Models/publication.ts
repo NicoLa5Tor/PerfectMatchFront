@@ -6,8 +6,8 @@ export interface Publication {
 
         animalName :string,
 
-        city :string,
         idCity :number,
+        nameCity:string,
         weight? :number,
 
         sex:boolean,
@@ -15,13 +15,14 @@ export interface Publication {
 
         age ?: number,
         idAnimalType:number,
-        animalType:string,
+        nameType:string,
         idBreed:number,
-        breed :string,
+        nameBreed :string,
 
         description :string,
-        owner?:number,
-
+        idOwner?:number,
+        nameOwner:string,
+        
         //public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
 
         //public virtual AnimalType IdAnimalTypeNavigation { get; set; } = null!;
