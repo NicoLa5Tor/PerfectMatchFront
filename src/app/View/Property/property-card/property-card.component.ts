@@ -9,7 +9,6 @@ import { Publication } from 'src/app/Models/publication';
 export class PropertyCardComponent {
 
   constructor() {
-    
   }
   printObject(){
     console.log(this.objeto);
