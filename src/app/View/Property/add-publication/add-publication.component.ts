@@ -19,23 +19,18 @@ export class AddPublicationComponent implements OnInit {
   MessageErr="";
    imgs:Array<string>=new Array<string>(5);
    numImg:number=0;
-   publication:Publication={sex:true, idAnimalType:0, idBreed:0, idCity:0, animalName:"", 
-   animalType:"", breed:"", city:"", description:"",owner:1,idPublication:0,images: []};
-   Breeds:Breed[]=[]//{breedName:"",idAnimalType:0,idBreed:0,NameType:""};
-   Citys:City[]=[]//{CityName:"",idCity:0};
-   AnimalTypes:AnimalType[]=[]//{animalTypeName:"",idAnimalType:0};
+   publication:Publication={sex:true, idAnimalType:0, idBreed:0, idCity:0, animalName:"", nameOwner:"",
+   nameType:"", nameBreed:"", nameCity:"", description:"",idOwner:1,idPublication:0,images: []};
+   Breeds:Breed[]=[];
+   Breeds1:Breed[]=[];
+   Citys:City[]=[];
+   AnimalTypes:AnimalType[]=[];
 
-   /* if(this.publication.animalName === "" || this.publication.Images.length > 0 || this.publication.age === 0 
-    || this.publication.animalType === "" || this.publication.breed === "" || this.publication.city === "" || this.publication.description === "" || this.publication.sex === null 
-    || this.publication.weight === 0)
-    {
-      this.MessageErr = "review the changes and try again";
-      return;
-    }*/
     ngOnInit(): void {
       this.getAnimalTypes();
       this.getBreeds();
       this.getCitys();
+      
     }
   saveData()
   {
@@ -80,10 +75,6 @@ export class AddPublicationComponent implements OnInit {
         this.MessageErr = "City";
         return;
       }
-      else{
-        
-        console.log(this.publication.city);
-      } 
       if(this.publication.description === "")
       {
         console.log("7");
@@ -138,13 +129,22 @@ export class AddPublicationComponent implements OnInit {
     
   }
   getBreeds(){
-    this._ApiBreed.getAnimalType().subscribe(r=>this.Breeds=r)
+    this._ApiBreed.getAnimalType().subscribe(r=>{this.Breeds=r;console.log(this.Breeds);})
   }
   getCitys(){
     this._ApiCity.getAnimalType().subscribe(r=>this.Citys=r)
   }
   getAnimalTypes(){
     this._ApiAnimalType.getAnimalType().subscribe(r=>this.AnimalTypes=r)
+  }
+  updateBreed(){
+    this.Breeds1=[];
+    for(let breed of this.Breeds)
+    {
+      if(breed.idAnimalType==this.publication.idAnimalType)
+      this.Breeds1.push(breed);
+    }
+    
   }
 }
 
