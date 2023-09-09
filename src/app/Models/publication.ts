@@ -7,18 +7,18 @@ export interface Publication {
         animalName :string,
 
         idCity :number,
-        nameCity:string,
+        cityName:string,
         weight? :number,
 
-        sex:boolean,
+        idGender:number,
 
 
         age ?: number,
         idAnimalType:number,
-        nameType:string,
+        typeName:string,
         idBreed:number,
-        nameBreed :string,
-
+        breedName :string,
+        genderName?:string,
         description :string,
         idOwner?:number,
         nameOwner:string,
