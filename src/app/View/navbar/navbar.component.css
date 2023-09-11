@@ -1,13 +1,16 @@
-
-.opaco {
-    background: linear-gradient(#E59866 , #E67E22);
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
+.optionLeft{
+    height: 100% !important;
+    width: 20%;
+    border: 1px solid #000;
 }
+.optionLeft,.acomodo{
+    display: inline;
+}
+
 .acomodo{
-    display: content;
-    margin: 0 220px;
-    padding: 0;
+    left: 50%;
+    left: 25%;
+    
+    
 
 }

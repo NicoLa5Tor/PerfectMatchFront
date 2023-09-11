@@ -5,9 +5,9 @@ import { AddPublicationComponent } from './View/Property/add-publication/add-pub
 import { PropertyListComponent } from './View/Property/property-list/property-list.component';
 
 const routes: Routes = [
-
-{path: "",component:PropertyListComponent},
-{path:"form",component:AddPublicationComponent}
+{path:"#",component: AppComponent},
+{path: "PropertyList",component:PropertyListComponent},
+{path:"Form",component:AddPublicationComponent}
 ];
 
 @NgModule({

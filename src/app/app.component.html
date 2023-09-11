@@ -1,8 +1,38 @@
+<head>
 
-<div  style="margin-top:80px">
-<app-navbar></app-navbar>
-<!--<app-property-list></app-property-list>-->
-</div>
-<router-outlet></router-outlet>
+</head>
+<body>
+    <header>
+        Perfect march
+    </header>
+    <section>
+    <div class="div-inlane-left">
+        <div class="container">
+            <div class="container-inputs">
+            <mat-selection-list>
+                <mat-list-item *ngFor="let shoe of typesOfShoes">
+               <a (click)="selectOption(shoe.let, shoe.id)" > {{shoe.let}}</a>
+                </mat-list-item>
+            </mat-selection-list>
+            <p class="foot">
+                Página: {{ouput}}
+            </p> 
+        </div>
+        </div>
+       
+    </div>
+    <div class="div-inlane">
+            <router-outlet>
+                
+            </router-outlet>   
+    </div>
+       
+    </section>
+    <footer>
+        Todos los derechos reservados 
+    </footer>
+</body>
+
+
 
 
