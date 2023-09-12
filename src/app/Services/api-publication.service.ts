@@ -22,6 +22,7 @@ export class ApiPublicationService {
   }
   public AddPublications(publication:Publication):Observable<Publication>
   {
+    publication.idBreed = 2;
     return this._http.post<Publication>(`${this.url}Add`,publication);
   }
 }

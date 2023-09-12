@@ -1,0 +1,54 @@
+.header{
+    height: 10%;
+    width: 100%;
+    border: 1px solid #000;
+}
+.left-title,.button-right{
+    display: inline-flex;
+   
+}
+
+.button{
+    position: relative;
+    left: 84%;
+}
+.left-title{
+    width: 70%;
+  
+  
+}
+
+.button-right{
+    width: 30%;
+}
+.container{
+    height: 88%;
+    position:  absolute;
+    width: 100%;
+    justify-content: space-between;
+    display: inline-flex;
+}
+.left{
+    top: 0;
+    width: 20%;
+    height: 100%;
+    border: 1px solid #000;
+    position: relative;
+    display: inline-flex;
+}
+.right{
+    width: 80%;
+    height: 100%;
+    border:  1px solid #000;
+    position: relative;
+    display: inline-block;
+}
+.image{
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    position: relative;
+    display: inline-block;
+    border: 1px solid #000;
+}

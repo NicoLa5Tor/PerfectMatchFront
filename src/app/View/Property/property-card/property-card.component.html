@@ -2,8 +2,10 @@
         <div class="card ">
             <div class="container">
             <div class="card-img-wrapper">
-                <img *ngIf="objeto.images.length >0" class="card-img-top" src="data:image;base64,{{objeto.images[0].dataImage}}">
-           <!--     <ul class="lint-inline text-center member-icons animate">
+             <a  (click)="openDialog(objeto)">  <img *ngIf="objeto.images.length >0" class="card-img-top" src="data:image;base64,{{objeto.images[0].dataImage}}">
+             </a> 
+                <!--    
+             <ul class="lint-inline text-center member-icons animate">
                     <li class="list-inline-item">
                         <button class="btn bg-btn Edit"><span class="bi bi-pencil-square "></span></button>
                     </li>

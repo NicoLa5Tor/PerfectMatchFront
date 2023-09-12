@@ -13,7 +13,7 @@ export class AppComponent {
   typesOfShoes = [
     {id: 1, let:'Principal'}, 
     {id: 2,  let: 'Listas'},
-    { id: 3, let:'Loafers'},
+    { id: 3, let:'Añadir'},
     { id: 4,  let:'Moccasins'},
     { id: 5  , let :'Sneakers'}];
     constructor(private rout: Router) {

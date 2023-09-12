@@ -43,6 +43,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PropertyListComponent } from './View/Property/property-list/property-list.component';
 import { AddPublicationComponent } from './View/Property/add-publication/add-publication.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ImgeDialogComponent } from './View/Property/imge-dialog/imge-dialog.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NavbarComponent,
     PropertyCardComponent,
     PropertyListComponent,
-    AddPublicationComponent
+    AddPublicationComponent,
+    ImgeDialogComponent
   ],
   imports: [
     BrowserModule,
