@@ -1,6 +1,7 @@
 .row{
-    width: 50% !important;
-    height: 100% !important;
+    left: 20%;
+    width: 80% !important;
+    min-height: 250hv;
     position:  relative !important;
-    left: 25% !important;
+    
 }

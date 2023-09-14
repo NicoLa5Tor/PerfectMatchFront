@@ -1,0 +1,39 @@
+
+
+<div class="header">
+    <button mat-icon-button mat-dialog-close class="button">
+        <mat-icon aria-hidden="false">keyboard_arrow_left</mat-icon>
+    </button>
+    <div class="left-title">
+    <h2 class="tittle">
+        {{model.animalName}}
+    </h2 >
+    </div>
+    
+   
+</div>
+
+<div class="container">
+    <div class="left">
+       <p>
+        
+        {{model.typeName}}
+       </p>
+       
+       <p>
+        <br/>
+        {{model.breedName}}
+       </p>
+    </div>
+    <div class="right">
+         <div class="image">
+            <img class="img" src="data:image;base64,{{model.images[i].dataImage}}" />
+         </div>
+      
+          
+    </div>
+  
+   
+</div>
+
+

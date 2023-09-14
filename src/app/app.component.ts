@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import {MatIconModule} from '@angular/material/icon';
-import {MatMenuModule} from '@angular/material/menu';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatSelectionListChange } from '@angular/material/list';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +10,34 @@ import {MatMenuModule} from '@angular/material/menu';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-pagPrincipal: boolean = true;
+  typesOfShoes = [
+    {id: 1, let:'Principal'}, 
+    {id: 2,  let: 'Listas'},
+    { id: 3, let:'Añadir'},
+    { id: 4,  let:'Moccasins'},
+    { id: 5  , let :'Sneakers'}];
+    constructor(private rout: Router) {
+      
+    }
 
+ouput! : string;
+selectOption(dat: string, num: number){
+  this.ouput = dat;
+     switch(num){
+      case 1:
+        this.rout.navigate(['']);
+        break;
 
-prinPag(){
-  this.pagPrincipal = true;
-}
-otherPag(){
-this.pagPrincipal = false;
+        case 2:
+          this.rout.navigate(['PropertyList']);
+          break;
+          case 3: 
+          this.rout.navigate(['Form']);
+            break;
+            case 4:
+              break;
+              case 5:
+                break;
+     }
 }
 }

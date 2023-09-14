@@ -14,6 +14,8 @@ import {HttpClientModule} from '@angular/common/http';
 
 import {MatMenuModule} from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {NgFor} from '@angular/common';
+import {MatListModule} from '@angular/material/list';
 
  //Esto es para trabajar con formularios
 
@@ -41,6 +43,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PropertyListComponent } from './View/Property/property-list/property-list.component';
 import { AddPublicationComponent } from './View/Property/add-publication/add-publication.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ImgeDialogComponent } from './View/Property/imge-dialog/imge-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -48,10 +52,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NavbarComponent,
     PropertyCardComponent,
     PropertyListComponent,
-    AddPublicationComponent
+    AddPublicationComponent,
+    ImgeDialogComponent
   ],
   imports: [
     BrowserModule,
+    NgFor,
+    MatListModule,
     AppRoutingModule,
     MatMenuModule,
     MatFormFieldModule,
