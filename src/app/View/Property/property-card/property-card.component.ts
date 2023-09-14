@@ -26,6 +26,7 @@ export class PropertyCardComponent {
   }
   openDialog(date: Publication){
     this.dialogMat.open(ImgeDialogComponent, {
+      
       disableClose: true,
       width: "80%",
       height: "80%",

@@ -15,6 +15,7 @@ export class ApiBreedService{
     }
     getAnimalType():Observable<Breed[]>
     {
+        console.log(this.url);
         return this._http.get<Breed[]>(`${this.url}List`);
     }
 }

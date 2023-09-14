@@ -37,74 +37,7 @@ export class AddPublicationComponent implements OnInit {
       this.getCitys();
       this.getGenders();
     }
-  saveData()
-  {
-      console.log(this.publication);
-    if(this.publication.animalName == "" )
-    {
-      
-      console.log("1");
-      this.MessageErr = "animalname";
-      return;
-    }
-    if( this.publication.images.length == 0 )
-    {
-    
-      console.log("2");
-      this.MessageErr = "Images";
-      return;
-    }
-      if( this.publication.age == undefined || this.publication.age <1)
-      {
-        console.log("3");
-        this.MessageErr = "Age debe ser un entero positivo";
-        return;
 
-      }
-      if(this.publication.idAnimalType == 0 )
-      {
-        console.log("4");
-      this.MessageErr = "type";
-      return;
-      }
-      if( this.publication.idBreed == 0 )
-      {
-
-        console.log("5");
-        this.MessageErr = "breed";
-        return;
-      } 
-      if(this.publication.idCity == 0 )
-      {
-        console.log("6");
-        this.MessageErr = "City";
-        return;
-      }
-      if(this.publication.description === "")
-      {
-        console.log("7");
-        this.MessageErr = "description";
-        return;
-      }  
-      if( this.publication.idGender != undefined)
-      {
-
-        console.log("8");
-        this.MessageErr = "sex";
-        return;
-      }
-    if( this.publication.weight == undefined)
-    {
-      console.log("9");
-      this.MessageErr = "weight";
-      return;
-    }
-    
-    console.log(this.publication);
-    console.log("n");
-    this._apipublication.AddPublications(this.publication).subscribe(r=>console.log(r));
-    ;
-  }
   
   getImage(event:any,num :number)
   {
@@ -134,7 +67,7 @@ export class AddPublicationComponent implements OnInit {
     
   }
   getBreeds(){
-    this._ApiBreed.getAnimalType().subscribe(r=>{this.Breeds=r;console.log(this.Breeds);})
+    this._ApiBreed.getAnimalType().subscribe(r=>{this.Breeds=r;})
   }
   getCitys(){
     this._ApiCity.getAnimalType().subscribe(r=>this.Citys=r)

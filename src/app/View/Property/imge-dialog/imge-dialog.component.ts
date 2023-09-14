@@ -2,6 +2,7 @@ import { Component, Inject,Input,OnInit, Output } from '@angular/core';
 import { FormGroup,FormBuilder } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Publication } from 'src/app/Models/publication';
+import { HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-imge-dialog',
@@ -9,7 +10,7 @@ import { Publication } from 'src/app/Models/publication';
   styleUrls: ['./imge-dialog.component.css']
 })
 export class ImgeDialogComponent implements OnInit{
-
+i : number  = 0;
 constructor(
   private fb: FormBuilder,
   @Inject (MAT_DIALOG_DATA) public data: Publication
@@ -26,7 +27,7 @@ constructor(
    idOwner:this.data.idOwner, 
    weight:this.data.weight,
    idPublication:this.data.idPublication,
-   images: [],
+   images: this.data.images,
    idGender:this.data.idGender,
    idAnimalType:this.data.idAnimalType,  
    idBreed:this.data.idBreed,
@@ -37,5 +38,9 @@ if(this.data){
 
 
 }
+
+}
+mas(){
+this.i ++;
 }
 }
