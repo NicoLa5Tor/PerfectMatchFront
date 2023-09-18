@@ -25,4 +25,7 @@ export class ApiPublicationService {
     publication.idBreed = 2;
     return this._http.post<Publication>(`${this.url}Add`,publication);
   }
+  public UserPublications(idUser: number): Observable<Publication[]>{
+    return this._http.get<Publication[]>(`${this.url}userList/${idUser}`);
+  }
 }

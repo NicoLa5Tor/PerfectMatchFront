@@ -1,43 +1,31 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatSelectionListChange } from '@angular/material/list';
+import { Component,HostListener,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { DomSanitizer,SafeResourceUrl } from '@angular/platform-browser';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  typesOfShoes = [
-    {id: 1, let:'Principal'}, 
-    {id: 2,  let: 'Listas'},
-    { id: 3, let:'Añadir'},
-    { id: 4,  let:'Moccasins'},
-    { id: 5  , let :'Sneakers'}];
-    constructor(private rout: Router) {
-      
+export class AppComponent  implements OnInit{
+  imgUrl : SafeResourceUrl
+  mostrarDiv = false;
+  id : number = 2;
+
+    links = [
+      { isActive: false, text: 'Inicio', href: '' },
+      { isActive: false, text: 'Perfil', href: '/Profile/2' },
+      { isActive: false, text: 'Lista', href: '/PropertyList' },
+      { isActive: true, text: 'Añadir', href: '/Form' },
+    ];
+    constructor(private rout: Router,
+   private sanitizer: DomSanitizer
+      ) {
+      const img = 'assets/logo.png';
+      this.imgUrl = this.sanitizer.bypassSecurityTrustResourceUrl(img);
     }
-
-ouput! : string;
-selectOption(dat: string, num: number){
-  this.ouput = dat;
-     switch(num){
-      case 1:
-        this.rout.navigate(['']);
-        break;
-
-        case 2:
-          this.rout.navigate(['PropertyList']);
-          break;
-          case 3: 
-          this.rout.navigate(['Form']);
-            break;
-            case 4:
-              break;
-              case 5:
-                break;
-     }
+ngOnInit(): void {
+  
 }
+
+
 }

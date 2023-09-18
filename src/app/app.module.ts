@@ -44,6 +44,8 @@ import { PropertyListComponent } from './View/Property/property-list/property-li
 import { AddPublicationComponent } from './View/Property/add-publication/add-publication.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ImgeDialogComponent } from './View/Property/imge-dialog/imge-dialog.component';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import { LinkDialogComponent } from './View/Property/LowDialog/link-dialog/link-dialog.component';
 
 
 @NgModule({
@@ -53,10 +55,13 @@ import { ImgeDialogComponent } from './View/Property/imge-dialog/imge-dialog.com
     PropertyCardComponent,
     PropertyListComponent,
     AddPublicationComponent,
-    ImgeDialogComponent
+    ImgeDialogComponent,
+    LinkDialogComponent,
   ],
   imports: [
     BrowserModule,
+    
+    MatBottomSheetModule,
     NgFor,
     MatListModule,
     AppRoutingModule,

@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Publication } from 'src/app/Models/publication';
 import { ImgeDialogComponent } from '../imge-dialog/imge-dialog.component';
-
 @Component({
   selector: 'app-property-card',
   templateUrl: './property-card.component.html',
@@ -11,11 +10,12 @@ import { ImgeDialogComponent } from '../imge-dialog/imge-dialog.component';
 export class PropertyCardComponent {
   date !: number;
   constructor(
-    private dialogMat: MatDialog
+    private dialogMat: MatDialog,
   ) {
-
+  
   }
   printObject(){
+    
     console.log(this.objeto);
   }
   @Input() objeto:Publication={nameOwner:"",
@@ -30,9 +30,8 @@ export class PropertyCardComponent {
       disableClose: true,
       width: "80%",
       height: "80%",
-      data: date
-    } ).afterClosed().subscribe(result => {
       
-    })
+      data: date
+    } ).afterClosed().subscribe(result =>{})
   }
 }

@@ -1,33 +1,28 @@
+
 <head>
 
 </head>
 <body>
-    <header>
+    <header class="head">
+        
         Perfect march
-    </header>
-    <section>
-    <div class="div-inlane-left">
-        <div class="container">
-            <div class="container-inputs">
-            <mat-selection-list>
-                <mat-list-item *ngFor="let shoe of typesOfShoes">
-               <a (click)="selectOption(shoe.let, shoe.id)" > {{shoe.let}}</a>
-                </mat-list-item>
-            </mat-selection-list>
-            <p class="foot">
-                Página: {{ouput}}
-            </p> 
-        </div>
-        </div>
        
-    </div>
-    <div class="ext"></div>
+    </header>
+    <section class="section">
+        <div class="log">
+            <img [src]="imgUrl" class="img-left">
+        </div>
+            <div class="container-inputs">
+                <mat-nav-list style="width: 100%;">
+                    <a mat-list-item [routerLink]="link.href" *ngFor="let link of links" [activated]="link.isActive">{{ link.text }}</a>
+                  </mat-nav-list>
+        </div>
     <div class="div-inlane">
-            <router-outlet>
+            <router-outlet >
                 
             </router-outlet>   
     </div>
-    <div class="ext"></div>
+   
        
     </section>
     <footer>

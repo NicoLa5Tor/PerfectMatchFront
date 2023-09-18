@@ -1,7 +1,18 @@
-.row{
-    left: 20%;
-    width: 80% !important;
-    min-height: 250hv;
-    position:  relative !important;
-    
+
+
+ .row{
+        left: 18%;
+        width: 80% !important;
+        min-height: min-content;
+        position:  relative !important;
+        
+    }
+@media (max-width: 575px ) {
+    .row{
+        left: 0;
+        width: 100% !important;
+        min-height: min-content;
+        position:  relative !important;
+        
+    } 
 }

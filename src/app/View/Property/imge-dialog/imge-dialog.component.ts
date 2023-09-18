@@ -1,8 +1,15 @@
 import { Component, Inject,Input,OnInit, Output } from '@angular/core';
-import { FormGroup,FormBuilder } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Publication } from 'src/app/Models/publication';
-import { HostListener } from '@angular/core';
+import {
+  MatBottomSheet,
+  MatBottomSheetModule,
+  MatBottomSheetRef,
+} from '@angular/material/bottom-sheet';
+import {MatListModule} from '@angular/material/list';
+import {MatButtonModule} from '@angular/material/button';
+import { LinkDialogComponent } from '../LowDialog/link-dialog/link-dialog.component';
+
 
 @Component({
   selector: 'app-imge-dialog',
@@ -12,7 +19,7 @@ import { HostListener } from '@angular/core';
 export class ImgeDialogComponent implements OnInit{
 i : number  = 0;
 constructor(
-  private fb: FormBuilder,
+  private _bottomSheet: MatBottomSheet,
   @Inject (MAT_DIALOG_DATA) public data: Publication
 ) {
 }@Input() model: Publication = 
@@ -34,13 +41,28 @@ constructor(
    idCity:this.data.idCity}
  
 ngOnInit(): void {
-if(this.data){
-
-
 }
-
-}
-mas(){
+plus(){
+ 
+  if(this.model.images.length-1 > this.i){
+    console.log(this.model.images.length)  
 this.i ++;
+  }
+}
+minus(){
+  if(0 < this.i){
+    this.i --;
+  }
+
+
+}
+openBottomSheet(): void {
+  this._bottomSheet.open(LinkDialogComponent,{
+    
+    data: this.model,
+    disableClose: false
+    
+    
+  });
 }
 }

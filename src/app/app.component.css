@@ -1,28 +1,50 @@
 body{
-    min-height: 200vhpx !important;
+    min-height: min-content !important;
     width: 100%;
     overflow-x: hidden;
-    height: max-content;
+    max-height: max-content;
+}
+.img-left{
+  max-width: 20%;
+  height: 20%;
+  position: fixed;
+  bottom: 0;
+  left: 13px;
+
+}
+.log{
+    position: absolute;
+    width: 15%;
+    height: 5%;
+    bottom: 0;
+    z-index: 100000;
+    top: 10.5%;
 }
 
-header{
+.head{
     overflow-y: hidden;
-    background: linear-gradient(to bottom, #0099cc, #66ccff);
+    background: linear-gradient(to bottom right, #064608,#053807, #052138); 
     height: 70px;
-    position: fixed;
-    width: 100%;
+    width: 80%;
     z-index: 1000;
     position: fixed !important; 
+    left: 10%;
+    border-top-left-radius: 0; /* Redondea la esquina superior izquierda a 0 (sin redondeo) */
+    border-top-right-radius: 0; /* Redondea la esquina superior derecha a 0 (sin redondeo) */
+    border-bottom-left-radius: 30px; /* Redondea la esquina inferior izquierda */
+    border-bottom-right-radius: 30px; 
 }
 section{
-    padding-top: 5%;
+    top: 70px;
     position: relative;
     justify-content: space-between;
     display: flex;
-    min-height: 200vh;
+    min-height: min-content;
     height: max-content;
     width: 100%;
+    margin-top: 10px;
 }
+
 footer{
     backdrop-filter: blur(10px); /* Aplicar difuminado al contenido detrás */
     bottom: 0;
@@ -38,52 +60,58 @@ footer{
 .container-inputs{
     position: fixed;
     text-align: left;
-    width: 15%;
+    width: 150px;
     left: 0;
-    top: 10%;
+    top: 0;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); 
     display: inline-flex;
     height: 100%;
+    padding-top: 7%;
 }
-.container{
-    display: inline-flex;
-    width: 100%;
-}
+
+
 h2{
     display: inline-block;
     left: 20px;
     position: relative; 
     margin-top: 30px
 }
-.foot{
-    
-    position: absolute;
-    top: 50%;
-}
-.div-inlane-left{
-    width: 12%;
-    display: inline-flex;
 
-    height: 70%;
-
-
-}
 
 .div-inlane{
     width:  70%;
-    margin-left: 15%;
-    margin-right: 15%;
+    margin-left: 20%;
+    right: 0;
     position: relative;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); 
     height: max-content;
     display: flex;
     flex-direction: column;
+    padding-top: 10px;
+    padding-bottom: 100px;
   
 }
-.div-inlane-left,.div-inlane{
+@media(max-width: 850px){
+
+
+.container-inputs{
+    display: none;
+    width: 0;
+}
+
+.head{
+    width: 90%;
+    left: 5%;
+
+}
+.log{
+ display: none;
+}
+.div-inlane{
     display: inline-block;
-    height: 100% !important;
-    position: relative;
     height: max-content;
-  
+    margin-left: 16%;
+    text-align: center;
 }
+}
+

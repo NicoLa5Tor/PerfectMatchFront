@@ -1,39 +1,48 @@
 
 
+
+
 <div class="header">
     <button mat-icon-button mat-dialog-close class="button">
-        <mat-icon aria-hidden="false">keyboard_arrow_left</mat-icon>
+        <mat-icon aria-hidden="false">close</mat-icon>
     </button>
     <div class="left-title">
     <h2 class="tittle">
-        {{model.animalName}}
+        {{model.animalName}} de {{model.nameOwner}}
     </h2 >
     </div>
-    
-   
 </div>
-
 <div class="container">
     <div class="left">
-       <p>
+     
+            <p>Este {{model.typeName}} es un ejmeplar de raza {{model.breedName}} <br/></p>
+            <p>
+               Criado por {{model.nameOwner}} en {{model.cityName}}, ya hace {{model.age}} <br/>
+            </p>
+
         
-        {{model.typeName}}
-       </p>
-       
-       <p>
-        <br/>
-        {{model.breedName}}
-       </p>
     </div>
     <div class="right">
+        <div class="button-info" (click)="openBottomSheet()">
+            <button mat-icon-button aria-label="Información">
+                <mat-icon>info</mat-icon>
+              </button>
+        </div>
          <div class="image">
             <img class="img" src="data:image;base64,{{model.images[i].dataImage}}" />
          </div>
       
-          
     </div>
   
    
 </div>
+<button mat-icon-button  class="button-next-right" (click)="plus()">
+    <mat-icon aria-hidden="false">keyboard_arrow_right</mat-icon>
+</button>
+   
+<button mat-icon-button  class="button-next" (click)="minus()">
+    <mat-icon aria-hidden="false">keyboard_arrow_left</mat-icon>
+</button>
+
 
 

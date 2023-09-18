@@ -41,10 +41,10 @@ export class AddPublicationComponent implements OnInit {
   
   getImage(event:any,num :number)
   {
-    console.log(event)
+    //console.log(event)
     this.numImg=num;
     this.imgToBase64(event.target.files[0]);
-    console.log(this.publication.images);
+    //console.log(this.publication.images);
   }
   private imgToBase64(file: Blob) {
     if (file) {

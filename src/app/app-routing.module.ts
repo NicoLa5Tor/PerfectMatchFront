@@ -8,8 +8,10 @@ import { ImgeDialogComponent } from './View/Property/imge-dialog/imge-dialog.com
 const routes: Routes = [
 {path:"#",component: AppComponent},
 {path: "PropertyList",component:PropertyListComponent},
+{path: "Profile/:id",component:PropertyListComponent},
 {path:"Form",component:AddPublicationComponent},
-{path:"dialogImage",component: ImgeDialogComponent}
+{path:"dialogImage",component: ImgeDialogComponent},
+
 ];
 
 @NgModule({

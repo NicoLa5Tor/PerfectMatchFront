@@ -4,11 +4,20 @@
     transition-timing-function:ease-out;
     opacity:0.7;
 }
+.imgLog{
+    width: 70%;
+    height: 70%;
+    position: absolute;
+    left: 15%;
+    top: 15%;
+}
 .card-img-wrapper{
     overflow:hidden;
     position:relative; 
 }
-
+.dialog-background{
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)), linear-gradient(to bottom, #f5f5f5, #f5f5f5);
+}
 .card-img-wrapper:hover .member-icons{
     bottom:0;
     opacity:1;
@@ -18,8 +27,7 @@
      bottom:0;
      left:0;
      right:0;
-     margin-right:auto;
-     margin-left:auto;
+     
      
      bottom:-50%;
      opacity:o;
