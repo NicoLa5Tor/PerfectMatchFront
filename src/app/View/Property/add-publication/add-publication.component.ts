@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Inject} from '@angular/core';
 import { AnimalType } from 'src/app/Models/AnimalType';
 import { Breed } from 'src/app/Models/Breed';
 import { City } from 'src/app/Models/City';
 import { gender } from 'src/app/Models/Gender';
-import { Image } from 'src/app/Models/Image';
 import { Publication } from 'src/app/Models/publication';
 import { ApiAnimalTypeService } from 'src/app/Services/api-animalType.services';
 import { ApiBreedService } from 'src/app/Services/api-breed.service';
@@ -32,6 +31,8 @@ export class AddPublicationComponent implements OnInit {
    Genders:gender[]=[];
 
     ngOnInit(): void {
+     
+
       this.getAnimalTypes();
       this.getBreeds();
       this.getCitys();

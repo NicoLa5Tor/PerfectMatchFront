@@ -30,8 +30,7 @@ export class PropertyCardComponent {
       disableClose: true,
       width: "80%",
       height: "80%",
-      
-      data: date
+
     } ).afterClosed().subscribe(result =>{})
   }
 }

@@ -15,7 +15,7 @@ export class AppComponent  implements OnInit{
       { isActive: false, text: 'Inicio', href: '' },
       { isActive: false, text: 'Perfil', href: '/Profile/2' },
       { isActive: false, text: 'Lista', href: '/PropertyList' },
-      { isActive: true, text: 'Añadir', href: '/Form' },
+      { isActive: false, text: 'Añadir', href: '/Form' },
     ];
     constructor(private rout: Router,
    private sanitizer: DomSanitizer

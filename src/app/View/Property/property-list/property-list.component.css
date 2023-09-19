@@ -7,6 +7,15 @@
         position:  relative !important;
         
     }
+.menu{
+    position: sticky;
+    margin-left: 40vw;
+}
+@media((min-width: 575px) and (max-width: 750px)){
+    .menu{
+        margin-left: 35vw;
+    }
+}
 @media (max-width: 575px ) {
     .row{
         left: 0;
@@ -15,4 +24,7 @@
         position:  relative !important;
         
     } 
+    .menu{
+        margin-left: 55vw;
+    }
 }

@@ -1,12 +1,14 @@
-        <div class="card ">
+        <div class="card">
             <div class="container">
               
             <div class="card-img-wrapper">
+                <h3>{{objeto.animalName}}</h3>
+                
              <a  (click)="openDialog(objeto)">  <img *ngIf="objeto.images.length >0" class="card-img-top" src="data:image;base64,{{objeto.images[0].dataImage}}">
              </a> 
             </div>
             <div class="card-body p-1">
-                <h3>{{objeto.animalName}}</h3>
+                
                 <div class="row">
                <p class="text-success col-md-6">animal type </p> <h4 class="col-md-6">{{objeto.typeName}}</h4>
                 </div>

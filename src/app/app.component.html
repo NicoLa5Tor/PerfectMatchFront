@@ -4,7 +4,14 @@
 </head>
 <body>
     <header class="head">
-        
+        <div class="options">
+            <p id="p1">
+               <a>Ingresar </a> 
+            </p>
+            <p id="p2" >
+              <a> Registrar </a>  
+            </p>
+        </div>
         Perfect march
        
     </header>
@@ -13,8 +20,9 @@
             <img [src]="imgUrl" class="img-left">
         </div>
             <div class="container-inputs">
+      
                 <mat-nav-list style="width: 100%;">
-                    <a mat-list-item [routerLink]="link.href" *ngFor="let link of links" [activated]="link.isActive">{{ link.text }}</a>
+                    <a mat-list-item [routerLink]="link.href" *ngFor="let link of links" [activated]="link.isActive == true">{{ link.text }}</a>
                   </mat-nav-list>
         </div>
     <div class="div-inlane">

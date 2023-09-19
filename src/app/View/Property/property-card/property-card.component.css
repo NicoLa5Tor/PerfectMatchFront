@@ -4,6 +4,7 @@
     transition-timing-function:ease-out;
     opacity:0.7;
 }
+
 .imgLog{
     width: 70%;
     height: 70%;
@@ -37,10 +38,4 @@
 }
 .transparent{
     opacity: 0.7;
-}
-.Edit{
-    background: linear-gradient(#E59866 , #E67E22);
-}
-.Delete{
-    background: linear-gradient(#EC7063 , #E74C3C);
 }

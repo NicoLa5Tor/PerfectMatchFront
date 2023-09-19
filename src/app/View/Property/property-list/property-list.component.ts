@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Publication } from 'src/app/Models/publication';
 import { ApiPublicationService } from 'src/app/Services/api-publication.service';
 import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { AddPublicationComponent } from '../add-publication/add-publication.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-property-list',
@@ -9,13 +12,14 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./property-list.component.css']
 })
 export class PropertyListComponent implements OnInit {
- 
+  position: number = 0;
   objetos:Array<Publication>=[]; 
   id : number = 0 ;
-  list! : boolean;
   datos = false;
   constructor(private api:ApiPublicationService,
-    private rout : ActivatedRoute
+    private rout : ActivatedRoute,
+    private dialog: MatDialog,
+    private router: Router
     ){
     
   }
@@ -25,11 +29,10 @@ export class PropertyListComponent implements OnInit {
   
    if (!isNaN(this.id)) {
     if(this.id > 0){
-      console.log("entra");
-      this.datos = true;
+      this.datos = true
      this.getUserPublications(this.id);
      }else{
-      console.log("sale")
+  
       this.getPublications();
      }
   } else {
@@ -54,5 +57,12 @@ export class PropertyListComponent implements OnInit {
         }
       }
     )
+  }
+  openDialog(){
+    this.dialog.open(AddPublicationComponent,{
+      width: "50%",
+      height: "70vh",
+     
+        }).afterClosed()
   }
 }

@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { AddPublicationComponent } from './View/Property/add-publication/add-publication.component';
 import { PropertyListComponent } from './View/Property/property-list/property-list.component';
 import { ImgeDialogComponent } from './View/Property/imge-dialog/imge-dialog.component';
+import { PropertyCardComponent } from './View/Property/property-card/property-card.component';
 
 const routes: Routes = [
 {path:"#",component: AppComponent},
