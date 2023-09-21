@@ -2,21 +2,9 @@
    
     <div class="col-sm-10 p-3 shadow-lg" *ngFor="let card of objetos" >
        
-<button mat-icon-button [matMenuTriggerFor]="menu"  class="menu" *ngIf="datos">
-    <mat-icon>more_vert</mat-icon>
-</button>
-<mat-menu #menu="matMenu">
-  <button mat-menu-item (click)="openDialog()">
-    <mat-icon>edit</mat-icon>
-    Editar
-  </button>
-  <button mat-menu-item>
-    <mat-icon>delete</mat-icon>
-    Eliminar
-  </button>
-</mat-menu>
 
-    <app-property-card [objeto]="card"  >
+
+    <app-property-card [objeto]="card" [propertyId]="id" >
       
     </app-property-card>
     </div>

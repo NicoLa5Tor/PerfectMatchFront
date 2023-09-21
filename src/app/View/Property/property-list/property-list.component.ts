@@ -15,7 +15,7 @@ export class PropertyListComponent implements OnInit {
   position: number = 0;
   objetos:Array<Publication>=[]; 
   id : number = 0 ;
-  datos = false;
+
   constructor(private api:ApiPublicationService,
     private rout : ActivatedRoute,
     private dialog: MatDialog,
@@ -29,15 +29,12 @@ export class PropertyListComponent implements OnInit {
   
    if (!isNaN(this.id)) {
     if(this.id > 0){
-      this.datos = true
      this.getUserPublications(this.id);
      }else{
   
       this.getPublications();
      }
-  } else {
-    
-  }
+    }
   }
   getPublications()
   {
@@ -58,11 +55,5 @@ export class PropertyListComponent implements OnInit {
       }
     )
   }
-  openDialog(){
-    this.dialog.open(AddPublicationComponent,{
-      width: "50%",
-      height: "70vh",
-     
-        }).afterClosed()
-  }
+
 }

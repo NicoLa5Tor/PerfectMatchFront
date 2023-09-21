@@ -9,6 +9,7 @@ import { ApiBreedService } from 'src/app/Services/api-breed.service';
 import { ApiCityService } from 'src/app/Services/api-city.services';
 import { ApiGenderService } from 'src/app/Services/api-gender.ervices.type';
 import { ApiPublicationService } from 'src/app/Services/api-publication.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-publication',
@@ -18,7 +19,10 @@ import { ApiPublicationService } from 'src/app/Services/api-publication.service'
 export class AddPublicationComponent implements OnInit {
   constructor(private _apipublication:ApiPublicationService,private _ApiBreed:ApiBreedService,
     private _ApiAnimalType:ApiAnimalTypeService, private _ApiCity:ApiCityService,
-    private _ApiGenderService:ApiGenderService) {}
+    private _ApiGenderService:ApiGenderService,
+    @Inject (MAT_DIALOG_DATA) public model: Publication 
+    ) 
+    {}
   MessageErr="";
    imgs:Array<string>=new Array<string>(5);
    numImg:number=0;
@@ -31,14 +35,32 @@ export class AddPublicationComponent implements OnInit {
    Genders:gender[]=[];
 
     ngOnInit(): void {
-     
-
       this.getAnimalTypes();
       this.getBreeds();
       this.getCitys();
       this.getGenders();
+      this.addEdit();
+   
+    
+  
     }
+  addEdit(){
+    if(this.model.idPublication != 0){
+      this.publication.idBreed = this.model.idBreed
+       this.publication.idGender = this.model.idGender
+       this.publication.idAnimalType = this.model.idAnimalType
+       this.publication.idCity = this.model.idCity
+       this.publication.idOwner = this.model.idOwner
+       this.publication.images = this.model.images
+       this.publication.description = this.model.description
+       this.publication.animalName = this.model.animalName
+       this.publication.weight = this.model.weight
+       this.publication.age = this.model.age
+       this.updateBreed()
+     }else{
 
+     }
+ }
   
   getImage(event:any,num :number)
   {

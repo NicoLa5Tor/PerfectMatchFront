@@ -1,9 +1,22 @@
+<button mat-icon-button [matMenuTriggerFor]="menu"  class="menu"  *ngIf="dat"> 
+    <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item  (click)="openAdd(objeto)">
+    <mat-icon>edit</mat-icon>
+    Editar
+  </button>
+  <button mat-menu-item>
+    <mat-icon>delete</mat-icon>
+    Eliminar
+  </button>
+</mat-menu>
         <div class="card">
             <div class="container">
               
             <div class="card-img-wrapper">
                 <h3>{{objeto.animalName}}</h3>
-                
+               
              <a  (click)="openDialog(objeto)">  <img *ngIf="objeto.images.length >0" class="card-img-top" src="data:image;base64,{{objeto.images[0].dataImage}}">
              </a> 
             </div>

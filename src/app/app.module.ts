@@ -8,7 +8,6 @@ import { NavbarComponent } from './View/navbar/navbar.component';
 import { PropertyCardComponent } from './View/Property/property-card/property-card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
-
 import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
 import {HttpClientModule} from '@angular/common/http'; 
 
@@ -46,6 +45,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ImgeDialogComponent } from './View/Property/imge-dialog/imge-dialog.component';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import { LinkDialogComponent } from './View/Property/LowDialog/link-dialog/link-dialog.component';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -88,7 +88,9 @@ import { LinkDialogComponent } from './View/Property/LowDialog/link-dialog/link-
     FormsModule
 
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_DIALOG_DATA,useValue:{}}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

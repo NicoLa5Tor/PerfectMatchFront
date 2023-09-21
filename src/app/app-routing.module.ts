@@ -12,6 +12,7 @@ const routes: Routes = [
 {path: "Profile/:id",component:PropertyListComponent},
 {path:"Form",component:AddPublicationComponent},
 {path:"dialogImage",component: ImgeDialogComponent},
+{path:"card",component: PropertyCardComponent}
 
 ];
 
