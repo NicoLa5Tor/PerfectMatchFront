@@ -1,0 +1,8 @@
+{
+    "/daviplata/*": {
+      "target": "https://apislab.daviplata.com",
+      "secure": false,
+      "changeOrigin": true
+    }
+  }
+  

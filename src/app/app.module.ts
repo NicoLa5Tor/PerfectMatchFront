@@ -1,6 +1,5 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -46,7 +45,10 @@ import { ImgeDialogComponent } from './View/Property/imge-dialog/imge-dialog.com
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import { LinkDialogComponent } from './View/Property/LowDialog/link-dialog/link-dialog.component';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { PaypalComponent } from './View/Property/paypal/paypal.component';
 
+
+import { NgxPayPalModule } from 'ngx-paypal';
 
 @NgModule({
   declarations: [
@@ -57,10 +59,11 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
     AddPublicationComponent,
     ImgeDialogComponent,
     LinkDialogComponent,
+    PaypalComponent,
   ],
   imports: [
+    NgxPayPalModule,
     BrowserModule,
-    
     MatBottomSheetModule,
     NgFor,
     MatListModule,
@@ -88,9 +91,11 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
     FormsModule
 
   ],
+
   providers: [
     {provide: MAT_DIALOG_DATA,useValue:{}}
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

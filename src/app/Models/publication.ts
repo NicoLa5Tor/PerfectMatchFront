@@ -1,6 +1,6 @@
 import { Image } from "./Image";
 export interface Publication {
-        idPublication ?:number;
+        idPublication :number;
 
         //public int? IdOwner { get; set; }
 

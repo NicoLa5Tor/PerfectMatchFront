@@ -26,6 +26,8 @@ export class AddPublicationComponent implements OnInit {
   MessageErr="";
    imgs:Array<string>=new Array<string>(5);
    numImg:number=0;
+   edit = false;
+   i = 0;
    publication:Publication={idGender:0, idAnimalType:0, idBreed:0, idCity:0, animalName:"", nameOwner:"",
    typeName:"", breedName:"", cityName:"", description:"",idOwner:1,idPublication:0,images: []};
    Breeds:Breed[]=[];
@@ -39,31 +41,47 @@ export class AddPublicationComponent implements OnInit {
       this.getBreeds();
       this.getCitys();
       this.getGenders();
-      this.addEdit();
+      if(this.model.idPublication != undefined){
+        console.log("entra")
+        this.publication.idBreed = this.model.idBreed
+        this.publication.idGender = this.model.idGender
+        this.publication.idAnimalType = this.model.idAnimalType
+        this.publication.idCity = this.model.idCity
+        this.publication.idOwner = this.model.idOwner
+        this.publication.images = this.model.images
+        this.publication.description = this.model.description
+        this.publication.animalName = this.model.animalName
+        this.publication.weight = this.model.weight
+        this.publication.age = this.model.age
+        this.updateBreed()
+         
+       }
    
-    
   
     }
   addEdit(){
-    if(this.model.idPublication != 0){
-      this.publication.idBreed = this.model.idBreed
-       this.publication.idGender = this.model.idGender
-       this.publication.idAnimalType = this.model.idAnimalType
-       this.publication.idCity = this.model.idCity
-       this.publication.idOwner = this.model.idOwner
-       this.publication.images = this.model.images
-       this.publication.description = this.model.description
-       this.publication.animalName = this.model.animalName
-       this.publication.weight = this.model.weight
-       this.publication.age = this.model.age
-       this.updateBreed()
+  
+    if(this.model.idPublication == undefined){
+     this.publication.idOwner = 2;
+      console.log("agrega: "+this.publication.breedName)
+       this._apipublication.AddPublications(this.publication).subscribe({
+        next:(data) => {
+          console.log(data)
+        },error:(e) => {
+        }
+       })
      }else{
-
+      console.log("edita: "+this.model);
+      this._apipublication.UpdatePublication(this.model.idPublication,this.publication).subscribe({
+        next:(data) => {
+          console.log("guarda: "+data);
+        },error:(e) => {}
+      })
      }
  }
-  
   getImage(event:any,num :number)
   {
+    this.i++;
     //console.log(event)
     this.numImg=num;
     this.imgToBase64(event.target.files[0]);
@@ -81,13 +99,13 @@ export class AddPublicationComponent implements OnInit {
     return null;
   }
   toBase64(e : any) {
-    if(this.publication.images[this.numImg] != undefined)
+    if(this.publication.images[this.numImg] != null)
     {
+      
       this.publication.images[this.numImg].dataImage = ( btoa(e.target.result));
     }else{
       this.publication.images[this.numImg] = {dataImage:( btoa(e.target.result)),idImage:0,idPublication:0}
     }
-    
   }
   getBreeds(){
     this._ApiBreed.getAnimalType().subscribe(r=>{this.Breeds=r;})
@@ -101,8 +119,6 @@ export class AddPublicationComponent implements OnInit {
   getGenders(){
     this._ApiGenderService.getGenders().subscribe(r=>this.Genders=r)
   }
-  
-
   updateBreed(){
     this.Breeds1=[];
     for(let breed of this.Breeds)
@@ -110,7 +126,6 @@ export class AddPublicationComponent implements OnInit {
       if(breed.idAnimalType==this.publication.idAnimalType)
       this.Breeds1.push(breed);
     }
-    
   }
 }
 

@@ -6,13 +6,13 @@
     <h3  *ngIf="MessageErr!=''" class="text-light bg-danger p-1">{{MessageErr}}</h3>
     <div class="form-row">
       <div class="form-group col-md-10 p-1">
-          <input class="form-control" type="file"  name="Img"  (change)="getImage($event, 0) ">
+          <input class="form-control" type="file"  name="Img"  (change)="getImage($event, i)  ">
         </div>
         <div class="form-group col-md-10 p-1">
-          <input class="form-control" type="file"  name="Img"  (change)="getImage($event, 1)">
+          <input class="form-control" type="file"  name="Img"  (change)="getImage($event, i)">
         </div>
         <div class="form-group col-md-10 p-1 mb-3">
-          <input class="form-control" type="file"  name="Img"  (change)="getImage($event, 2)">
+          <input class="form-control" type="file"  name="Img"  (change)="getImage($event, i)">
         </div>
         
         <div class="form-group col-md-10">
@@ -60,7 +60,7 @@
         <div class="form-group col-md-10 p-1">
           <div class="w-100">
             <label>Select Breed</label>
-            <select  class="form-select form-select-lg mb-3" [(ngModel)]="publication.idBreed" name="breed">
+            <select (click)=" updateBreed()"  class="form-select form-select-lg mb-3" [(ngModel)]="publication.idBreed" name="breed">
               
                 <option *ngFor="let breed of Breeds1"  [value]="breed.idBreed">{{breed.breedName}}</option>
               
@@ -74,6 +74,6 @@
           <textarea matInput class="form-control w-100" [(ngModel)]="publication.description"  name="description" rows="3" required></textarea>
           </mat-form-field>
         </div>
-    <button  type="submit" class="btn btn-success w-25">Add</button>
+    <button  type="submit" class="btn btn-success w-25" (click)="addEdit()">Add</button>
       </div>
 </form>

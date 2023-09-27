@@ -9,6 +9,7 @@ import {
 import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
 import { LinkDialogComponent } from '../LowDialog/link-dialog/link-dialog.component';
+import { ApiPublicationService } from 'src/app/Services/api-publication.service';
 
 
 @Component({
@@ -20,10 +21,14 @@ export class ImgeDialogComponent implements OnInit{
 i : number  = 0;
 constructor(
   private _bottomSheet: MatBottomSheet,
+  private api : ApiPublicationService,
   @Inject (MAT_DIALOG_DATA) public data: Publication
 ) {
-}@Input() model: Publication = 
+}
+
+@Input() model: Publication = 
   {
+    
    nameOwner: this.data.nameOwner,
    animalName: this.data.animalName, 
    age:this.data.age,
@@ -38,9 +43,11 @@ constructor(
    idGender:this.data.idGender,
    idAnimalType:this.data.idAnimalType,  
    idBreed:this.data.idBreed,
-   idCity:this.data.idCity}
+   idCity:this.data.idCity
+  }
  
 ngOnInit(): void {
+  console.log("Consola: "+this.data)
 }
 plus(){
  
@@ -49,6 +56,7 @@ plus(){
 this.i ++;
   }
 }
+
 minus(){
   if(0 < this.i){
     this.i --;

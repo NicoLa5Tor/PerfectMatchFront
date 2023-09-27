@@ -25,6 +25,10 @@
     "boostrap": "^2.0.0",
     "bootstrap": "^5.3.1",
     "jquery": "^3.7.1",
+    "ngx-paypal": "^11.0.0",
+    "ngx-spinner": "^16.0.2",
+    "paypal-checkout": "^4.0.338",
+    "paypal-rest-sdk": "^1.8.1",
     "popper.js": "^1.16.1",
     "rxjs": "~7.8.0",
     "zone.js": "~0.13.0"

@@ -22,10 +22,15 @@ export class ApiPublicationService {
   }
   public AddPublications(publication:Publication):Observable<Publication>
   {
-    publication.idBreed = 2;
     return this._http.post<Publication>(`${this.url}Add`,publication);
   }
   public UserPublications(idUser: number): Observable<Publication[]>{
     return this._http.get<Publication[]>(`${this.url}userList/${idUser}`);
+  }
+  public DeletePublication(idPublication: number): Observable<void>{
+    return this._http.delete<void>(`${this.url}Delete/${idPublication}`);
+  }
+  public UpdatePublication(idPublication:number, model: Publication): Observable<Publication>{
+   return this._http.put<Publication>(`${this.url}Update/${idPublication}`,model);
   }
 }
