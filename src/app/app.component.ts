@@ -1,7 +1,6 @@
 import { Component,HostListener,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DomSanitizer,SafeResourceUrl } from '@angular/platform-browser';
-import { Compra } from './Models/DaviplataCompra';
 
 @Component({
   selector: 'app-root',
@@ -31,15 +30,8 @@ export class AppComponent  implements OnInit{
 ngOnInit(): void {
   
 }
-compra(){
-const com: Compra = {
-  numeroIdentificacion: "1193602390",
-  tipoDocumento: "01",
-  valor: "1000"
- 
+
 
 }
 
-}
 
-}
