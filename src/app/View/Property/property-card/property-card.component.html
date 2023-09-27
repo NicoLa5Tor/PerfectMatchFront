@@ -1,33 +1,45 @@
-<button mat-icon-button [matMenuTriggerFor]="menu"  class="menu"  *ngIf="dat"> 
-    <mat-icon>more_vert</mat-icon>
+<button mat-icon-button [matMenuTriggerFor]="menu" class="menu" *ngIf="dat">
+  <mat-icon>more_vert</mat-icon>
 </button>
 <mat-menu #menu="matMenu">
-  <button mat-menu-item  (click)="openAdd(objeto)">
+  <button mat-menu-item (click)="openAdd(objeto)">
     <mat-icon>edit</mat-icon>
     Editar
   </button>
-  <button mat-menu-item (click)="deletePublication(objeto)" >
+  <button mat-menu-item (click)="deletePublication(objeto)">
     <mat-icon>delete</mat-icon>
     Eliminar
   </button>
 </mat-menu>
-        <div class="card">
-            <div class="container">
-              
-            <div class="card-img-wrapper">
-                <h3>{{objeto.animalName}}</h3>
-               
-             <a  (click)="openDialog(objeto)">  <img *ngIf="objeto.images.length >0" class="card-img-top" src="data:image;base64,{{objeto.images[0].dataImage}}">
-             </a> 
-            </div>
-            <div class="card-body p-1">
-                
-                <div class="row">
-               <p class="text-success col-md-6">animal type </p> <h4 class="col-md-6">{{objeto.typeName}}</h4>
-                </div>
-                {{objeto.description}}
-                
-            </div>
+<div class="card">
+  <div class="container">
+
+    <div class="card-img-wrapper">
+      <h3 class="text-success">{{objeto.animalName}} de {{objeto.nameOwner}}</h3>
+      <div style="height: 30px;">
+
+      </div>
+
+      <a (click)="openDialog(objeto)"> <img *ngIf="objeto.images.length >0" class="card-img-top"
+          src="data:image;base64,{{objeto.images[0].dataImage}}">
+      </a>
+    </div>
+    <div class="card text-center">
+      <div class="card-body p-1">
+
+        <div class="row">
+          <p class="text-success col-md-6">Tipo de animal: </p>
+          <h4 class="col-md-6">{{objeto.typeName}}</h4>
+          <p class="text-success col-md-6">Precio: </p>
+          <p class="col-md-6">{{objeto.price}}</p>
         </div>
+
+        <div class="card-body" *ngIf="dat == false">
+          <button (click)="buy(objeto)" class="btn btn-outline-success">
+            <i class="fas fa-shopping-cart"></i> add to card
+          </button>
         </div>
-       
+      </div>
+      <div>
+      </div>
+    </div>

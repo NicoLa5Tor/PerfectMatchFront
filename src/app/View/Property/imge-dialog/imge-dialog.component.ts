@@ -43,7 +43,8 @@ constructor(
    idGender:this.data.idGender,
    idAnimalType:this.data.idAnimalType,  
    idBreed:this.data.idBreed,
-   idCity:this.data.idCity
+   idCity:this.data.idCity,
+   price : this.data.price
   }
  
 ngOnInit(): void {

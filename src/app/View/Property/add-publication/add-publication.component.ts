@@ -29,7 +29,7 @@ export class AddPublicationComponent implements OnInit {
    edit = false;
    i = 0;
    publication:Publication={idGender:0, idAnimalType:0, idBreed:0, idCity:0, animalName:"", nameOwner:"",
-   typeName:"", breedName:"", cityName:"", description:"",idOwner:1,idPublication:0,images: []};
+   typeName:"", breedName:"", cityName:"", description:"",idOwner:1,idPublication:0,images: [],price: 0};
    Breeds:Breed[]=[];
    Breeds1:Breed[]=[];
    Citys:City[]=[];
@@ -53,6 +53,7 @@ export class AddPublicationComponent implements OnInit {
         this.publication.animalName = this.model.animalName
         this.publication.weight = this.model.weight
         this.publication.age = this.model.age
+        this.publication.price = this.model.price
         this.updateBreed()
          
        }

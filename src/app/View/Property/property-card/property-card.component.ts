@@ -4,6 +4,7 @@ import { Publication } from 'src/app/Models/publication';
 import { ImgeDialogComponent } from '../imge-dialog/imge-dialog.component';
 import { AddPublicationComponent } from '../add-publication/add-publication.component';
 import { ApiPublicationService } from 'src/app/Services/api-publication.service';
+import { PaypalComponent } from '../paypal/paypal.component';
 @Component({
   selector: 'app-property-card',
   templateUrl: './property-card.component.html',
@@ -15,7 +16,7 @@ export class PropertyCardComponent implements OnInit {
   @Input() propertyId!:number
   @Input() objeto:Publication={nameOwner:"",
     animalName:"", age:0, typeName:"", breedName:"", cityName:"", description:"",
-  idOwner:1, weight:0, idPublication:0, images: [],idGender:0, idAnimalType:0, idBreed:0, idCity:0 };
+  idOwner:1, weight:0, idPublication:0, images: [],idGender:0, idAnimalType:0, idBreed:0, idCity:0,price: 0 };
    constructor(
     private dialogMat: MatDialog,
     private _service: ApiPublicationService
@@ -61,6 +62,14 @@ export class PropertyCardComponent implements OnInit {
 
       })
 }
+buy(obj : Publication){
+ this.dialogMat.open(PaypalComponent,{
+  
+  
+  data: obj,
+  panelClass: 'dialog-custom-style'
 
+ }).afterClosed().subscribe(result => {})
+}
 }
 

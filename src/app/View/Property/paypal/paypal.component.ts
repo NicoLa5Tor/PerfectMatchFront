@@ -1,8 +1,11 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { SafeResourceUrl,DomSanitizer } from '@angular/platform-browser';
 import {
   IPayPalConfig,
   ICreateOrderRequest
 } from 'ngx-paypal';
+import { Publication } from 'src/app/Models/publication';
 @Component({
   selector: 'app-paypal',
   templateUrl: './paypal.component.html',
@@ -11,8 +14,18 @@ import {
 
 export class PaypalComponent implements OnInit {
   public payPalConfig?: IPayPalConfig;
+  imgUrl: SafeResourceUrl;
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public model: Publication,
+    private saniticer : DomSanitizer ){
+      const img = 'assets/logo.png';
+      this.imgUrl = this.saniticer.bypassSecurityTrustResourceUrl(img);
+  }
   ngOnInit(): void {
-   this.initConfig();
+    if (this.model != null) {
+      this.initConfig()
+    }
+
   }
   private initConfig(): void {
     this.payPalConfig = {
@@ -23,21 +36,21 @@ export class PaypalComponent implements OnInit {
         purchase_units: [{
           amount: {
             currency_code: 'EUR',
-            value: '9.99',
+            value: this.model.price.toString(),
             breakdown: {
               item_total: {
                 currency_code: 'EUR',
-                value: '9.99'
+                value: this.model.price.toString()
               }
             }
           },
           items: [{
-            name: 'Enterprise Subscription',
+            name: 'Compra del animal: '+this.model.animalName,
             quantity: '1',
             category: 'DIGITAL_GOODS',
             unit_amount: {
               currency_code: 'EUR',
-              value: '9.99',
+              value: this.model.price.toString(),
             },
           }]
         }]
@@ -51,7 +64,7 @@ export class PaypalComponent implements OnInit {
       },
       onApprove: (data, actions) => {
         console.log('onApprove - transaction was approved, but not authorized', data, actions);
-        actions.order.get().then((details: any)=> {
+        actions.order.get().then((details: any) => {
           console.log('onApprove - you can get full order details inside onApprove: ', details);
         });
 

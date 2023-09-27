@@ -8,7 +8,7 @@ import { PropertyCardComponent } from './View/Property/property-card/property-ca
 import { PaypalComponent } from './View/Property/paypal/paypal.component';
 
 const routes: Routes = [
-{path:"#",component: AppComponent},
+{path:"#",component: PropertyListComponent},
 {path: "PropertyList",component:PropertyListComponent},
 {path: "Profile/:id",component:PropertyListComponent},
 {path:"Form",component:AddPublicationComponent},

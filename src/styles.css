@@ -10,3 +10,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.dialog-custom-style{
+   width: 30%;
+   height: max-content;
+   @media (max-width: 750px) {
+    width: 70%;
+  
+   }
+}

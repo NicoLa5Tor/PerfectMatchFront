@@ -8,6 +8,7 @@
     position: sticky;
     margin-left: 40vw;
 }
+
 @media((min-width: 575px) and (max-width: 750px)){
     .menu{
         margin-left: 35vw;
