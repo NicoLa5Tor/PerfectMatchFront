@@ -8,12 +8,12 @@ export interface Publication {
 
         idCity :number,
         cityName:string,
-        weight? :number,
+        weight :number,
 
         idGender:number,
 
 
-        age ?: number,
+        age : number,
         idAnimalType:number,
         typeName:string,
         idBreed:number,

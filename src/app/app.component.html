@@ -23,7 +23,13 @@
             <div class="container-inputs">
       
                 <mat-nav-list style="width: 100%;">
-                    <a mat-list-item [routerLink]="link.href" *ngFor="let link of links" [activated]="link.isActive == true">{{ link.text }}</a>
+                    <a mat-list-item  *ngFor="let link of links" [routerLink]="link.href" (click)="Routerl(link.href)" [activated]="false"
+                     >
+                     {{link.text}}
+                    </a>
+                    
+            <a mat-list-item *ngIf="hrefActual==='/PropertyList'" name="button_filters" type="submit" data-toggle="collapse" href="#collapseSection" aria-expanded="false" aria-controls="collapseSection">
+            Filters</a>
                   </mat-nav-list>
         </div>
     <div class="div-inlane">

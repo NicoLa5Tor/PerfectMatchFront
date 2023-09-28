@@ -8,6 +8,18 @@
         
     }
 
+    .justify-right{
+        right:0;
+        }
+    .w1-25{
+        width: 25%;
+        min-width: 350px;
+    }
+    .cursor-hand{
+        cursor: pointer;
+        height: 30px;
+        margin-top: 10px;
+    }
 
 @media (max-width: 575px ) {
     .row{

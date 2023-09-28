@@ -28,7 +28,7 @@ export class AddPublicationComponent implements OnInit {
    numImg:number=0;
    edit = false;
    i = 0;
-   publication:Publication={idGender:0, idAnimalType:0, idBreed:0, idCity:0, animalName:"", nameOwner:"",
+   publication:Publication={idGender:0, idAnimalType:0, idBreed:0, idCity:0, animalName:"", nameOwner:"",age:0,weight:0,
    typeName:"", breedName:"", cityName:"", description:"",idOwner:1,idPublication:0,images: []};
    Breeds:Breed[]=[];
    Breeds1:Breed[]=[];

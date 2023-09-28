@@ -1,6 +1,6 @@
 <div class="row">
    
-    <div class="col-sm-10 p-3 shadow-lg" *ngFor="let card of objetos" >
+    <div class="col-sm-10 p-3 shadow-lg" *ngFor="let card of publications1" >
        
 
 
@@ -9,3 +9,110 @@
     </app-property-card>
     </div>
 </div>
+<div  class="w1-25  position-absolute justify-right top-0">
+    <div class="collapse fixe-position p-3 mb-2 bg-light " id="collapseSection">
+
+
+        <section class="cursor-hand user-select-none"  data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+        <span class="w-25 bi bi-caret-down-fill "> City</span>
+        </section>
+        
+        <div class="collapse" id="collapse1">
+            <select class="form-select" (change)="updatePF()" [(ngModel)]="filter.idCity">
+                <option [value]="0">Any</option>
+                <option *ngFor="let city of Citys" [value]="city.idCity">{{city.cityName}}</option>
+            </select>
+        </div>
+
+
+        <section class="cursor-hand user-select-none"  data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+        <span class="w-25 bi bi-caret-down-fill"> Seller</span>
+        </section>
+        
+        <div class="collapse" id="collapse2">
+           
+            <select class="form-select" (change)="updatePF()" [(ngModel)]="filter.idOwner">
+                <option [value]="0">Any</option>
+                <option *ngFor="let seller of Sellers" [value]="seller.idUser">{{seller.name}}</option>
+            </select>
+        </div>
+        
+        <section class="cursor-hand user-select-none"  data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+            <span class="w-25 bi bi-caret-down-fill"> Weight</span>
+            </section>
+            
+            <div class="collapse" id="collapse3">
+                <form class="row">
+                    
+                    <div class="form-group col-md-6">
+                        <mat-form-field class="w-100">
+                        <mat-label>Initial Weight</mat-label>
+                        <input matInput type="number" class="form-control" [(ngModel)]="filter.weightI" name="weightI" (input)="updatePF()">
+                        </mat-form-field>
+                    </div>    
+                    <div class="form-group col-md-6">
+                        <mat-form-field class="w-100 min-vw-25">
+                            <mat-label>Final Weight</mat-label>
+                        <input matInput type="number" class="form-control" [(ngModel)]="filter.weightF" name="weightF" (input)="updatePF()">
+                        </mat-form-field>
+                    </div>
+                </form>
+            </div>
+
+            <section class="cursor-hand user-select-none"  data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                <span class="w-25 bi bi-caret-down-fill"> Gender</span>
+                </section>
+                
+                <div class="collapse" id="collapse4">
+                    <select class="form-select" (change)="updatePF()" [(ngModel)]="filter.idGender">
+                        <option [value]="0">Any</option>
+                        <option *ngFor="let gender of Genders" [value]="gender.idGender">{{gender.genderName}}</option>
+                    </select>
+                </div>
+
+
+                <section class="cursor-hand user-select-none"  data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                    <span class="w-25 bi bi-caret-down-fill"> Animal Type</span>
+                    </section>
+                    
+                    <div class="collapse" id="collapse5">
+                        <select class="form-select" (change)="updateBreed()" (change)="updatePF()" [(ngModel)]="filter.idAnimalType">
+                            <option [value]="0">Any</option>
+                            <option *ngFor="let type of AnimalTypes" [value]="type.idAnimalType">{{type.animalTypeName}}</option>
+                        </select>
+                    </div>
+                    
+                <section class="cursor-hand user-select-none"  data-toggle="collapse" data-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                    <span class="w-25 bi bi-caret-down-fill"> Breed</span>
+                    </section>
+                    
+                    <div class="collapse" id="collapse6">
+                        <select class="form-select" (change)="updatePF()" [(ngModel)]="filter.idBreed">
+                            <option [value]="0">Any</option>
+                            <option *ngFor="let Breed of Breeds1" [value]="Breed.idBreed">{{Breed.breedName}}</option>
+                        </select>
+                    </div>
+
+                    
+        <section class="cursor-hand user-select-none"  data-toggle="collapse" data-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+            <span class="w-25 bi bi-caret-down-fill"> Age</span>
+            </section>
+            
+            <div class="collapse" id="collapse7">
+                <form class="row">
+                    
+                    <div class="form-group col-md-6">
+                        <mat-form-field class="w-100">
+                        <mat-label>Initial Age</mat-label>
+                        <input matInput type="number" class="form-control" [(ngModel)]="filter.ageI" name="ageI" (input)="updatePF()">
+                        </mat-form-field>
+                    </div>    
+                    <div class="form-group col-md-6">
+                        <mat-form-field class="w-100 min-vw-25">
+                            <mat-label>Final Age</mat-label>
+                        <input matInput type="number" class="form-control" [(ngModel)]="filter.ageF" name="ageF" (input)="updatePF()">
+                        </mat-form-field>
+                    </div>
+                </form>
+            </div>
+    </div>
