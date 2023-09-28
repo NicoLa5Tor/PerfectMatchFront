@@ -6,7 +6,9 @@ export interface Publication {
         idCity :number,
         cityName:string,
         weight? :number,
+
         idGender:number,
+
         price: number,
         age ?: number,
         idAnimalType:number,
@@ -26,7 +28,7 @@ export interface Publication {
 
         //public virtual City? IdCityNavigation { get; set; }
 
-        //Owner:User;
+         //Owner:User;
 
          images :Array<Image>
 
