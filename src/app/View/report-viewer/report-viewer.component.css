@@ -1,0 +1,23 @@
+.report-container{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.ng2-pdf-viewer-container {
+    width: 600px;
+    height: 700px;
+  }
+
+  @media(max-width: 850px){
+    .ng2-pdf-viewer-container {
+        width: 400px;
+        height: 500px;
+    }
+  }
+  @media(max-width: 690px){
+    .ng2-pdf-viewer-container {
+        width: 400px;
+        height: 400px;
+    }
+  }

@@ -49,6 +49,11 @@ import { PaypalComponent } from './View/Property/paypal/paypal.component';
 
 
 import { NgxPayPalModule } from 'ngx-paypal';
+import { ReportViewerComponent } from './View/report-viewer/report-viewer.component';
+
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { DatePipe } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -60,6 +65,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
     ImgeDialogComponent,
     LinkDialogComponent,
     PaypalComponent,
+    ReportViewerComponent
   ],
   imports: [
     NgxPayPalModule,
@@ -88,12 +94,13 @@ import { NgxPayPalModule } from 'ngx-paypal';
     ReactiveFormsModule,
     FormsModule,
     NgbModule,
-    FormsModule
-
+    FormsModule,
+    PdfViewerModule
   ],
 
   providers: [
-    {provide: MAT_DIALOG_DATA,useValue:{}}
+    {provide: MAT_DIALOG_DATA,useValue:{}},
+    DatePipe
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

@@ -1,4 +1,4 @@
 export const enviroment = {
-    endPoint: "http://localhost:5294/",
+    endPoint: "https://localhost:44370/",
     endPointDaviplata :"https://apislab.daviplata.com/"
 }

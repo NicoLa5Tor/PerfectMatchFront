@@ -6,6 +6,7 @@ import { PropertyListComponent } from './View/Property/property-list/property-li
 import { ImgeDialogComponent } from './View/Property/imge-dialog/imge-dialog.component';
 import { PropertyCardComponent } from './View/Property/property-card/property-card.component';
 import { PaypalComponent } from './View/Property/paypal/paypal.component';
+import { ReportViewerComponent } from './View/report-viewer/report-viewer.component';
 
 const routes: Routes = [
 {path:"#",component: AppComponent},
@@ -14,7 +15,8 @@ const routes: Routes = [
 {path:"Form",component:AddPublicationComponent},
 {path:"dialogImage",component: ImgeDialogComponent},
 {path:"card",component: PropertyCardComponent},
-{path:"pay",component:PaypalComponent}
+{path:"pay",component:PaypalComponent},
+{path:"Report", component:ReportViewerComponent}
 ];
 
 @NgModule({
