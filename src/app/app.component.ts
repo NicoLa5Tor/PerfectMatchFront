@@ -9,23 +9,26 @@ import { PropertyListComponent } from './View/Property/property-list/property-li
   styleUrls: ['./app.component.css']
 })
 export class AppComponent  implements OnInit{
-  imgUrl : SafeResourceUrl
+  imgUrl : SafeResourceUrl;
+  logoUrl: SafeResourceUrl;
   mostrarDiv = false;
   id : number = 2;
   hrefActual = "";
     links = [
-      { isActive: false, text: 'Inicio', href: '' },
-      { isActive: false, text: 'Perfil', href: '/Profile/2' },
-      { isActive: false, text: 'Lista', href: '/PropertyList' },
-      { isActive: false, text: 'Añadir', href: '/Form' },
+      { isActive: false, text: 'Perfil', href: '/Profile/2' ,icon: 'bi bi-person'},
+      { isActive: false, text: 'Lista', href: '/PropertyList' ,icon: 'bi bi-list'},
+      { isActive: false, text: 'Añadir', href: '/Form',icon: 'bi bi-plus' },
 
     ];
     constructor(private rout: Router,
     
    private sanitizer: DomSanitizer
+
       ) {
+      const log = 'assets/logo-p.png'
       const img = 'assets/logo.png';
       this.imgUrl = this.sanitizer.bypassSecurityTrustResourceUrl(img);
+      this.logoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(log);
     }
 ngOnInit(): void {
   

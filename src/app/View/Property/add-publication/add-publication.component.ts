@@ -17,6 +17,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./add-publication.component.css']
 })
 export class AddPublicationComponent implements OnInit {
+  title = "add"
+  
   constructor(private _apipublication: ApiPublicationService, private _ApiBreed: ApiBreedService,
     private _ApiAnimalType: ApiAnimalTypeService, private _ApiCity: ApiCityService,
     private _ApiGenderService: ApiGenderService,
@@ -44,6 +46,7 @@ export class AddPublicationComponent implements OnInit {
     this.getCitys();
     this.getGenders();
     if (this.model.idPublication != undefined) {
+      this.title = "update";
       console.log("entra")
       this.publication.idBreed = this.model.idBreed
       this.publication.idGender = this.model.idGender

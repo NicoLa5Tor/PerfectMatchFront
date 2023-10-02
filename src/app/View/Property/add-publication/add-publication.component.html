@@ -6,7 +6,7 @@
   
         <form class="container p-2 starter-template w-90" novalidate>
 
-          <h1 class="text-success">Add publication</h1>
+          <h1 class="text-success">{{title}} publication</h1>
 
           <h3 *ngIf="MessageErr!=''" class="text-light bg-danger p-1">{{MessageErr}}</h3>
           <div class="form-row w-90">
@@ -96,7 +96,7 @@
             <div class="buttons">
               <a href="PropertyList" class="btn btn-outline-warning w-25  ">Cancel</a>
               <button type="submit" class="btn btn-outline-success w-25 "
-                (click)="addEdit()">Add</button>
+                (click)="addEdit()">{{title}}</button>
             </div>
           </div>
 

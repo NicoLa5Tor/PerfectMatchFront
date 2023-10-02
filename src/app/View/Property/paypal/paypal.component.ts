@@ -29,17 +29,17 @@ export class PaypalComponent implements OnInit {
   }
   private initConfig(): void {
     this.payPalConfig = {
-      currency: 'EUR',
-      clientId: 'ATYQT_15GsfF_aE_Q9KvNJpb4NXSBtu9mkhOxnwtYmKNRnaC6dls0MBLVQO10mEZbJbyLkLz2mkpOHRi',
+      currency: 'USD',
+      clientId: 'AVlpr414SIotZKY99Sm1RLN2nyKOYdF1fr4cGnmzDy4D9zGjU0tgfdAhn1TYqjTVNNcyueSwNVx4Wp2F',
       createOrderOnClient: (data) => <ICreateOrderRequest>{
         intent: 'CAPTURE',
         purchase_units: [{
           amount: {
-            currency_code: 'EUR',
+            currency_code: 'USD',
             value: this.model.price.toString(),
             breakdown: {
               item_total: {
-                currency_code: 'EUR',
+                currency_code: 'USD',
                 value: this.model.price.toString()
               }
             }
@@ -49,7 +49,7 @@ export class PaypalComponent implements OnInit {
             quantity: '1',
             category: 'DIGITAL_GOODS',
             unit_amount: {
-              currency_code: 'EUR',
+              currency_code: 'USD',
               value: this.model.price.toString(),
             },
           }]

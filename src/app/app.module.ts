@@ -49,6 +49,8 @@ import { PaypalComponent } from './View/Property/paypal/paypal.component';
 
 
 import { NgxPayPalModule } from 'ngx-paypal';
+import { LoginComponent } from './View/Access/login/login.component';
+import { RegisterComponent } from './View/Access/register/register.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,8 @@ import { NgxPayPalModule } from 'ngx-paypal';
     ImgeDialogComponent,
     LinkDialogComponent,
     PaypalComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     NgxPayPalModule,
@@ -95,7 +99,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
   providers: [
     {provide: MAT_DIALOG_DATA,useValue:{}}
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [RegisterComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
