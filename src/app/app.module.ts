@@ -54,6 +54,8 @@ import { ReportViewerComponent } from './View/report-viewer/report-viewer.compon
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { DatePipe } from '@angular/common';
 
+import { LoginComponent } from './View/Access/login/login.component';
+import { RegisterComponent } from './View/Access/register/register.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,8 @@ import { DatePipe } from '@angular/common';
     LinkDialogComponent,
     PaypalComponent,
     ReportViewerComponent
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     NgxPayPalModule,
@@ -102,7 +106,7 @@ import { DatePipe } from '@angular/common';
     {provide: MAT_DIALOG_DATA,useValue:{}},
     DatePipe
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [RegisterComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

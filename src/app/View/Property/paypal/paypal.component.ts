@@ -1,8 +1,11 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { SafeResourceUrl,DomSanitizer } from '@angular/platform-browser';
 import {
   IPayPalConfig,
   ICreateOrderRequest
 } from 'ngx-paypal';
+import { Publication } from 'src/app/Models/publication';
 @Component({
   selector: 'app-paypal',
   templateUrl: './paypal.component.html',
@@ -11,33 +14,43 @@ import {
 
 export class PaypalComponent implements OnInit {
   public payPalConfig?: IPayPalConfig;
+  imgUrl: SafeResourceUrl;
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public model: Publication,
+    private saniticer : DomSanitizer ){
+      const img = 'assets/logo.png';
+      this.imgUrl = this.saniticer.bypassSecurityTrustResourceUrl(img);
+  }
   ngOnInit(): void {
-   this.initConfig();
+    if (this.model != null) {
+      this.initConfig()
+    }
+
   }
   private initConfig(): void {
     this.payPalConfig = {
-      currency: 'EUR',
-      clientId: 'ATYQT_15GsfF_aE_Q9KvNJpb4NXSBtu9mkhOxnwtYmKNRnaC6dls0MBLVQO10mEZbJbyLkLz2mkpOHRi',
+      currency: 'USD',
+      clientId: 'AVlpr414SIotZKY99Sm1RLN2nyKOYdF1fr4cGnmzDy4D9zGjU0tgfdAhn1TYqjTVNNcyueSwNVx4Wp2F',
       createOrderOnClient: (data) => <ICreateOrderRequest>{
         intent: 'CAPTURE',
         purchase_units: [{
           amount: {
-            currency_code: 'EUR',
-            value: '9.99',
+            currency_code: 'USD',
+            value: this.model.price.toString(),
             breakdown: {
               item_total: {
-                currency_code: 'EUR',
-                value: '9.99'
+                currency_code: 'USD',
+                value: this.model.price.toString()
               }
             }
           },
           items: [{
-            name: 'Enterprise Subscription',
+            name: 'Compra del animal: '+this.model.animalName,
             quantity: '1',
             category: 'DIGITAL_GOODS',
             unit_amount: {
-              currency_code: 'EUR',
-              value: '9.99',
+              currency_code: 'USD',
+              value: this.model.price.toString(),
             },
           }]
         }]
@@ -51,7 +64,7 @@ export class PaypalComponent implements OnInit {
       },
       onApprove: (data, actions) => {
         console.log('onApprove - transaction was approved, but not authorized', data, actions);
-        actions.order.get().then((details: any)=> {
+        actions.order.get().then((details: any) => {
           console.log('onApprove - you can get full order details inside onApprove: ', details);
         });
 

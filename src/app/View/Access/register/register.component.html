@@ -1,0 +1,80 @@
+<app-login *ngIf="dat == true"></app-login>
+
+<body class=" border h-100 w-100 bg-image  " *ngIf="dat == false">
+    <section class="w-100 h-100">
+        <div class="row w-100 h-100">
+            <div class="col-md-6 border left ">
+                col izquierda
+            </div>
+            <div class="col-md-6 border right text-center">
+                <div class="bg-dark text-light rounded">
+                    <h1>Unete a PeTFectMatch</h1>
+                    <form>
+                        <mat-grid-list cols="2" rowHeight="4:1">
+                            <mat-grid-tile>
+                                <mat-form-field class="wit">
+                                    <mat-label>Name</mat-label>
+                                    <input matInput placeholder="Your name">
+                                    <mat-hint>Name</mat-hint>
+                                </mat-form-field>
+                            </mat-grid-tile>
+                            <mat-grid-tile>
+                                <mat-form-field class="wit">
+                                    <mat-label>Enter your email</mat-label>
+                                    <input matInput placeholder="pat@example.com" [formControl]="email" required>
+                                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                                    <mat-hint>Email</mat-hint>
+                                </mat-form-field>
+                            </mat-grid-tile>
+                            <mat-grid-tile>
+                                <mat-form-field class="wit">
+                                    <mat-label>Enter your password</mat-label>
+                                    <input matInput [type]="hide ? 'password' : 'text'">
+                                    <button mat-icon-button matSuffix (click)="hide = !hide"
+                                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    </button>
+                                    <mat-hint>Password</mat-hint>
+                                </mat-form-field>
+                            </mat-grid-tile>
+                            <mat-grid-tile>
+                                <mat-form-field class="wit">
+                                    <mat-label>City</mat-label>
+                                    <mat-select>
+                                      <mat-option value="one">First option</mat-option>
+                                      <mat-option value="two">Second option</mat-option>
+                                    </mat-select>
+                                    <mat-hint>City</mat-hint>
+                                  </mat-form-field>
+                            </mat-grid-tile>
+                            <mat-grid-tile>
+                                <mat-form-field class="wit">
+                                    <mat-label>Choose a date</mat-label>
+                                    <input matInput [matDatepicker]="picker">
+                                    <mat-hint>MM/DD/YYYY</mat-hint>
+                                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                  </mat-form-field>
+                                  
+                            </mat-grid-tile>
+                            <mat-grid-tile>
+                                <mat-form-field class="wit">
+                                    <mat-label>Code Paypal</mat-label>
+                                    <input matInput placeholder="Your code">
+                                    <mat-hint>Code Paypal</mat-hint>
+                                </mat-form-field>
+                            </mat-grid-tile>
+                        </mat-grid-list>
+                        <button class="btn btn-lg btn-primary btn-block wit but" type="submit">Register</button>
+                    </form>
+                    <p style="display: inline-block;">¿Ya estás registrad@? <a dat=true (click)="login()"
+                            style="cursor: pointer;"> log in</a> </p>
+
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+</body>

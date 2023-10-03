@@ -24,6 +24,7 @@
     "@popperjs/core": "^2.11.6",
     "boostrap": "^2.0.0",
     "bootstrap": "^5.3.1",
+    "bootstrap-icons": "^1.11.1",
     "jquery": "^3.7.1",
     "ng2-pdf-viewer": "^10.0.0",
     "ngx-paypal": "^11.0.0",

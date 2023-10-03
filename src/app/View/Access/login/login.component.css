@@ -1,0 +1,16 @@
+.content{
+  top: 10%;
+  position: relative;
+  width: 30%;
+  height: 50%;
+  left: 35.5%;
+}
+@media(max-width: 785px){
+  .content{
+    top: 10%;
+    position: relative;
+    width: 50%;
+    height: 50%;
+    left: 25%;
+  }
+}

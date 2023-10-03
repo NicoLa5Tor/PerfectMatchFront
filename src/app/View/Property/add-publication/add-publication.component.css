@@ -1,16 +1,47 @@
-.file-p{
-    display: block;
-    
-    border: none;
-    background: #000;
-    width:200px;
-    height:200px;
-    bottom:-30%;
-
-}
-.container-file{
+.container-file {
     overflow: hidden;
 }
+
+@media (max-width: 900px) {
+    .form-row {
+        position: relative;
+        width: 100%;
+        left: 0 !important;
+    }
+
+    
+
+    .buttons a {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: max-content !important;
+    }
+    .buttons button{
+        position: relative;
+        left: 32%;
+        width: max-content !important;
+    }
+
+}
+
+.form-row {
+    position: relative;
+    left: 8%;
+}
+
+.buttons {
+    position: relative;
+    display: inline-block;
+    width: 100% !important;
+    height: max-content;
+}
+
+.buttons button {
+    margin-left: 33%;
+    margin-right: 17% ;
+}
+
 /**********File Inputs**********/
 .container-input {
     text-align: center;
@@ -32,7 +63,7 @@
     z-index: -1;
 }
 
-.inputfile + label {
+.inputfile+label {
     max-width: 80%;
     font-size: 1.25rem;
     font-weight: 700;
@@ -44,7 +75,7 @@
     padding: 0.625rem 1.25rem;
 }
 
-.inputfile + label svg {
+.inputfile+label svg {
     width: 1em;
     height: 1em;
     vertical-align: middle;
@@ -54,21 +85,20 @@
 }
 
 .iborrainputfile {
-	font-size:16px; 
-	font-weight:normal;
-	font-family: 'Lato';
+    font-size: 16px;
+    font-weight: normal;
+    font-family: 'Lato';
 }
 
 /* style 1 */
 
-.inputfile-1 + label {
+.inputfile-1+label {
     color: #fff;
     background-color: #c39f77;
 }
 
-.inputfile-1:focus + label,
-.inputfile-1.has-focus + label,
-.inputfile-1 + label:hover {
+.inputfile-1:focus+label,
+.inputfile-1.has-focus+label,
+.inputfile-1+label:hover {
     background-color: #9f8465;
 }
-
