@@ -1,5 +1,3 @@
-<app-login *ngIf="dat == true"></app-login>
-
 <body class=" h-100 w-100 bg-image  " *ngIf="dat == false">
     <section class="w-100 h-100">
         <div class="row w-100 h-100">
@@ -9,7 +7,7 @@
             <div class="col-md-6  right text-center">
                 <div class="bg-dark text-light rounded">
                     <h1>Unete a PeTFectMatch</h1>
-                    <form [formGroup]="form">
+                    <form [formGroup]="form" (submit)="addUser()">
                         <mat-grid-list cols="2" rowHeight="4:1">
                             <mat-grid-tile>
                                 <mat-form-field class="wit">
@@ -18,14 +16,13 @@
                                     <mat-hint>Name</mat-hint>
                                     <mat-error *ngIf="form.get('name')?.hasError('required')">Name is
                                         required</mat-error>
-
                                 </mat-form-field>
                             </mat-grid-tile>
                             <mat-grid-tile>
                                 <mat-form-field class="wit">
                                     <mat-label>Enter your email</mat-label>
                                     <input matInput placeholder="pat@example.com" formControlName="email">
-                                    <mat-error *ngIf="form.get('email')?.hasError('required')" >email is
+                                    <mat-error *ngIf="form.get('email')?.hasError('required')">email is
                                         required</mat-error>
                                     <mat-error *ngIf="form.get('email')?.hasError('email')" form.invalid>Not a valid
                                         email</mat-error>
@@ -51,7 +48,8 @@
                                 <mat-form-field class="wit">
                                     <mat-label>City</mat-label>
                                     <mat-select formControlName="idCity">
-                                        <mat-option *ngFor="let item of listCity" [value]="item.idCity">{{item.cityName}}</mat-option>
+                                        <mat-option *ngFor="let item of listCity"
+                                            [value]="item.idCity">{{item.cityName}}</mat-option>
                                     </mat-select>
                                     <mat-error *ngIf="form.get('idCity')?.hasError('required')">Select a
                                         City</mat-error>
@@ -81,25 +79,13 @@
                                 </mat-form-field>
                             </mat-grid-tile>
                         </mat-grid-list>
-                        <div>
-                            <button class="btn btn-lg btn-primary btn-block wit but" type="submit"
-                                >Register</button>
-
-                        </div>
-
-                        <diV>
-
-                        </diV>
-
+                        <button class="btn btn-lg btn-primary btn-block wit  but" type="submit">Register</button>
+                        <p class="w-100 but">¿Ya estás registrad@? <a routerLink="/login" style="cursor: pointer;">
+                                log
+                                in</a> </p>
                     </form>
-                    <p class="w-100">¿Ya estás registrad@? <a dat=true (click)="login()" style="cursor: pointer;"> log
-                            in</a> </p>
-
                 </div>
-
             </div>
         </div>
-
     </section>
-
 </body>

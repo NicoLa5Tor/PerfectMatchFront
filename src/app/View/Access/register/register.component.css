@@ -1,46 +1,53 @@
   .right {
     height: 100% !important;
   }
-  .wit{
+
+  .wit {
     width: 75%;
   }
-  .but{
+
+  .but {
     position: relative;
     top: 40px;
   }
-  .left{
+
+  .left {
     height: 100% !important;
   }
+
   .bg-dark {
-    background-color: rgba(0, 0, 0, 0.7) !important; /* Cambia 0.5 al valor de opacidad deseado (0 a 1) */
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    /* Cambia 0.5 al valor de opacidad deseado (0 a 1) */
     height: 80%;
     top: 10%;
     width: 85%;
-   
-    left: 7.5%;
+    left: 15%;
+    right: 0 !important;
+    padding-right: 0 !important;
     position: relative;
   }
 
   @media(max-width: 750px) {
 
-      .left {
-         height: 40% !important;
-      }
-      .right{
-        height: 60% !important;
-      }
+    .left {
+      height: 40% !important;
+    }
+
+    .right {
+      height: 60% !important;
+    }
   }
 
   .bg-image {
-      background-image: url('src\assets\loginBack.png');
-      /* Reemplaza con la ruta de tu imagen */
-      background-size: cover;
-      /* Ajusta el tamaño de la imagen para cubrir el elemento */
-      background-position: center;
-      /* Centra la imagen */
-      background-repeat: no-repeat;
-      /* Evita que la imagen se repita */
-      /* Otras propiedades de fondo como color de fondo, opacidad, etc., si es necesario */
-      color: #fff;
-      /* Ejemplo de color de texto para asegurarse de que el texto sea legible en la imagen de fondo */
+    background-image: url('src\assets\loginBack.png');
+    /* Reemplaza con la ruta de tu imagen */
+    background-size: cover;
+    /* Ajusta el tamaño de la imagen para cubrir el elemento */
+    background-position: center;
+    /* Centra la imagen */
+    background-repeat: no-repeat;
+    /* Evita que la imagen se repita */
+    /* Otras propiedades de fondo como color de fondo, opacidad, etc., si es necesario */
+    color: #fff;
+    /* Ejemplo de color de texto para asegurarse de que el texto sea legible en la imagen de fondo */
   }
