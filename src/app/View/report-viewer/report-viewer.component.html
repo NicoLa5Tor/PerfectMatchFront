@@ -1,25 +1,30 @@
-<div>
-  <mat-form-field>
-    <mat-label for="reportType">Selecciona un tipo de informe:</mat-label>
-    <select matNativeControl required id="reportType" [(ngModel)]="selectedReportType">
-      <option *ngFor="let type of reportTypes" [value]="type">{{ type }}</option>
-    </select>
-  </mat-form-field>
+<div class="w-100 h-100 text-center">
+  <div>
+    <mat-form-field>
+      <mat-label for="reportType">Selecciona un tipo de informe:</mat-label>
+      <select matNativeControl required id="reportType" [(ngModel)]="selectedReportType" (change)="changeSelected()">
+        <option *ngFor="let type of reportTypes" [value]="type">{{ type }}</option>
+      </select>
+    </mat-form-field>
+    <div *ngIf="selectedReportType === 'New Users'">
+    <mat-form-field class="example-full-width">
+      <mat-label for="startDate">Fecha de Inicio</mat-label>
+      <input matInput  type="text" id="startDate" [(ngModel)]="startDate ">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label for="endDate">Fecha de fin</mat-label>
+      <input matInput  type="text" id="endDate" [(ngModel)]="endDate">
+    </mat-form-field>
+    </div>
+  </div>
+  <button mat-button color="warn" (click)="getReport()">Obtener Reporte</button>
+  <button mat-icon-button color="primary" aria-label="Example" (click)="downloadReport()"><mat-icon>cloud_download</mat-icon></button>
 </div>
 
-<div *ngIf="selectedReportType === 'New Users'">
-  <mat-form-field class="example-full-width">
-    <mat-label for="startDate">Fecha de Inicio</mat-label>
-    <input matInput  type="text" id="startDate" [(ngModel)]="startDate ">
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <mat-label for="endDate">Fecha de fin</mat-label>
-    <input matInput  type="text" id="endDate" [(ngModel)]="endDate">
-  </mat-form-field>
-</div>
 
-<button mat-button color="warn" (click)="getReport()">Obtener Reporte</button>
-<button mat-icon-button color="primary" aria-label="Example" (click)="downloadReport()"><mat-icon>cloud_download</mat-icon></button>
+
+
+
 
 
 <div class="report-container">

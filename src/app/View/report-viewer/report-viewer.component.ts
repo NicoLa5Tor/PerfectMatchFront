@@ -22,6 +22,10 @@ export class ReportViewerComponent {
     this.getReportTypes();
   }
 
+  changeSelected(){
+    this.getReportPath(this.selectedReportType);
+  }
+
   getReportTypes() {
     this._apiReportService.getReportTypes()
       .subscribe(data => {

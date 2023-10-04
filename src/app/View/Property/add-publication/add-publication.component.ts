@@ -30,7 +30,7 @@ export class AddPublicationComponent implements OnInit {
   edit = false;
   i = 0;
   publication: Publication = {
-    idGender: 0, idAnimalType: 0, idBreed: 0, idCity: 0, animalName: "", nameOwner: "",
+    idGender: 0, idAnimalType: 0, idBreed: 0, idCity: 0, animalName: "", nameOwner: "",age:0,weight:0,
     typeName: "", breedName: "", cityName: "", description: "", idOwner: 1, idPublication: 0, images: [], price: 0
   };
 

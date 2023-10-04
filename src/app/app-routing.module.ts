@@ -16,7 +16,7 @@ const routes: Routes = [
 {path:"dialogImage",component: ImgeDialogComponent},
 {path:"card",component: PropertyCardComponent},
 {path:"pay",component:PaypalComponent},
-{path:"Report", component:ReportViewerComponent}
+{path:"Report", component:ReportViewerComponent},
 {path:"pay",component:PaypalComponent},
 {path:"login", component: LoginComponent},
 

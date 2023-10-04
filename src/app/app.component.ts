@@ -18,7 +18,8 @@ export class AppComponent  implements OnInit{
       { isActive: false, text: 'Perfil', href: '/Profile/2' ,icon: 'bi bi-person'},
       { isActive: false, text: 'Lista', href: '/PropertyList' ,icon: 'bi bi-list'},
       { isActive: false, text: 'Añadir', href: '/Form',icon: 'bi bi-plus' },
-
+      {isActive: false, text: 'Reportes', href: '/Report',icon: 'bi bi-archive' },
+      
     ];
     constructor(private rout: Router,
     

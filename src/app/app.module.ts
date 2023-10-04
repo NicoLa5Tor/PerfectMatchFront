@@ -67,7 +67,7 @@ import { RegisterComponent } from './View/Access/register/register.component';
     ImgeDialogComponent,
     LinkDialogComponent,
     PaypalComponent,
-    ReportViewerComponent
+    ReportViewerComponent,
     LoginComponent,
     RegisterComponent,
   ],
@@ -106,7 +106,7 @@ import { RegisterComponent } from './View/Access/register/register.component';
     {provide: MAT_DIALOG_DATA,useValue:{}},
     DatePipe
   ],
-  bootstrap: [RegisterComponent],
+  bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
