@@ -1,0 +1,60 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+   
+   
+</head>
+
+<body>
+    <header class="head">
+        <div id="logo"> 
+            <img [src]="logoUrl" class="h-100" >
+        </div>
+        <div class="options">
+            <p id="p1">
+                <a>Ingresar </a>
+            </p>
+            <p id="p2">
+                <a> Registrar </a>
+            </p>
+        </div>
+
+
+    </header>
+    <section class="section">
+
+        <div class="log">
+            <img [src]="imgUrl" class="img-left">
+        </div>
+        <div class="container-inputs d-flex flex-column flex-shrink-0  bg-body-tertiary">
+            <hr>
+            <mat-nav-list style="width: 100%;">
+                <a mat-list-item class="selected" *ngFor="let link of links" [routerLink]="link.href"
+                    (click)="Routerl(link.href)" data-bs-original-title="Customers">
+                    <i class="{{link.icon}} display-8"></i>
+                    {{link.text}}
+                </a>
+
+                <a mat-list-item class="selected" *ngIf="hrefActual==='/principal/PropertyList'" name="button_filters"
+                    type="submit" data-toggle="collapse" href="#collapseSection" aria-expanded="false"
+                    aria-controls="collapseSection">
+                    <i class="bi bi-funnel"></i>
+                    Filters</a>
+
+            </mat-nav-list>
+
+        </div>
+
+        <div class="div-inlane">
+
+            <router-outlet>
+
+            </router-outlet>
+        </div>
+
+
+    </section>
+    <footer>
+        Todos los derechos reservados
+    </footer>
+
+</body>

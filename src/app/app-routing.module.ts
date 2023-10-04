@@ -8,18 +8,21 @@ import { PropertyCardComponent } from './View/Property/property-card/property-ca
 import { PaypalComponent } from './View/Property/paypal/paypal.component';
 import { ReportViewerComponent } from './View/report-viewer/report-viewer.component';
 import { LoginComponent } from './View/Access/login/login.component';
+import { RegisterComponent } from './View/Access/register/register.component';
+import { PrincipalComponent } from './View/Principal/principal/principal.component';
 
 const routes: Routes = [
-{path: "PropertyList",component:PropertyListComponent},
-{path: "Profile/:id",component:PropertyListComponent},
-{path:"Form",component:AddPublicationComponent},
-{path:"dialogImage",component: ImgeDialogComponent},
-{path:"card",component: PropertyCardComponent},
-{path:"pay",component:PaypalComponent},
-{path:"Report", component:ReportViewerComponent},
-{path:"pay",component:PaypalComponent},
+{path: "logIndex/:token", component: AppComponent},
 {path:"login", component: LoginComponent},
-
+{path: "register", component: RegisterComponent},
+{path:"principal",component:PrincipalComponent, children: [
+  {path: "PropertyList",component:PropertyListComponent},
+  {path: "Profile/:id",component:PropertyListComponent},
+  {path:"Form",component:AddPublicationComponent},
+  {path:"dialogImage",component: ImgeDialogComponent},
+  {path:"card",component: PropertyCardComponent},
+  {path:"pay",component:PaypalComponent},
+]},
 ];
 
 @NgModule({

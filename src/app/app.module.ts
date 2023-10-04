@@ -56,6 +56,7 @@ import { DatePipe } from '@angular/common';
 
 import { LoginComponent } from './View/Access/login/login.component';
 import { RegisterComponent } from './View/Access/register/register.component';
+import { PrincipalComponent } from './View/Principal/principal/principal.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { RegisterComponent } from './View/Access/register/register.component';
     ReportViewerComponent,
     LoginComponent,
     RegisterComponent,
+    PrincipalComponent,
   ],
   imports: [
     NgxPayPalModule,
