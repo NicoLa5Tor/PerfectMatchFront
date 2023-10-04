@@ -5,8 +5,8 @@ import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { City } from 'src/app/Models/City';
 import { ApiCityService } from 'src/app/Services/api-city.services';
-import { ApiUserService } from 'src/app/Services/api-user.service';
 import { User } from 'src/app/Models/User';
+import { ApiUserService } from 'src/app/Services/api-user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-register',
