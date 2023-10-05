@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,HostListener } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { FormControl, Validators, FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -14,8 +14,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  register = true;
   hide = true;
   dat = false;
+  next = false;
+  group1 = true;
+  e = 0;
+  g = 0;
+  col = 0;
   form: FormGroup
   listCity: City[] = [];
   email = new FormControl('', [Validators.required, Validators.email]);
@@ -40,6 +46,7 @@ export class RegisterComponent {
       }, error: (e) => { }
     })
     this.dat = false
+    this.updateCol();
   }
   messageAlert(message: string, action: string) {
     this._snackBar.open(message, action,{
@@ -92,5 +99,40 @@ export class RegisterComponent {
       this.rout.navigate(['login'])
  
     
+  }
+  @HostListener('window:resize',['$event'])
+  onResize(event: Event){
+   this.updateCol();
+  }
+  updateCol(){
+    if(window.innerWidth < 768){
+      this.col = 1; 
+      this.next = false;
+      this.group1 = true;
+    }else{
+      this.col = 2;
+      this.next = true;
+      this.group1 = true;
+    }
+  }
+  otherOptionsRegister(){
+    if(this.minformTrue()){
+       this.group1 = false;
+       this.next = true;
+    }else{
+      this.messageAlert('llene los campos correctamente ', '');
+    }
+  }
+  minformTrue() : Boolean{
+    
+    
+    const emailValidate = this.form.get('email')?.valid;
+    const passwordValidate = this.form.get('password')?.valid;
+    const nameValidate = this.form.get('name')?.valid;
+    if(emailValidate && passwordValidate && nameValidate){
+      return true;
+    }else{
+      return false;
+    }
   }
 }

@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
     this.action = true;
     console.log("accede")
   }else{
-    this.rout.navigate(['register'])
+    this.rout.navigate(['login'])
   }
  }
 }

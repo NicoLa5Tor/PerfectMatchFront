@@ -1,30 +1,38 @@
-<div class="content ">
-    <form class="form-signin">
-        <div class="text-center mb-4">
-            <h1 class="h3 mb-3 font-weight-normal">Login to PeTfectMatch 🐎</h1>
-            <p>"¡Bienvenido de nuevo! Estás a punto de sumergirte en el emocionante mundo de las 
-                coincidencias de animales. 🐾
-                ¡Vamos a empezar a hacer coincidir animales! 🐴"</p>
-        </div>
-
-        <div class="form-label-group">
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required=""
-                autofocus="">
-            <label for="inputEmail">Email address</label>
-        </div>
-
-        <div class="form-label-group">
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-            <label for="inputPassword">Password</label>
-        </div>
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block w-100" type="submit" (click)="onClick()">Sign in</button>
-        <p class="mt-5 mb-3 text-muted text-center">© 2020-2023</p>
-    </form>
-
-</div>
+<body class="bg-image">
+    <div class="container">
+      <div class="left-content">
+        <h1>Texto Grande</h1>
+        <p>Aquí puedes agregar tu texto grande.</p>
+      </div>
+      <div class="right-content">
+        <h2>Iniciar Sesión 🐎</h2>
+        <form>
+            <form class="form-signin for-m">
+                <div class="text-center mb-4 ">
+                    <p>"¡Bienvenido de nuevo  🐾!
+                        ¡Vamos  a hacer que las cosas fluyan! 🐴"</p>
+                </div>
+                <div class="form-label-group">
+                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required=""
+                        autofocus="">
+                    <label for="inputEmail">Email address</label>
+                </div>
+                <div class="form-label-group">
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+                    <label for="inputPassword">Password</label>
+                </div>
+                <div class="checkbox mb-3">
+                </div>
+                <button class="btn btn-lg btn-primary btn-block w-100" type="submit" (click)="onClick()">Sign in</button>
+                <p>¿No tienes cuanta? <a  routerLink="/register">registrarme</a></p>
+                <p class="mt-5 mb-3 text-muted text-center">© 2020-2023</p>
+            </form>
+        </form>
+      </div>
+    </div>
+   <footer>
+    <app-footer>
+        
+    </app-footer>
+   </footer>
+  </body>

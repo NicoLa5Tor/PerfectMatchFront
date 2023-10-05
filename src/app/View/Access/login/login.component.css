@@ -1,16 +1,94 @@
-.content{
-  top: 10%;
+.for-m {
+  width: 75%;
+  height: 80%;
+  left: 12.5%;
   position: relative;
-  width: 30%;
-  height: 50%;
-  left: 35.5%;
 }
-@media(max-width: 785px){
-  .content{
-    top: 10%;
-    position: relative;
-    width: 50%;
-    height: 50%;
-    left: 25%;
+
+
+
+
+
+
+@media(max-width: 750px) {
+
+  .left {
+    display: none;
+  }
+
+  .left-content{
+    display: none;
+  }
+
+
+}
+footer{
+  backdrop-filter: blur(10px); /* Aplicar difuminado al contenido detrás */
+  width: 100%;
+  height: 150px;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  z-index: 1000 !important;
+}
+.bg-image {
+  background-image: url('src\assets\loginBack.png');
+  /* Reemplaza con la ruta de tu imagen */
+  background-size: cover;
+  /* Ajusta el tamaño de la imagen para cubrir el elemento */
+  background-position: center;
+  /* Centra la imagen */
+  background-repeat: no-repeat;
+  /* Evita que la imagen se repita */
+  /* Otras propiedades de fondo como color de fondo, opacidad, etc., si es necesario */
+  color: #fff;
+  /* Ejemplo de color de texto para asegurarse de que el texto sea legible en la imagen de fondo */
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.left-content {
+  text-align: center;
+  padding: 20px;
+}
+.right-content {
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  float: right; /* Cambiamos "left" a "right" */
+}
+
+
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+  }
+  .left-content {
+    flex: 1;
+  }
+
+  .right-content {
+    flex: 1;
+    margin-left: 20px;
+  }
+}
+@media (max-width: 768px) {
+  footer{
+    margin-top: 0;
+    padding-top: 0;
+    height: 150px;
   }
 }

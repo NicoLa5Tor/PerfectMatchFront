@@ -52,6 +52,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
 import { LoginComponent } from './View/Access/login/login.component';
 import { RegisterComponent } from './View/Access/register/register.component';
 import { PrincipalComponent } from './View/Principal/principal/principal.component';
+import { FooterComponent } from './View/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { PrincipalComponent } from './View/Principal/principal/principal.compone
     LoginComponent,
     RegisterComponent,
     PrincipalComponent,
+    FooterComponent,
   ],
   imports: [
     NgxPayPalModule,
