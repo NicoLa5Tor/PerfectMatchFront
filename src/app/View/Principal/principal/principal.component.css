@@ -4,12 +4,13 @@ body{
     overflow-x: hidden;
     max-height: max-content;
 }
+
 #logo{
     position: absolute;
     left: 60px;
     display: inline-block;
-    width: 25%;
-    height: 60px;
+    width: 2%;
+    height: 30px;
     top: 2px;
 
 }
@@ -54,8 +55,8 @@ body{
 
 .head{
     overflow-y: hidden;
-  /*  background: linear-gradient(to right, #FFD700, #FFC200, #FFAE00, #FF9900, #FF8500, #FF7100, #FF5C00, #FF4800, #FF3300);*/
-    background: linear-gradient(to right, #2a0b46, #52128a,#6915b3,#7f0ce4,#7c107c,#be0ebe,#f702f7);
+   background: linear-gradient(to right, #FFD700, #FFC200, #FFAE00, #FF9900, #FF8500, #FF7100, #FF5C00, #FF4800, #FF3300);
+  /*  background: linear-gradient(to right, #2a0b46, #52128a,#6915b3,#7f0ce4,#7c107c,#be0ebe,#f702f7); */
 
     height: 70px;
     width: 80%;

@@ -52,7 +52,8 @@ export class RegisterComponent {
     this._snackBar.open(message, action,{
       verticalPosition: "top",
       horizontalPosition:"center",
-      duration: 3000
+      duration: 3000,
+      panelClass : ['snackRegister']
     });
   }
   minlengthValidator(minlength: number) {

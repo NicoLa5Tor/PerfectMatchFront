@@ -1,4 +1,4 @@
-<body class="bg-image">
+<body >
     <div class="container">
       <div class="left-content">
         <h1>Texto Grande</h1>
@@ -6,28 +6,27 @@
       </div>
       <div class="right-content">
         <h2>Iniciar Sesión 🐎</h2>
-        <form>
-            <form class="form-signin for-m">
+            <form class="form-signin for-m" [formGroup]="form" (submit)="onClick()">
                 <div class="text-center mb-4 ">
                     <p>"¡Bienvenido de nuevo  🐾!
                         ¡Vamos  a hacer que las cosas fluyan! 🐴"</p>
                 </div>
                 <div class="form-label-group">
-                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required=""
+                    <input type="email" id="inputEmail" formControlName="email" class="form-control" placeholder="Email address" required=""
                         autofocus="">
                     <label for="inputEmail">Email address</label>
                 </div>
                 <div class="form-label-group">
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+                    <input type="password" id="inputPassword" formControlName="password" class="form-control" placeholder="Password" required="">
                     <label for="inputPassword">Password</label>
                 </div>
                 <div class="checkbox mb-3">
                 </div>
-                <button class="btn btn-lg btn-primary btn-block w-100" type="submit" (click)="onClick()">Sign in</button>
+                <button class="btn btn-lg btn-primary btn-block w-100" type="submit" >Sign in</button>
                 <p>¿No tienes cuanta? <a  routerLink="/register">registrarme</a></p>
                 <p class="mt-5 mb-3 text-muted text-center">© 2020-2023</p>
             </form>
-        </form>
+    
       </div>
     </div>
    <footer>

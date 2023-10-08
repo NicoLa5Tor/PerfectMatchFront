@@ -31,11 +31,15 @@ export class PrincipalComponent {
     
     }
 ngOnInit(): void {
-  
+  this.rout.navigate(['principal/PropertyList'])
 }
 Routerl(href:string)
 {
   this.hrefActual=href;
  // this.rout.navigateByUrl(href);
+}
+onClickLogout(){
+  localStorage.removeItem('token_user');
+  this.rout.navigate(['login'])
 }
 }

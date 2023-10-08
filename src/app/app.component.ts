@@ -17,14 +17,8 @@ export class AppComponent implements OnInit {
   
  }
  ngOnInit(): void {
-  const parseo = this.tok.snapshot.paramMap.get('token');
-  if(parseo != null){
-    this.action = true;
-    console.log("accede")
-  }else{
-    this.rout.navigate(['login'])
-  }
- }
+this.rout.navigate(['principal'])
+}
 }
 
 
