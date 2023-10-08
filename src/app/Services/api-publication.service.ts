@@ -27,7 +27,8 @@ export class ApiPublicationService {
     return this._http.post<Publication>(`${this.url}Add`, publication);
   }
   public UserPublications(idUser: number): Observable<Publication[]> {
-    return this._http.get<Publication[]>(`${this.url}userList/${idUser}`);
+    const headers = this.createHeadres();
+    return this._http.get<Publication[]>(`${this.url}userList/${idUser}`,{headers});
   }
   public DeletePublication(idPublication: number): Observable<void> {
     return this._http.delete<void>(`${this.url}Delete/${idPublication}`);

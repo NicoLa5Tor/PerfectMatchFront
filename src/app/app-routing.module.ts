@@ -10,19 +10,20 @@ import { LoginComponent } from './View/Access/login/login.component';
 import { RegisterComponent } from './View/Access/register/register.component';
 import { PrincipalComponent } from './View/Principal/principal/principal.component';
 import { UserNormal } from './Guards/GuardUserNormal';
+import { ValidateToken } from './Guards/VerifyTokenValidate';
 
 
 const routes: Routes = [
 {path: "logIndex/:token", component: AppComponent},
 {path:"login", component: LoginComponent},
 {path: "register", component: RegisterComponent},
-{path:"principal",component:PrincipalComponent, canActivate: [UserNormal],children: [
-  {path: "PropertyList",component:PropertyListComponent,canActivate: [UserNormal]},
-  {path: "Profile/:id",component:PropertyListComponent,canActivate: [UserNormal]},
-  {path:"Form",component:AddPublicationComponent,canActivate: [UserNormal]},
-  {path:"dialogImage",component: ImgeDialogComponent,canActivate: [UserNormal]},
-  {path:"card",component: PropertyCardComponent,canActivate: [UserNormal]},
-  {path:"pay",component:PaypalComponent,canActivate: [UserNormal]},
+{path:"principal",component:PrincipalComponent, canActivate: [ValidateToken],children: [
+  {path: "PropertyList",component:PropertyListComponent,canActivate: [ValidateToken]},
+  {path: "Profile/:id",component:PropertyListComponent,canActivate: [ValidateToken]},
+  {path:"Form",component:AddPublicationComponent,canActivate: [ValidateToken]},
+  {path:"dialogImage",component: ImgeDialogComponent,canActivate: [ValidateToken]},
+  {path:"card",component: PropertyCardComponent,canActivate: [ValidateToken]},
+  {path:"pay",component:PaypalComponent,canActivate: [ValidateToken]},
 ]},
 ];
 

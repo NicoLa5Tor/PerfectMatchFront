@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ResponseLogin } from 'src/app/Models/ResponseLogin';
 import { LoginService } from 'src/app/Services/login.service';
 import { Login } from 'src/app/Models/Login';
+import { EncryptXOR } from 'src/app/Models/Encryption';
 
 @Component({
   selector: 'app-login',
@@ -24,8 +25,8 @@ export class LoginComponent {
   onClick() {
     if (this.form.valid) {
       const model : Login = {
-        email : this.form.value.email,
-        password : this.form.value.password
+        email :  this.form.value.email,
+        password : EncryptXOR(this.form.value.password)
       }
       this.serviceLog.LoginAuthenticate(model).subscribe({
         next: (data) => {
