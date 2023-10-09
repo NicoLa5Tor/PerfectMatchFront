@@ -4,12 +4,14 @@ body{
     overflow-x: hidden;
     max-height: max-content;
 }
+
 #logo{
-    position: relative;
+    position: absolute;
     left: 60px;
     display: inline-block;
-    width: 25%;
-    height: 100%;
+    width: 2%;
+    height: 30px;
+    top: 2px;
 
 }
 .selected:active, .selected:hover{
@@ -53,7 +55,8 @@ body{
 
 .head{
     overflow-y: hidden;
-    background: linear-gradient(to right, #FFD700, #FFC200, #FFAE00, #FF9900, #FF8500, #FF7100, #FF5C00, #FF4800, #FF3300);
+   background: linear-gradient(to right, #FFD700, #FFC200, #FFAE00, #FF9900, #FF8500, #FF7100, #FF5C00, #FF4800, #FF3300);
+  /*  background: linear-gradient(to right, #2a0b46, #52128a,#6915b3,#7f0ce4,#7c107c,#be0ebe,#f702f7); */
 
     height: 70px;
     width: 80%;
@@ -76,17 +79,7 @@ section{
     margin-top: 10px;
 }
 
-footer{
-    backdrop-filter: blur(10px); /* Aplicar difuminado al contenido detrás */
-    bottom: 0;
-    width: 100%;
-    height: 150px;
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    z-index: 1000 !important;
-}
+
 
 .container-inputs{
     position: fixed;
@@ -165,4 +158,14 @@ h2{
     text-align: center;
 }
 }
-
+footer{
+    backdrop-filter: blur(10px); /* Aplicar difuminado al contenido detrás */
+    bottom: 0;
+    width: 100%;
+    height: 150px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    z-index: 1000 !important;
+}

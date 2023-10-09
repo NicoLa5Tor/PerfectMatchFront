@@ -1,6 +1,23 @@
-  .right {
+.p-tras {
+  top: 10px;
+  position: relative;
+}
+ body{
+  height: 100% !important;
+  width: 100%;
+  
+ }
+ footer{
+  height: 15%;
+ }
+
+ .next{
+  display: none;
+ }
+ .right {
     height: 100% !important;
   }
+
 
   .wit {
     width: 75%;
@@ -8,34 +25,39 @@
 
   .but {
     position: relative;
-    top: 40px;
-  }
+    
+    width: 70%;
 
-  .left {
-    height: 100% !important;
   }
 
   .bg-dark {
     background-color: rgba(0, 0, 0, 0.7) !important;
-    /* Cambia 0.5 al valor de opacidad deseado (0 a 1) */
-    height: 80%;
+    height: 450px;
     top: 10%;
-    width: 85%;
-    left: 15%;
-    right: 0 !important;
-    padding-right: 0 !important;
     position: relative;
+    width: 700px;
+  }
+  footer{
+    backdrop-filter: blur(10px); /* Aplicar difuminado al contenido detrás */
+    width: 100%;
+    height: 250px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    z-index: 1000 !important;
   }
 
-  @media(max-width: 750px) {
-
-    .left {
-      height: 40% !important;
-    }
-
-    .right {
-      height: 60% !important;
-    }
+  @media(max-width: 768px) {
+ .next{
+  display: inline;
+  position: absolute;
+  top: 80% ;
+  left: 80%;
+  
+ }
+ .bg-dark{
+  width: 450px;
+ }
   }
 
   .bg-image {
@@ -51,3 +73,8 @@
     color: #fff;
     /* Ejemplo de color de texto para asegurarse de que el texto sea legible en la imagen de fondo */
   }
+  .container-main {
+  max-width: 1200px; /* Ajusta el valor según tus necesidades */
+  margin: 0 auto;
+  padding: 15px;
+}
