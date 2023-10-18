@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { DomSanitizer,SafeResourceUrl } from '@angular/platform-browser';
 import { PropertyListComponent } from '../../Property/property-list/property-list.component';
 import jwtDecode, { JwtPayload } from 'jwt-decode';
+import { TokenService } from 'src/app/Services/token.service';
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
@@ -22,7 +23,7 @@ export class PrincipalComponent {
 
     ];
     constructor(private rout: Router,
-    
+    private tok : TokenService,
    private sanitizer: DomSanitizer
 
       ) {
@@ -41,7 +42,8 @@ Routerl(href:string)
  // this.rout.navigateByUrl(href);
 }
 onClickLogout(){
-  localStorage.removeItem('token_user');
+ this.tok.deleteCookie("Token")
+ this.tok.deleteCookie("Refresh")
   this.rout.navigate(['login'])
 }
 getIdUser(): number{

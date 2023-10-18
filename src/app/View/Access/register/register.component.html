@@ -24,6 +24,8 @@
                                             required</mat-error>
                                         <mat-error *ngIf="form.get('email')?.hasError('email')" form.invalid>Not a valid
                                             email</mat-error>
+                                        <mat-error *ngIf="form.get('email')?.hasError('emailExists')">Email is already
+                                            registered</mat-error>
                                         <mat-hint>Email</mat-hint>
                                     </mat-form-field>
                                 </mat-grid-tile>

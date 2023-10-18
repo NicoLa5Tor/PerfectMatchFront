@@ -1,42 +1,58 @@
-import { inject } from "@angular/core";
+import { Inject, inject } from "@angular/core";
 import { Router } from "@angular/router";
 import jwtDecode, { JwtPayload } from "jwt-decode";
-
+import { TokenService } from "../Services/token.service";
+import { RefreshToken } from "../Models/RefreshTok";
+import { LoginService } from "../Services/login.service";
 export const ValidateToken = () => {
-    const rout = inject(Router);
+    let refresh : RefreshToken ;
 
-    const jwtTok = localStorage.getItem('token_user');
-    if (jwtTok) {
+   
+    const tokService = inject(LoginService)
+    const rout = inject(Router);
+    const tok = inject(TokenService)
+    const jwtTok = tok.getTok("Token") || "";
+    
+    const currentTimestamp = Math.floor(Date.now() / 1000); 
+   console.log("EL token es:" + jwtTok)
+    if (jwtTok != null && jwtTok != "" ) {
         try {
             // Decodifica el token JWT
             const decodedToken : JwtPayload = jwtDecode(jwtTok);
-          
          //       const id = decodedToken.sub;
-        
-         
           //  const userId = (decodedToken as any).nameid;
             //console.log('ID del usuario:', userId);
-       
-           
-         const currentTimestamp = Math.floor(Date.now() / 1000); 
-         console.log("Tiempo Restante: ",decodedToken.exp);
-        
        if (decodedToken.exp && decodedToken.exp > currentTimestamp) {
         console.log('El token JWT está vigente.');
         // El token está vigente, puedes permitir el acceso a recursos protegidos.
       } else {
-        localStorage.removeItem('token_user');
         console.log('El token JWT ha caducado.');
-        // El token ha caducado, puedes redirigir al usuario al inicio de sesión u otras acciones apropiadas.
-      }        
-            // Imprime todos los datos del token
-          //  console.log('Datos del token JWT:', decodedToken);
+        rout.navigate(["Relogin"])
+   /*     refresh = {
+          tokenExpire : tok.getTok("Token") || "",
+          refreshToken : tok.getTok("Refresh") || ""
+        }
+       tokService.RefreshToken(refresh).subscribe({
+        next:(data) => {
+          if(data.result){
+          tok.deleteCookie("Token")
+          tok.deleteCookie("Refresh")
+           tok.setToken(data.token, "Token");
+           tok.setToken(data.refreshToken, "Refresh")
+          }else{
+            tok.deleteCookie("Token")
+            tok.deleteCookie("Refresh")
+          }*/
+        }
+       
+         
+        
           } catch (error) {
             console.error('Error al decodificar el token:', error);
-            // Ocurrió un error al decodificar el token, puedes manejar esta situación según tus necesidades
           }
     } else {
         rout.navigate(['login'])
         console.log("no hay nigun token de verificación")
     }
+  
 }
