@@ -1,5 +1,5 @@
 body{
-    min-height: min-content !important;
+    height: 100% !important;
     width: 100%;
     overflow-x: hidden;
     max-height: max-content;
@@ -73,7 +73,7 @@ section{
     position: relative;
     justify-content: space-between;
     display: flex;
-    min-height: min-content;
+    min-height: 100%;
     height: max-content;
     width: 100%;
     margin-top: 10px;

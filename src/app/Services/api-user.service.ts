@@ -24,4 +24,7 @@ export class ApiUserService {
   deleteUser(id: number): Observable<void>{
     return this.http.delete<void>(`${this.url}Delete${id}`);
   }
+  verifyEmail(email : string): Observable<boolean>{
+    return this.http.get<boolean>(`${this.url}EmailExist/${email}`);
+  }
 }

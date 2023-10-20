@@ -1,13 +1,17 @@
 import { Component,HostListener } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { FormControl, Validators, FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router , NavigationExtras } from '@angular/router';
 import * as moment from 'moment';
 import { City } from 'src/app/Models/City';
 import { ApiCityService } from 'src/app/Services/api-city.services';
 import { User } from 'src/app/Models/User';
 import { ApiUserService } from 'src/app/Services/api-user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Login } from 'src/app/Models/Login';
+import { bottom } from '@popperjs/core';
+import { map, catchError } from 'rxjs/operators';
+import {of} from 'rxjs'
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -24,11 +28,12 @@ export class RegisterComponent {
   col = 0;
   form: FormGroup
   listCity: City[] = [];
-  email = new FormControl('', [Validators.required, Validators.email]);
+
   constructor(private rout: Router,
     private cityService: ApiCityService,
     private userService: ApiUserService,
     private fb: FormBuilder,
+  
     private _snackBar: MatSnackBar) {
     this.form = this.fb.group({
       idUser: [0],
@@ -37,7 +42,7 @@ export class RegisterComponent {
       birthDate: ['', Validators.required],
       password: ['', [Validators.required, this.minlengthValidator(6)]],
       idCity: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email],[this.emailExist()]],
       codePay: ['', Validators.required]
     })
     this.cityService.getAnimalType().subscribe({
@@ -48,13 +53,30 @@ export class RegisterComponent {
     this.dat = false
     this.updateCol();
   }
+
   messageAlert(message: string, action: string) {
     this._snackBar.open(message, action,{
       verticalPosition: "top",
       horizontalPosition:"center",
       duration: 3000,
-      panelClass : ['snackRegister']
     });
+  }
+  emailExist(){
+    
+    return(control : AbstractControl) => {
+       const email = control.value
+       if(!email) return null
+     return this.userService.verifyEmail(email).pipe(
+      map((data: boolean) => {
+        if (data) {
+          return null; // Correo electrónico válido
+        } else {
+          return { emailExists: true }; // Correo electrónico no válido
+        }
+      }),
+      catchError(() => of({ emailExists: true }))
+    ); 
+    }
   }
   minlengthValidator(minlength: number) {
     return (control: AbstractControl) => {
@@ -79,17 +101,27 @@ export class RegisterComponent {
         email: this.form.value.email,
         codePay: this.form.value.codePay
       }
-      this.userService.addUser(model).subscribe(
+    const loginModel : Login = {
+      email : this.form.value.email,
+      password : this.form.value.password
+    }
+      const logn : NavigationExtras = {
+        state: {
+          loginModel
+        }
+      }
+  this.userService.addUser(model).subscribe(
         {
           next:(data) => {
             this.messageAlert("¡Bienvenido a PeTFectMatch!","🐎");
-            this.rout.navigate(['login']);
+            this.rout.navigate(['login'], logn);
             console.log("datos ingresados con exito: "+data);
           },error:(e) => {
             this.messageAlert("¡Algo salío mal!","");
           }
         }
-      )
+    )
+ 
       console.log("los datos son: " + model.birthDate)
     } else {
       console.log("No hya datos entonces no imprime")

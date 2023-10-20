@@ -8,7 +8,7 @@ import { PropertyCardComponent } from './View/Property/property-card/property-ca
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
-import {HttpClientModule} from '@angular/common/http'; 
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'; 
 
 import {MatMenuModule} from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -58,6 +58,9 @@ import { LoginComponent } from './View/Access/login/login.component';
 import { RegisterComponent } from './View/Access/register/register.component';
 import { PrincipalComponent } from './View/Principal/principal/principal.component';
 import { FooterComponent } from './View/footer/footer.component';
+import { TokenService } from './Services/token.service';
+import { AuthInterceptor } from './Interceptors/AuthInterceptor';
+import { ReLoginComponent } from './View/re-login/re-login.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +77,7 @@ import { FooterComponent } from './View/footer/footer.component';
     RegisterComponent,
     PrincipalComponent,
     FooterComponent,
+    ReLoginComponent,
   ],
   imports: [
     NgxPayPalModule,
@@ -107,8 +111,12 @@ import { FooterComponent } from './View/footer/footer.component';
   ],
 
   providers: [
-    {provide: MAT_DIALOG_DATA,useValue:{}},
-    DatePipe
+  {provide:MAT_DIALOG_DATA,useValue:{}
+  },
+  {provide:HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true,},
+  {provide: TokenService}
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
