@@ -62,13 +62,11 @@ export class AddPublicationComponent implements OnInit {
       this.updateBreed()
 
     }
-
-
   }
+  
   addEdit() {
-
     if (this.model.idPublication == undefined) {
-      this.publication.idOwner = 2;
+      this.publication.idOwner = 3;
       console.log("agrega: " + this.publication.breedName)
       this._apipublication.AddPublications(this.publication).subscribe({
         next: (data) => {
@@ -87,10 +85,8 @@ export class AddPublicationComponent implements OnInit {
   }
   getImage(event: any, num: number) {
     this.i++;
-    //console.log(event)
     this.numImg = num;
     this.imgToBase64(event.target.files[0]);
-    //console.log(this.publication.images);
   }
   private imgToBase64(file: Blob) {
     if (file) {

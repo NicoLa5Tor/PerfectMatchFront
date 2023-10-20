@@ -25,6 +25,7 @@ const routes: Routes = [
   {path:"dialogImage",component: ImgeDialogComponent,canActivate: [ValidateToken]},
   {path:"card",component: PropertyCardComponent,canActivate: [ValidateToken]},
   {path:"pay",component:PaypalComponent,canActivate: [ValidateToken]},
+  {path:"Report", component:ReportViewerComponent, canActivate:[ValidateToken]}
 ]},
 ];
 

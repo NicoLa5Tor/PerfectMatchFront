@@ -19,7 +19,7 @@ export class PrincipalComponent {
       { isActive: false, text: 'Perfil', href: `/principal/Profile/${this.getIdUser()}`,icon: 'bi bi-person'},
       { isActive: false, text: 'Lista', href: '/principal/PropertyList' ,icon: 'bi bi-list'},
       { isActive: false, text: 'Añadir', href: '/principal/Form',icon: 'bi bi-plus' },
-
+      { isActive: false, text: 'Reportes', href: '/principal/Report',icon: 'bi bi-book' }
     ];
     constructor(private rout: Router,
     
