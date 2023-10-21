@@ -23,8 +23,8 @@ export class ApiReportService {
     return this.http.get(url, { responseType: 'text' });
   }
   
-  getReportPdf(reportName: string): Observable<ArrayBuffer> {
-    const url = `${this.apiUrl}${reportName}`;
+  getReportPdf(reportName: string, userId: number): Observable<ArrayBuffer> {
+    const url = `${this.apiUrl}${reportName}/${userId}`;
     return this.http.get(url, { responseType: 'arraybuffer' });
   }
 
@@ -33,8 +33,8 @@ export class ApiReportService {
     return this.http.get(url, { responseType: 'arraybuffer' });
   }
 
-  downloadNormalPdf(reportName: string): Observable<Blob> {
-    const url = `${this.apiUrl}${reportName}`;
+  downloadNormalPdf(reportName: string, userId: number): Observable<Blob> {
+    const url = `${this.apiUrl}${reportName}/${userId}`;
     return this.http.get(url, { responseType: 'blob' });
   }
 
@@ -42,4 +42,6 @@ export class ApiReportService {
     const url = `${this.apiUrl}${reportName}/${param1Value}/${param2Value}`;
     return this.http.get(url, { responseType: 'blob' });
   }
+
+
 }

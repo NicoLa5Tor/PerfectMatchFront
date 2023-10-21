@@ -62,6 +62,12 @@ const routes: Routes = [
           authInterceptor: AuthInterceptor
         }
       },
+      {
+        path: "Report", component: ReportViewerComponent, canActivate: [ValidateToken],
+        data: {
+          authInterceptor: AuthInterceptor
+        }
+      },
     ]
   },
 ];

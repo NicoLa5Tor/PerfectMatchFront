@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiReportService } from 'src/app/Services/api-reportViewer.services';
-
+import { TokenService } from 'src/app/Services/token.service';
 
 @Component({
   selector: 'app-report-viewer',
@@ -15,8 +15,10 @@ export class ReportViewerComponent {
   reportTypes: string[] = [];
   startDate: string = '';
   endDate: string = '';
-  constructor(private http: HttpClient, private _apiReportService:ApiReportService){
-
+  idUser: number = 0;
+  token: string = '';
+  constructor(private http: HttpClient, private _apiReportService:ApiReportService, private _tok:TokenService){
+    this.idUser = _tok.getId();
   }
   ngOnInit(): void {
     this.getReportTypes();
@@ -50,7 +52,7 @@ export class ReportViewerComponent {
       return;
     }
     if (this.reportPath === 'SalesReport') {
-      this._apiReportService.getReportPdf(this.reportPath)
+      this._apiReportService.getReportPdf(this.reportPath, this.idUser)
         .subscribe((data: ArrayBuffer) => this.displayReport(data));
     }
     if (this.reportPath === 'NewUserReport') {
@@ -72,7 +74,7 @@ export class ReportViewerComponent {
       // Extraer el nombre del reporte de la URL actual
       const reportName = this.reportPath;
       if (this.reportPath === 'SalesReport') {
-        this._apiReportService.downloadNormalPdf(reportName)
+        this._apiReportService.downloadNormalPdf(reportName, this.idUser)
         .subscribe((data: Blob) => {
           // Crear un objeto URL para el blob del PDF
           const blobUrl = window.URL.createObjectURL(data);

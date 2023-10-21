@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
 export class TokenService {
 private token!: string
 private refresh! : string
+private idUser! : number
+
  setToken(tok : string, name : string){
   this.token = tok;
   document.cookie = `${name}=${tok};path=/`;
@@ -38,4 +40,13 @@ isTokenExpired(token: string): boolean {
   
   return currentTimestamp > expirationTimestamp;
 }
+
+setId(id : number){
+  if(id != null) this.idUser = id;
+}
+
+getId():number{
+  return this.idUser
+}
+
 }
