@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiReportService } from 'src/app/Services/api-reportViewer.services';
 import { TokenService } from 'src/app/Services/token.service';
+import { PurchaseSale } from 'src/app/Models/PurchaseSale';
 
 @Component({
   selector: 'app-report-viewer',
   templateUrl: './report-viewer.component.html',
-  styleUrls: ['./report-viewer.component.css']
+  styleUrls: ['./report-viewer.component.css'],
 })
 export class ReportViewerComponent {
   pdfSrc: string = '';
@@ -16,12 +17,25 @@ export class ReportViewerComponent {
   startDate: string = '';
   endDate: string = '';
   idUser: number = 0;
-  token: string = '';
+  tableData: PurchaseSale[] = [];
+  displayedColumns: string[] = ['date', 'name', 'publication', 'amount'];
+  showTable: boolean = false;
+
   constructor(private http: HttpClient, private _apiReportService:ApiReportService, private _tok:TokenService){
     this.idUser = _tok.getId();
   }
   ngOnInit(): void {
     this.getReportTypes();
+  }
+
+  
+  getTableList() {
+    this.getReportPath(this.selectedReportType);
+    this._apiReportService.getTableList(this.reportPath, this.idUser).subscribe((data) => {
+      this.tableData = data;
+      this.showTable = true;
+    });
+    console.log(this.tableData);
   }
 
   changeSelected(){
@@ -45,6 +59,7 @@ export class ReportViewerComponent {
   }
 
   getReport() {
+    this.showTable = false;
     this.getReportPath(this.selectedReportType);
   
     if (!this.reportPath) {

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { enviroment } from '../enviroments/enviroment';
+import { PurchaseSale } from '../Models/PurchaseSale';
 
 @Injectable({
   providedIn: 'root'
@@ -43,5 +44,8 @@ export class ApiReportService {
     return this.http.get(url, { responseType: 'blob' });
   }
 
+  public getTableList(reportName: string, userId: number): Observable<PurchaseSale[]> {
+    return this.http.get<PurchaseSale[]>(`${this.apiUrl}TableList/${reportName}/${userId}`);
+  }
 
 }
