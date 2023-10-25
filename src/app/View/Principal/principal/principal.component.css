@@ -6,7 +6,7 @@ body{
 }
 
 #logo{
-    position: absolute;
+    position: relative;
     left: 60px;
     display: inline-block;
     width: 2%;

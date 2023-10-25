@@ -15,5 +15,15 @@ footer{
 }
 .inline {
     display: inline-block;
-    padding-left: 10px;
+    padding-left: 20px;
+   
+}
+.flag{
+    border-radius: 50%;
+    display: block;
+    width: 30px;
+    
+}
+.cursor{
+    cursor: pointer;
 }
