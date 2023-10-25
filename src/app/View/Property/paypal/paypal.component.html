@@ -1,12 +1,12 @@
 <div style="height: 30px; width: 100%;">
-  <h3 class="text-uppercase text-center text-primary">Pago por Paypal </h3>
+  <h3 class="text-uppercase text-center text-primary">{{"Pago por Paypal" | translate}} </h3>
 </div>
 <div class="card text-center">
   <div class="card-body">
     <div class="row">
-      <p class="text-success col-md-6"> Compra del animal: </p>
+      <p class="text-success col-md-6"> {{"Compra del animal" | translate}}: </p>
       <p class="col-md-6">{{model.animalName}}</p>
-      <p class=" text-success  col-md-6"> Por un precio de: </p>
+      <p class=" text-success  col-md-6"> {{"Por un precio de" | translate}}: </p>
       <p class="col-md-6">{{model.price}}</p>
     </div>
     <ngx-paypal [config]="payPalConfig"></ngx-paypal>

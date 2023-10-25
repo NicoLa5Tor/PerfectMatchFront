@@ -8,3 +8,12 @@ footer{
     text-align: center;
     z-index: 1000 !important;
 }
+.iz,.center,.der{
+    position: relative;
+    display: inline-block;
+    width: 33.3%;
+}
+.inline {
+    display: inline-block;
+    padding-left: 10px;
+}

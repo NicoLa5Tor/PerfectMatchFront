@@ -8,7 +8,7 @@ import { PropertyCardComponent } from './View/Property/property-card/property-ca
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'; 
+import {HttpClientModule, HTTP_INTERCEPTORS, HttpClient} from '@angular/common/http'; 
 
 import {MatMenuModule} from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -21,7 +21,7 @@ import {MatListModule} from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select'; 
 import {MatTableModule} from '@angular/material/table'; 
 
@@ -56,10 +56,23 @@ import { FooterComponent } from './View/footer/footer.component';
 import { TokenService } from './Services/token.service';
 import { AuthInterceptor } from './Interceptors/AuthInterceptor';
 import { ReLoginComponent } from './View/re-login/re-login.component';
+// internacionalizacion 
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { DatePipe } from '@angular/common';
+import { TimeZoneService } from './Services/time-zone.service';
+
+
+
+
+export function HttpLoaderFactory(http : HttpClient){
+  return new TranslateHttpLoader (http, './assets/i18n/','.json')
+}
 
 @NgModule({
   declarations: [
     AppComponent,
+    
     NavbarComponent,
     PropertyCardComponent,
     PropertyListComponent,
@@ -74,8 +87,10 @@ import { ReLoginComponent } from './View/re-login/re-login.component';
     ReLoginComponent,
   ],
   imports: [
+    
     NgxPayPalModule,
     BrowserModule,
+
     MatBottomSheetModule,
     NgFor,
     MatListModule,
@@ -100,7 +115,18 @@ import { ReLoginComponent } from './View/re-login/re-login.component';
     ReactiveFormsModule,
     FormsModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader:{
+        provide : TranslateLoader,
+        useFactory : HttpLoaderFactory,
+        deps : [HttpClient]
+      }
+
+      
+    }),
+    
 
   ],
 
@@ -110,7 +136,13 @@ import { ReLoginComponent } from './View/re-login/re-login.component';
   {provide:HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true,},
-  {provide: TokenService}
+  {provide: TokenService},
+  {
+    provide: MAT_DATE_LOCALE,
+    useFactory: (languageService: TimeZoneService) => languageService.getLanguage(),
+    deps: [TimeZoneService],
+  },
+  
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

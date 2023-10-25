@@ -1,3 +1,3 @@
 export const enviroment = {
-    endPoint: "https://localhost:7286/",
+    endPoint: "http://localhost:5294/",
 }

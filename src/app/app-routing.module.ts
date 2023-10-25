@@ -16,8 +16,8 @@ import { Relogin } from './Guards/ReloginGuard';
 
 
 const routes: Routes = [
-  { path: "logIndex/:token", component: AppComponent },
-  { path: "login", component: LoginComponent },
+  { path: "logIndex/:token", component: AppComponent},
+  { path: "login", component: LoginComponent, },
   { path: "register", component: RegisterComponent },
   {path: "Relogin",component:ReLoginComponent , canActivate: [Relogin]
        
@@ -44,7 +44,7 @@ const routes: Routes = [
         }
       },
       {
-        path: "dialogImage", component: ImgeDialogComponent, canActivate: [ValidateToken],
+        path: "dialogImage", component: ImgeDialogComponent, canActivate: [ValidateToken], canActivateChild : [],
         data: {
           authInterceptor: AuthInterceptor
         }

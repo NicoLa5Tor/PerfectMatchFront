@@ -5,25 +5,25 @@
         <p>Aquí puedes agregar tu texto grande.</p>
       </div>
       <div class="right-content">
-        <h2>Iniciar Sesión 🐎</h2>
+        <h2>{{"Iniciar Sesión" | translate}} 🐎</h2>
             <form class="form-signin for-m" [formGroup]="form" (submit)="onClick()">
                 <div class="text-center mb-4 ">
-                    <p>"¡Bienvenido de nuevo  🐾!
-                        ¡Vamos  a hacer que las cosas fluyan! 🐴"</p>
+                    <p>"¡{{"Bienvenido de nuevo" | translate}}  🐾!
+                        ¡{{"Vamos  a hacer que las cosas fluyan" | translate}}! 🐴"</p>
                 </div>
                 <div class="form-label-group">
-                    <input type="email" id="inputEmail" formControlName="email" class="form-control" placeholder="Email address" required=""
+                    <input type="email" id="inputEmail" formControlName="email" class="form-control" placeholder="{{'Correo Electrónico' | translate}}" required=""
                         autofocus="">
-                    <label for="inputEmail">Email address</label>
+                    <label for="inputEmail">{{"Correo Electrónico" | translate}}</label>
                 </div>
                 <div class="form-label-group">
-                    <input type="password" id="inputPassword" formControlName="password" class="form-control" placeholder="Password" required="">
-                    <label for="inputPassword">Password</label>
+                    <input type="password" id="inputPassword" formControlName="password" class="form-control" placeholder="{{'Contraseña' | translate}}" required="">
+                    <label for="inputPassword">{{"Contraseña" | translate}}</label>
                 </div>
                 <div class="checkbox mb-3">
                 </div>
-                <button class="btn btn-lg btn-primary btn-block w-100" type="submit" >Sign in</button>
-                <p>¿No tienes cuanta? <a  routerLink="/register">registrarme</a></p>
+                <button class="btn btn-lg btn-primary btn-block w-100" type="submit" >{{"Acceder"| translate}}</button>
+                <p>{{"¿No tienes cuenta?" | translate}} <a  routerLink="/register">{{"Registrarme" | translate}}</a></p>
                 <p class="mt-5 mb-3 text-muted text-center">© 2020-2023</p>
             </form>
     

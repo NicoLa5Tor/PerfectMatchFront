@@ -7,6 +7,7 @@ import { LoginService } from 'src/app/Services/login.service';
 import { Login } from 'src/app/Models/Login';
 import { EncryptXOR } from 'src/app/Models/Encryption';
 import { TokenService } from 'src/app/Services/token.service';
+import {TranslateService} from '@ngx-translate/core'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit{
   form!: FormGroup;
   log! : Login;
   private token!: string;
-  constructor(private actRout: ActivatedRoute, private rout: Router, private fb: FormBuilder, private serviceLog: LoginService, private tok: TokenService) {
+  constructor(private actRout: ActivatedRoute, private rout: Router, private fb: FormBuilder,
+     private serviceLog: LoginService, private tok: TokenService, private trans : TranslateService) {
     const state  = this.rout.getCurrentNavigation()?.extras.state;
     this.form = this.fb.group({
       email: ['', Validators.required],

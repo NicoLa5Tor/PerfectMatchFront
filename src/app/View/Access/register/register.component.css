@@ -32,10 +32,21 @@
 
   .bg-dark {
     background-color: rgba(0, 0, 0, 0.7) !important;
-    height: 450px;
+    height: 80%;
     top: 10%;
     position: relative;
     width: 700px;
+    
+  }
+  @media (min-width : 1200px) {
+    .bg-dark{
+      left: 25%;
+    }
+  }
+  @media ((min-width : 1000px) and (max-width: 1200px)) {
+    .bg-dark{
+      left: 15%;
+    }
   }
   footer{
     backdrop-filter: blur(10px); /* Aplicar difuminado al contenido detrás */
