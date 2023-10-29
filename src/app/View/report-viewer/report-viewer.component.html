@@ -6,15 +6,16 @@
         <option *ngFor="let type of reportTypes" [value]="type">{{ type }}</option>
       </select>
     </mat-form-field>
-    <div *ngIf="selectedReportType === 'New Users'">
-    <mat-form-field class="example-full-width">
-      <mat-label for="startDate">Fecha de Inicio</mat-label>
-      <input matInput  type="text" id="startDate" [(ngModel)]="startDate ">
-    </mat-form-field>
-    <mat-form-field class="example-full-width">
-      <mat-label for="endDate">Fecha de fin</mat-label>
-      <input matInput  type="text" id="endDate" [(ngModel)]="endDate">
-    </mat-form-field>
+    <div *ngIf="selectedReportType === 'New Users' || showTable">
+      <mat-form-field class="example-full-width">
+        <mat-label for="startDate">Fecha de Inicio</mat-label>
+        <input matInput  type="text" id="startDate" [(ngModel)]="startDate ">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label for="endDate">Fecha de fin</mat-label>
+        <input matInput  type="text" id="endDate" [(ngModel)]="endDate">
+      </mat-form-field>
+      <button *ngIf="showTable" mat-button color="warn" (click)="applyDateFilter()">Filtrar fechas</button>
     </div>
   </div>
 
@@ -23,8 +24,15 @@
   <button mat-button color="primary" (click)="getTableList()">Cargar Tabla</button>
 </div>
 
+<mat-form-field *ngIf="showTable" class="example-full-width">
+  <mat-label>Filtrar por nombre</mat-label>
+  <input matInput class="report-container text-center" type="text" 
+  [(ngModel)]="nameFilter" (input)="applyNameFilter()">
+</mat-form-field>
+
 <div *ngIf="showTable" class="report-container">
   <br>
+
   <table mat-table [dataSource]="tableData" class="mat-elevation-z8">
 
     <ng-container matColumnDef="date">
@@ -51,7 +59,7 @@
   </table>
 </div>
 
-<div class="report-container">
+<div *ngIf="showViewer" class="report-container">
   <pdf-viewer
   [src]="pdfSrc"
   [render-text]="true"

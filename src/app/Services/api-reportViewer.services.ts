@@ -25,7 +25,7 @@ export class ApiReportService {
   }
   
   getReportPdf(reportName: string, userId: number): Observable<ArrayBuffer> {
-    const url = `${this.apiUrl}${reportName}/${userId}`;
+    const url = `${this.apiUrl}ServerReport/${reportName}/${userId}`;
     return this.http.get(url, { responseType: 'arraybuffer' });
   }
 
@@ -35,7 +35,7 @@ export class ApiReportService {
   }
 
   downloadNormalPdf(reportName: string, userId: number): Observable<Blob> {
-    const url = `${this.apiUrl}${reportName}/${userId}`;
+    const url = `${this.apiUrl}ServerReport/${reportName}/${userId}`;
     return this.http.get(url, { responseType: 'blob' });
   }
 

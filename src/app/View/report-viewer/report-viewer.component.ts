@@ -14,12 +14,17 @@ export class ReportViewerComponent {
   selectedReportType: string = ''; 
   reportPath: string = '';
   reportTypes: string[] = [];
+
   startDate: string = '';
   endDate: string = '';
   idUser: number = 0;
+  originalTableData: PurchaseSale[] = [];
   tableData: PurchaseSale[] = [];
+
   displayedColumns: string[] = ['date', 'name', 'publication', 'amount'];
   showTable: boolean = false;
+  showViewer: boolean = false;
+  nameFilter: string = '';
 
   constructor(private http: HttpClient, private _apiReportService:ApiReportService, private _tok:TokenService){
     this.idUser = _tok.getId();
@@ -28,12 +33,46 @@ export class ReportViewerComponent {
     this.getReportTypes();
   }
 
+  applyNameFilter() {
+    const searchText = this.nameFilter.toLowerCase();
+
+    if (searchText == '') {
+      this.tableData = this.originalTableData;
+    } else {
+      this.tableData = this.originalTableData.filter(item => item.name.toLowerCase().includes(searchText));
+    }
+  }
+
+  applyDateFilter(){
+    const dStartDate = new Date(this.startDate);
+    const dEndDate = new Date(this.endDate);
+
+    
+
+    console.log(dStartDate)
+    // Verifica si las fechas son válidas
+    if (!isNaN(dStartDate.getTime()) && !isNaN(dEndDate.getTime())) {
+      // Realiza el filtrado de datos
+      this.tableData = this.tableData.filter(item => {
+        const fechaItem = new Date(item.date);
+
+        // Comprueba si la fecha del elemento está dentro del rango
+        return fechaItem >= dStartDate && fechaItem <= dEndDate;
+      });
+    } else {
+      // Las fechas ingresadas no son válidas, puedes mostrar un mensaje de error o manejarlo de otra manera
+      console.log('Fechas no válidas');
+    }
   
+  }
+
   getTableList() {
     this.getReportPath(this.selectedReportType);
     this._apiReportService.getTableList(this.reportPath, this.idUser).subscribe((data) => {
+      this.originalTableData = data;
       this.tableData = data;
       this.showTable = true;
+      this.showViewer = false;
     });
     console.log(this.tableData);
   }
@@ -60,13 +99,14 @@ export class ReportViewerComponent {
 
   getReport() {
     this.showTable = false;
+    this.showViewer = true;
     this.getReportPath(this.selectedReportType);
   
     if (!this.reportPath) {
       console.log("La ruta del informe no está disponible.");
       return;
     }
-    if (this.reportPath === 'SalesReport') {
+    if (this.reportPath === 'SalesReport' || this.reportPath === 'PurchaseReport') {
       this._apiReportService.getReportPdf(this.reportPath, this.idUser)
         .subscribe((data: ArrayBuffer) => this.displayReport(data));
     }
@@ -88,7 +128,7 @@ export class ReportViewerComponent {
     if (this.pdfSrc) {
       // Extraer el nombre del reporte de la URL actual
       const reportName = this.reportPath;
-      if (this.reportPath === 'SalesReport') {
+      if (this.reportPath === 'SalesReport' || this.reportPath === 'PurchaseReport') {
         this._apiReportService.downloadNormalPdf(reportName, this.idUser)
         .subscribe((data: Blob) => {
           // Crear un objeto URL para el blob del PDF
