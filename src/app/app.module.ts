@@ -61,6 +61,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { DatePipe } from '@angular/common';
 import { TimeZoneService } from './Services/time-zone.service';
+import { ErrorComponent } from './View/Property/error/error.component';
+import { TranslatService } from './Services/Translate.service';
 
 
 
@@ -72,8 +74,6 @@ export function HttpLoaderFactory(http : HttpClient){
 @NgModule({
   declarations: [
     AppComponent,
-    
-    NavbarComponent,
     PropertyCardComponent,
     PropertyListComponent,
     AddPublicationComponent,
@@ -85,6 +85,7 @@ export function HttpLoaderFactory(http : HttpClient){
     PrincipalComponent,
     FooterComponent,
     ReLoginComponent,
+    ErrorComponent,
   ],
   imports: [
     
@@ -142,7 +143,7 @@ export function HttpLoaderFactory(http : HttpClient){
     useFactory: (languageService: TimeZoneService) => languageService.getLanguage(),
     deps: [TimeZoneService],
   },
-  
+
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

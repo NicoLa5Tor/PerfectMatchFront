@@ -10,13 +10,16 @@
     {{"Nombre" | translate}}: {{model.animalName}}
   </p>
   <p>
-    {{"Tipo de animal" | translate}}: {{model.typeName}}
+    {{"Tipo de animal" | translate}}: {{model.typeName | translate}}
+  </p>
+  <p>
+    {{"Precio" | translate}} : {{model.price}} {{"COL$" | translate}}
   </p>
   <p>
     {{"Raza" | translate}}: {{model.breedName}}
   </p>
   <p>
-    {{"Edad" | translate}}: {{model.age}}
+    {{"Edad" | translate}}: {{model.age}} {{'Años' | translate}}
   </p>
   <p>
     {{"Peso" | translate}}: {{model.weight}} kg

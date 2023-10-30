@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Inject, inject } from "@angular/core";
+import { Router } from "@angular/router";
+import jwtDecode, { JwtPayload } from "jwt-decode";
 
 @Injectable()
 export class TokenService {
@@ -37,5 +40,15 @@ isTokenExpired(token: string): boolean {
 
   
   return currentTimestamp > expirationTimestamp;
+}
+getId(){
+  const jwtTok = this.getTok("Token") || "";
+  const decodedToken : JwtPayload = jwtDecode(jwtTok);
+     const userId = (decodedToken as any).nameid;
+    if(userId != null && userId != ""){
+      return parseInt(userId);
+    }else{
+      return 0
+    }
 }
 }

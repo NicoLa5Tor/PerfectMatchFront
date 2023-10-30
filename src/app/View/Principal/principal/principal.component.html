@@ -1,26 +1,55 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-   
-   
+
+
 </head>
 
 <body>
     <header class="head">
-        <div id="logo"> 
-            <img [src]="logoUrl" class="h-100" >
+        <div id="logo">
+            <img [src]="logoUrl" class="h-100">
         </div>
         <div class="options">
             <p id="p1">
-                <a (click)="onClickLogout()">{{"Cerrar Sesión" | translate}}</a>
+                <a (click)="onClickLogout()" style="cursor: pointer;">{{"Cerrar Sesión" | translate}} <i class="fas fa-sign-out-alt"></i></a>
             </p>
-           
+
         </div>
+        <button mat-button [matMenuTriggerFor]="menu" class="menu">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+    
+            <a mat-list-item (click)="onClickLogout()" class="selected">
+                <i class="fas fa-sign-out-alt"></i> {{"Cerrar Sesión" | translate}}
+            </a>
+    
+            <a mat-list-item class="selected " *ngFor="let link of links" [routerLink]="link.href"
+                (click)="Routerl(link.href)" data-bs-original-title="Customers">
+                <i class="{{link.icon}} display-8"></i>
+                {{link.text | translate}}
+            </a>
+
+          
+
+        </mat-menu>
+        <a>
+            <div class="filter">
+                <a mat-list-item style="cursor: pointer;" *ngIf="hrefActual==='/principal/PropertyList'" name="button_filters"
+                type="submit" data-toggle="collapse" href="#collapseSection" aria-expanded="false"
+                aria-controls="collapseSection">
+                <i class="bi bi-funnel"></i>
+                {{"Filtros" | translate}}</a>
+            </div>
+        </a>
+       
+       
 
 
     </header>
     <section class="section">
 
-       
+
         <div class="container-inputs d-flex flex-column flex-shrink-0  bg-body-tertiary">
             <hr>
             <mat-nav-list style="width: 100%;">

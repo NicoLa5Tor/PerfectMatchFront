@@ -13,6 +13,8 @@ import { ValidateToken } from './Guards/VerifyTokenValidate';
 import { AuthInterceptor } from './Interceptors/AuthInterceptor';
 import { ReLoginComponent } from './View/re-login/re-login.component';
 import { Relogin } from './Guards/ReloginGuard';
+import { MapComponent } from './View/Map/map.component';
+import { ErrorComponent } from './View/Property/error/error.component';
 
 
 const routes: Routes = [
@@ -30,7 +32,18 @@ const routes: Routes = [
           authInterceptor: AuthInterceptor
         }
       },
-      
+      {
+        path: "Map", component: MapComponent, canActivate: [ValidateToken],
+        data: {
+          authInterceptor: AuthInterceptor
+        }
+      },
+      {
+        path: "Error", component: ErrorComponent, canActivate: [ValidateToken],
+        data: {
+          authInterceptor: AuthInterceptor
+        }
+      },
       {
         path: "Profile/:id", component: PropertyListComponent, canActivate: [ValidateToken],
         data: {

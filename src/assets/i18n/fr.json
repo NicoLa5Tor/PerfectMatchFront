@@ -37,7 +37,7 @@
 
     "Pago por Paypal" : "Paiement par PayPal",
     "Compra del animal" : "Achat de l'animal",
-    "Por un precio de" : "Pour un prix de,",
+    "Por un precio de" : "Pour un prix de",
 
     "Cerrar Sesión" : "Déconnexion",
     "Perfil" : "Profil",
@@ -72,6 +72,13 @@
     "Tu sesión ha caducado" : "Votre session a expiré",
     "Cerrar" : "Fermer",
     "Aceptar" : "Accepter",
-    "¿Quieres continuar en PeTFectMatch?" : "Voulez-vous continuer sur PeTFectMatch?"
+    "¿Quieres continuar en PeTFectMatch?" : "Voulez-vous continuer sur PeTFectMatch?",
+    "Mapa" : "Carte",
+    "Mensaje Informativo" : "Message Informatif",
+    "No tienes publicaciones aún" : "Vous n'avez pas encore de publications",
+    "Bovino" : "Bovin",
+    "Equino" : "Équin",
+    "Años" : "Ans",
+    "COL$" : "€"
 
 }

@@ -35,7 +35,7 @@
 
     "Pago por Paypal" : "Pay with PayPal",
     "Compra del animal" : "Purchase of the animal",
-    "Por un precio de" : "For a price of,",
+    "Por un precio de" : "For a price of",
 
     "Cerrar Sesión" : "Sign out",
     "Perfil" : "Profile",
@@ -70,7 +70,14 @@
     "Tu sesión ha caducado" : "Your session has expired",
     "Cerrar" : "Close",
     "Aceptar" : "Accept",
-    "¿Quieres continuar en PeTFectMatch?" : "Do you want to continue on PeTFectMatch?"
+    "¿Quieres continuar en PeTFectMatch?" : "Do you want to continue on PeTFectMatch?",
+    "Mapa" : "Map",
+    "Mensaje Informativo" : "Informative Message",
+    "No tienes publicaciones aún" : "You don't have any posts yet",
+    "Bovino" : "Bovine",
+    "Equino" : "Equine",
+    "Años" : "Years",
+    "COL$" : "$"
     
 
 

@@ -29,9 +29,9 @@
 
         <div class="row">
           <p class="text-success col-md-6">{{"Tipo de animal" | translate}}: </p>
-          <h4 class="col-md-6">{{objeto.typeName}}</h4>
+          <h4 class="col-md-6">{{objeto.typeName | translate}}</h4>
           <p class="text-success col-md-6">{{"Precio" |  translate}}: </p>
-          <p class="col-md-6">{{objeto.price}}</p>
+          <p class="col-md-6">{{objeto.price}} {{'COL$' | translate}}</p>
         </div>
 
         <div class="card-body" *ngIf="dat == false">

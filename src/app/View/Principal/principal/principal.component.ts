@@ -4,6 +4,7 @@ import { DomSanitizer,SafeResourceUrl } from '@angular/platform-browser';
 import { PropertyListComponent } from '../../Property/property-list/property-list.component';
 import jwtDecode, { JwtPayload } from 'jwt-decode';
 import { TokenService } from 'src/app/Services/token.service';
+
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
@@ -20,6 +21,7 @@ export class PrincipalComponent {
       { isActive: false, text: 'Perfil', href: `/principal/Profile/${this.getIdUser()}`,icon: 'bi bi-person'},
       { isActive: false, text: 'Lista', href: '/principal/PropertyList' ,icon: 'bi bi-list'},
       { isActive: false, text: 'Añadir', href: '/principal/Form',icon: 'bi bi-plus' },
+      { isActive: false, text: ' Mapa', href: '/principal/Map',icon: 'fas fa-map-marker-alt' },
 
     ];
     constructor(private rout: Router,
@@ -48,7 +50,7 @@ onClickLogout(){
 }
 getIdUser(): number{
    
-  const token = localStorage.getItem('token_user');
+  const token = this.tok.getTok("Token");
   if(token){
   const decodeToken : JwtPayload  = jwtDecode(token);
    return (decodeToken as any).nameid;
