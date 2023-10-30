@@ -27,4 +27,7 @@ export class ApiUserService {
   verifyEmail(email : string): Observable<boolean>{
     return this.http.get<boolean>(`${this.url}EmailExist/${email}`);
   }
+  getUser(id : number) : Observable<number>{
+    return this.http.get<number>(`${this.url}GetUser/${id}`);
+  }
 }
