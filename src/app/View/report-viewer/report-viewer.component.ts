@@ -149,6 +149,7 @@ export class ReportViewerComponent {
 
   getReport() {
     this.showTableMov = false;
+    this.showTableUser = false;
     this.showTableSales = false;
     this.showGraph = false;
     this.showViewer = true;
