@@ -38,7 +38,7 @@ export class CommentsComponent implements OnInit {
     let comment1:Comment = {
       idComment: 0,
       idPublication: comment.idPublication,
-      idUser: this._user.getId(),
+      idUser: this._user.getIdUser(),
       comment1: newComment,
       nameOwnerComment: comment.nameUser,
       nameOwnerPublication: comment.nameOwnerPublication,

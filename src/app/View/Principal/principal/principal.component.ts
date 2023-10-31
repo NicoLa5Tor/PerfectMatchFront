@@ -17,19 +17,19 @@ export class PrincipalComponent {
   idUser: number = 0;
   logoUrl: SafeResourceUrl;
   mostrarDiv = true;
-
+  notificationObj:HTMLElement[]=[];
   id!: number;
-  hrefActual = "";
+  hrefActual = document.location.href.substring(document.location.origin.length,document.location.href.length)
   links = [
-    { isActive: false, text: 'Perfil', href: `/principal/Profile/${this.tok.getIdUser()}`, icon: 'bi bi-person' },
-    { isActive: false, text: 'Lista', href: '/principal/PropertyList', icon: 'bi bi-list' },
-    { isActive: false, text: 'Añadir', href: '/principal/Form', icon: 'bi bi-plus' },
-    { isActive: false, text: 'Mapa', href: '/principal/Map', icon: 'fas fa-map-marker-alt' },
-    { isActive: false, text: 'Reportes', href: '/principal/Report', icon: 'bi bi-book' }
+    {id : 1, isActive: false, text: 'Perfil', href: `/principal/Profile/${this.tok.getIdUser()}`, icon: 'bi bi-person' },
+    {id : 2, isActive: false, text: 'Lista', href: '/principal/PropertyList', icon: 'bi bi-list' },
+    {id : 3, isActive: false, text: 'Añadir', href: '/principal/Form', icon: 'bi bi-plus' },
+    {id : 4, isActive: false, text: 'Mapa', href: '/principal/Map', icon: 'fas fa-map-marker-alt' },
+    {id : 5, isActive: false, text: 'Reportes', href: '/principal/Report', icon: 'bi bi-book' }
   ];
   linksAux = [
-    { isActive: false, text: 'Lista', href: '/principalAdmin/Profile', icon: 'bi bi-list' },
-    { isActive: false, text: 'Mapa', href: '/principalAdmin/Map', icon: 'fas fa-map-marker-alt' },
+    {id : 1, isActive: false, text: 'Lista', href: '/principalAdmin/Profile', icon: 'bi bi-list' },
+    {id : 2, isActive: false, text: 'Mapa', href: '/principalAdmin/Map', icon: 'fas fa-map-marker-alt' },
   ];
   constructor(private rout: Router,
     private tok: TokenService,
@@ -73,6 +73,46 @@ export class PrincipalComponent {
     this.tok.deleteCookie("Token")
     this.tok.deleteCookie("Refresh")
     this.rout.navigate(['login'])
+  }
+  showNotifications(){
+    if(!this.notificationObj[0])
+    {
+      this.documentLoad();
+    }
+  }
+  showFilters(){
+    console.log(this.notificationObj)
+    if(!this.notificationObj[1])
+    {
+      console.log(this.notificationObj)
+      this.filterLoad();
+    }
+  }
+  filterLoad(){
+  
+    const button_filters = document.querySelector(".button_filters") as HTMLButtonElement;
+    const collapseSection = document.getElementById("collapseSection") as HTMLElement;
+    this.notificationObj[1]=collapseSection;
+    button_filters.addEventListener("click", () => {
+      collapseSection.style.display = collapseSection.style.display!="block"?"block":"none"; // Mostrar el objeto
+      collapseSection.focus(); // Asignar el foco al objeto
+    });
+    if(collapseSection)
+    collapseSection.style.display = "block";
+  
+  }
+  documentLoad():void {
+
+    const notificationObj = document.getElementById("notificationObj") as HTMLElement;
+    const buttonShow = document.querySelector(".buttonshow") as HTMLLabelElement;
+    this.notificationObj[0]=notificationObj;
+    buttonShow.addEventListener("click", () => {
+      notificationObj.style.display = notificationObj.style.display=="block"?"none":"block"; // Mostrar el objeto
+      notificationObj.focus(); // Asignar el foco al objeto
+    });
+  
+    if(notificationObj)
+    notificationObj.style.display = "block";
   }
 
 }
