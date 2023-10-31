@@ -46,7 +46,7 @@ export class ReportViewerComponent {
   nameFilter: string = '';
 
   constructor(private http: HttpClient, private _apiReportService:ApiReportService, private _tok:TokenService){
-    this.idUser = _tok.getId();
+    this.idUser = _tok.getIdUser();
   }
   ngOnInit(): void {
     this.getReportTypes();

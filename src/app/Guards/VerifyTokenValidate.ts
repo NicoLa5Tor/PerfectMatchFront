@@ -25,7 +25,6 @@ export const ValidateToken = () => {
        if (decodedToken.exp && decodedToken.exp > currentTimestamp) {
         console.log('El token JWT está vigente.');
 
-        tok.setId(parseInt(userId));
         // El token está vigente, puedes permitir el acceso a recursos protegidos.
       } else {
         console.log('El token JWT ha caducado.');

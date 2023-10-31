@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit{
             this.tok.setToken(data.refreshToken, "Refresh")
             //  localStorage.setItem('token_user',data.token);
           
-            this.user.getUser(this.tok.getId()).subscribe({
+            this.user.getUser(this.tok.getIdUser()).subscribe({
               next:(data) => {
                 console.log("EL rol es: ",data);
               }

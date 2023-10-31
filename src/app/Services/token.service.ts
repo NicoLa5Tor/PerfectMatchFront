@@ -54,7 +54,7 @@ export class TokenService {
 
     return currentTimestamp > expirationTimestamp;
   }
-  getId() {
+  getIdUser() {
     const jwtTok = this.getTok("Token") || "";
     const decodedToken: JwtPayload = jwtDecode(jwtTok);
     const userId = (decodedToken as any).nameid;

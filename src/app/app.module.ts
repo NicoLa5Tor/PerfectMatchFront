@@ -53,7 +53,6 @@ import { ReportViewerComponent } from './View/report-viewer/report-viewer.compon
 
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import {NgChartsModule} from 'ng2-charts';
-import { DatePipe } from '@angular/common';
 
 import { LoginComponent } from './View/Access/login/login.component';
 import { RegisterComponent } from './View/Access/register/register.component';

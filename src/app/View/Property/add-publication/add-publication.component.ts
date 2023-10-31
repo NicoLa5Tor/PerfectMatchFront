@@ -78,7 +78,7 @@ export class AddPublicationComponent implements OnInit {
     if (this.model.idPublication == undefined) {
 
      // console.log("agrega: " + this.publication.breedName)
-      this.publication.idOwner =  this.tok.getId();
+      this.publication.idOwner =  this.tok.getIdUser();
       this.publication.idOwner = 3;
       console.log("agrega: " + this.publication.breedName)
       this._apipublication.AddPublications(this.publication).subscribe({
