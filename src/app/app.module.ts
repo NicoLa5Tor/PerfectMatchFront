@@ -52,6 +52,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
 import { ReportViewerComponent } from './View/report-viewer/report-viewer.component';
 
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import {NgChartsModule} from 'ng2-charts';
 import { DatePipe } from '@angular/common';
 
 import { LoginComponent } from './View/Access/login/login.component';
@@ -107,7 +108,8 @@ import { ReLoginComponent } from './View/re-login/re-login.component';
     FormsModule,
     NgbModule,
     FormsModule,
-    PdfViewerModule
+    PdfViewerModule,
+    NgChartsModule,
   ],
 
   providers: [

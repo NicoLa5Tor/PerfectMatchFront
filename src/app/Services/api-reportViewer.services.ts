@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { enviroment } from '../enviroments/enviroment';
 import { PurchaseSale } from '../Models/PurchaseSale';
+import { NewUserTable } from '../Models/NewUserTable';
+import { NewUserGraph } from '../Models/NewUserGraph';
+import { AllMovementTable } from '../Models/AllMovementTable';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +18,6 @@ export class ApiReportService {
 
   getReportTypes(): Observable<string[]> {
     const url = `${this.apiUrl}ReportType`;
-    console.log(url);
     return this.http.get<string[]>(url);
   }
 
@@ -24,28 +26,39 @@ export class ApiReportService {
     return this.http.get(url, { responseType: 'text' });
   }
   
-  getReportPdf(reportName: string, userId: number): Observable<ArrayBuffer> {
-    const url = `${this.apiUrl}ServerReport/${reportName}/${userId}`;
+  getReportPdf(userId: number,reportName: string,startDate: string, endDate: string): Observable<ArrayBuffer> {
+    const url = `${this.apiUrl}GetRDLC/${userId}/${reportName}/${startDate}/${endDate}`;
     return this.http.get(url, { responseType: 'arraybuffer' });
   }
 
-  getReportPdfWithParams(reportName: string, param1Value: string, param2Value: string): Observable<ArrayBuffer> {
-    const url = `${this.apiUrl}${reportName}/${param1Value}/${param2Value}`;
+  getReportPdfWithParams(userId: number,reportName: string,startDate: string, endDate: string): Observable<ArrayBuffer> {
+    const url = `${this.apiUrl}GetRDLC/${userId}/${reportName}/${startDate}/${endDate}`;
     return this.http.get(url, { responseType: 'arraybuffer' });
   }
 
-  downloadNormalPdf(reportName: string, userId: number): Observable<Blob> {
-    const url = `${this.apiUrl}ServerReport/${reportName}/${userId}`;
+  downloadNormalPdf(userId: number,reportName: string,startDate: string, endDate: string): Observable<Blob> {
+    const url = `${this.apiUrl}GetRDLC/${userId}/${reportName}/${startDate}/${endDate}`;
     return this.http.get(url, { responseType: 'blob' });
   }
 
-  downloadParamsPdf(reportName: string, param1Value: string, param2Value: string): Observable<Blob> {
-    const url = `${this.apiUrl}${reportName}/${param1Value}/${param2Value}`;
+  downloadParamsPdf(userId: number,reportName: string,startDate: string, endDate: string): Observable<Blob> {
+    const url = `${this.apiUrl}GetRDLC/${userId}/${reportName}/${startDate}/${endDate}`;
     return this.http.get(url, { responseType: 'blob' });
   }
 
-  public getTableList(reportName: string, userId: number): Observable<PurchaseSale[]> {
+  getMovTableList(reportName: string, userId: number): Observable<PurchaseSale[]> {
     return this.http.get<PurchaseSale[]>(`${this.apiUrl}TableList/${reportName}/${userId}`);
   }
 
+  getUserTableList(startDate: string, endDate: string): Observable<NewUserTable[]> {
+    return this.http.get<NewUserTable[]>(`${this.apiUrl}GetTableInfo/${startDate}/${endDate}`);
+  }
+
+  getUserGraphList(startDate: string, endDate: string): Observable<NewUserGraph[]> {
+    return this.http.get<NewUserGraph[]>(`${this.apiUrl}GetGraphInfo/${startDate}/${endDate}`);
+  }
+
+  getMovementTableList(startDate: string, endDate: string): Observable<AllMovementTable[]> {
+    return this.http.get<AllMovementTable[]>(`${this.apiUrl}GetTableMov/${startDate}/${endDate}`);
+  }
 }

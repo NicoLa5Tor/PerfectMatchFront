@@ -1,14 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiReportService } from 'src/app/Services/api-reportViewer.services';
 import { TokenService } from 'src/app/Services/token.service';
 import { PurchaseSale } from 'src/app/Models/PurchaseSale';
+
+import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
+import { BaseChartDirective } from 'ng2-charts';
+
+import DataLabelsPlugin from 'chartjs-plugin-datalabels';
+import { NewUserTable } from 'src/app/Models/NewUserTable';
+import { AllMovementTable } from 'src/app/Models/AllMovementTable';
 
 @Component({
   selector: 'app-report-viewer',
   templateUrl: './report-viewer.component.html',
   styleUrls: ['./report-viewer.component.css'],
 })
+
 export class ReportViewerComponent {
   pdfSrc: string = '';
   selectedReportType: string = ''; 
@@ -18,12 +26,23 @@ export class ReportViewerComponent {
   startDate: string = '';
   endDate: string = '';
   idUser: number = 0;
-  originalTableData: PurchaseSale[] = [];
-  tableData: PurchaseSale[] = [];
+  originalTableDataSales: PurchaseSale[] = [];
+  originalTableDataUser: NewUserTable[] = [];
+  originalTableDataMov: AllMovementTable[] = [];
+  tableDataMov: AllMovementTable[] = [];
+  tableDataSales: PurchaseSale[] = [];
+  tableDataUser: NewUserTable[] = [];
 
-  displayedColumns: string[] = ['date', 'name', 'publication', 'amount'];
-  showTable: boolean = false;
+
+  salesDisplayedColumns: string[] = ['date', 'name', 'publication', 'amount'];
+  userDisplayedColumns: string[] = ['year', 'week', 'startDate', 'endDate', 'userQuantity'];
+  movDisplayedColumns: string[] = ['date', 'seller', 'buyer', 'publication', 'amount'];
+
+  showTableMov: boolean = false;
+  showTableSales: boolean = false;
+  showTableUser: boolean = false;
   showViewer: boolean = false;
+  showGraph: boolean = false;
   nameFilter: string = '';
 
   constructor(private http: HttpClient, private _apiReportService:ApiReportService, private _tok:TokenService){
@@ -37,9 +56,9 @@ export class ReportViewerComponent {
     const searchText = this.nameFilter.toLowerCase();
 
     if (searchText == '') {
-      this.tableData = this.originalTableData;
+      this.tableDataSales = this.originalTableDataSales;
     } else {
-      this.tableData = this.originalTableData.filter(item => item.name.toLowerCase().includes(searchText));
+      this.tableDataSales = this.originalTableDataSales.filter(item => item.name.toLowerCase().includes(searchText));
     }
   }
 
@@ -47,20 +66,14 @@ export class ReportViewerComponent {
     const dStartDate = new Date(this.startDate);
     const dEndDate = new Date(this.endDate);
 
-    
-
     console.log(dStartDate)
-    // Verifica si las fechas son válidas
     if (!isNaN(dStartDate.getTime()) && !isNaN(dEndDate.getTime())) {
-      // Realiza el filtrado de datos
-      this.tableData = this.tableData.filter(item => {
+      this.tableDataSales = this.tableDataSales.filter(item => {
         const fechaItem = new Date(item.date);
 
-        // Comprueba si la fecha del elemento está dentro del rango
         return fechaItem >= dStartDate && fechaItem <= dEndDate;
       });
     } else {
-      // Las fechas ingresadas no son válidas, puedes mostrar un mensaje de error o manejarlo de otra manera
       console.log('Fechas no válidas');
     }
   
@@ -68,13 +81,50 @@ export class ReportViewerComponent {
 
   getTableList() {
     this.getReportPath(this.selectedReportType);
-    this._apiReportService.getTableList(this.reportPath, this.idUser).subscribe((data) => {
-      this.originalTableData = data;
-      this.tableData = data;
-      this.showTable = true;
-      this.showViewer = false;
-    });
-    console.log(this.tableData);
+
+    if(this.reportPath == "NewUserReport")
+    {
+      this._apiReportService.getUserTableList(this.startDate, this.endDate).subscribe((data) => {
+        console.log(data);
+        this.originalTableDataUser = data;
+        this.tableDataUser = data;
+        this.showTableMov = false;
+        this.showTableSales = false;
+        this.showTableUser = true;
+        this.showGraph = true;
+        this.showViewer = false;
+      });
+
+      this._apiReportService.getUserGraphList(this.startDate, this.endDate).subscribe(data => {
+        this.barChartData.labels = data.map(item => `${item.yearNumber} - Wk ${item.weekNumber}`);
+        this.barChartData.datasets[0].data = data.map(item => item.userQuantity);
+        // Actualiza el gráfico después de llenar los datos
+        this.chart?.update();
+      });
+
+    }else if(this.reportPath == "AllMovementReport")
+    {
+      this._apiReportService.getMovementTableList(this.startDate, this.endDate).subscribe((data) => {
+        console.log(data);
+        this.originalTableDataMov = data;
+        this.tableDataMov = data;
+        this.showTableMov = true;
+        this.showTableSales = false;
+        this.showTableUser = false;
+        this.showGraph = false;
+        this.showViewer = false;
+      });  
+    }else{
+      this._apiReportService.getMovTableList(this.reportPath, this.idUser).subscribe((data) => {
+        this.originalTableDataSales = data;
+        this.tableDataSales = data;
+        this.showTableMov = false;
+        this.showTableSales = true;
+        this.showTableUser = false;
+        this.showGraph = false;
+        this.showViewer = false;
+      });
+    }
   }
 
   changeSelected(){
@@ -98,7 +148,9 @@ export class ReportViewerComponent {
   }
 
   getReport() {
-    this.showTable = false;
+    this.showTableMov = false;
+    this.showTableSales = false;
+    this.showGraph = false;
     this.showViewer = true;
     this.getReportPath(this.selectedReportType);
   
@@ -107,11 +159,11 @@ export class ReportViewerComponent {
       return;
     }
     if (this.reportPath === 'SalesReport' || this.reportPath === 'PurchaseReport') {
-      this._apiReportService.getReportPdf(this.reportPath, this.idUser)
+      this._apiReportService.getReportPdf(this.idUser, this.reportPath, '2023-01-01', '2023-01-02' )
         .subscribe((data: ArrayBuffer) => this.displayReport(data));
     }
-    if (this.reportPath === 'NewUserReport') {
-      this._apiReportService.getReportPdfWithParams(this.reportPath, this.startDate, this.endDate)
+    if (this.reportPath === 'NewUserReport' || this.reportPath === 'AllMovementReport') {
+      this._apiReportService.getReportPdfWithParams(this.idUser, this.reportPath, this.startDate, this.endDate)
         .subscribe((data: ArrayBuffer) => this.displayReport(data));
     }
   }
@@ -123,49 +175,101 @@ export class ReportViewerComponent {
   }
 
   downloadReport() {
-
-    // Verificar si hay un PDF cargado actualmente
     if (this.pdfSrc) {
-      // Extraer el nombre del reporte de la URL actual
       const reportName = this.reportPath;
       if (this.reportPath === 'SalesReport' || this.reportPath === 'PurchaseReport') {
-        this._apiReportService.downloadNormalPdf(reportName, this.idUser)
+        this._apiReportService.downloadNormalPdf(this.idUser,reportName, '2023-01-01','2023-01-02')
         .subscribe((data: Blob) => {
-          // Crear un objeto URL para el blob del PDF
+
           const blobUrl = window.URL.createObjectURL(data);
 
-          // Crear un elemento <a> para descargar el PDF
           const anchor = document.createElement('a');
           anchor.href = blobUrl;
-          anchor.download = reportName; // Establecer el nombre del archivo
+          anchor.download = reportName; 
           
-          // Simular un clic en el enlace para iniciar la descarga
           anchor.click();
 
-          // Liberar el objeto URL creado
           window.URL.revokeObjectURL(blobUrl);
         });
       }
-      if (this.reportPath === 'NewUserReport') {
-        this._apiReportService.downloadParamsPdf(reportName, this.startDate, this.endDate)
+      if (this.reportPath === 'NewUserReport' || this.reportPath === 'AllMovementReport') {
+        this._apiReportService.downloadParamsPdf(this.idUser,reportName, this.startDate, this.endDate)
         .subscribe((data: Blob) => {
-          // Crear un objeto URL para el blob del PDF
           const blobUrl = window.URL.createObjectURL(data);
-
-          // Crear un elemento <a> para descargar el PDF
           const anchor = document.createElement('a');
           anchor.href = blobUrl;
-          anchor.download = reportName; // Establecer el nombre del archivo
-          
-          // Simular un clic en el enlace para iniciar la descarga
+          anchor.download = reportName; 
           anchor.click();
-
-          // Liberar el objeto URL creado
           window.URL.revokeObjectURL(blobUrl);
         });
       }
-      // Llamar al servicio para descargar el PDF
       
     }else console.log('No funciona');
   }
+
+  ///////////////
+
+  @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
+
+  public barChartOptions: ChartConfiguration['options'] = {
+    responsive: true,
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: 'Year and Week'
+        }
+      },
+      y: {
+        title: {
+          display: true,
+          text: 'User Quantity'
+        },
+        min: 0,
+      },
+    },
+    plugins: {
+      legend: {
+        display: true,
+      },
+    },
+  };
+
+  public barChartType: ChartType = 'bar';
+  public barChartPlugins = [];
+
+  public barChartData: ChartData<'bar'> = {
+    labels: [],
+    datasets: [
+      {
+        data: [],
+        label: 'User Quantity',
+      },
+    ],
+  };
+
+
+  // Eventos (puedes mantener tus métodos chartClicked y chartHovered sin cambios)
+
+  public chartClicked({
+    event,
+    active,
+  }: {
+    event?: ChartEvent;
+    active?: object[];
+  }): void {
+    //console.log(event, active);
+  }
+
+  public chartHovered({
+    event,
+    active,
+  }: {
+    event?: ChartEvent;
+    active?: object[];
+  }): void {
+    //console.log(event, active);
+  }
 }
+
+
