@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
 //  transt.setIdiomDefault();
  }
  ngOnInit(): void {
+  this.rout.navigate(['principal'])
 }
 }
 
