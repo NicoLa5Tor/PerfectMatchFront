@@ -91,7 +91,6 @@ export function HttpLoaderFactory(http : HttpClient){
     
     NgxPayPalModule,
     BrowserModule,
-
     MatBottomSheetModule,
     NgFor,
     MatListModule,
