@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { NavbarComponent } from './View/navbar/navbar.component';
 import { PropertyCardComponent } from './View/Property/property-card/property-card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
@@ -27,6 +26,7 @@ import {MatTableModule} from '@angular/material/table';
 
 
 
+import {MatExpansionModule} from '@angular/material/expansion';
 //esto es para trabajar con alertas
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 //para trabajar los iconos de material
@@ -48,6 +48,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PaypalComponent } from './View/Property/paypal/paypal.component';
 
 
+import {MatCardModule} from '@angular/material/card'
 import { NgxPayPalModule } from 'ngx-paypal';
 import { ReportViewerComponent } from './View/report-viewer/report-viewer.component';
 
@@ -68,6 +69,10 @@ import { DatePipe } from '@angular/common';
 import { TimeZoneService } from './Services/time-zone.service';
 import { ErrorComponent } from './View/Property/error/error.component';
 import { TranslatService } from './Services/Translate.service';
+import { CommentsComponent } from './View/Property/comments/comments.component';
+import { GenerateTokenComponent } from './View/Access/recover-pass/recover-pass.component';
+import { NotificationComponent } from './View/Property/Notifications/notification/notification.component';
+import { NewPassComponent } from './View/Access/new-pass/new-pass.component';
 
 
 
@@ -92,6 +97,10 @@ export function HttpLoaderFactory(http : HttpClient){
     FooterComponent,
     ReLoginComponent,
     ErrorComponent,
+    NewPassComponent,
+    NotificationComponent,
+    CommentsComponent,
+    GenerateTokenComponent
   ],
   imports: [
     
@@ -107,6 +116,7 @@ export function HttpLoaderFactory(http : HttpClient){
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatExpansionModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatAutocompleteModule,
@@ -116,6 +126,7 @@ export function HttpLoaderFactory(http : HttpClient){
     MatSnackBarModule, 
     MatIconModule,
     MatDialogModule,
+    MatCardModule,
     MatGridListModule,
     CommonModule,
     ReactiveFormsModule,

@@ -1,0 +1,17 @@
+
+<div id="notifications" >
+
+    <mat-card *ngFor="let notification of notifications" class="card shadow-lg">
+        <div class="row1">
+            <div class="column1">
+    <mat-card-header class="text-color">{{(notification.typeNotification==0?"info":notification.typeNotification==1?"Se realizo la compra de : pajilla ":"Venta de: pajilla ")+notification.namePublication}}</mat-card-header>
+       
+        <mat-card-content>{{notification.description}}</mat-card-content>
+        <mat-card-actions><a class="deleteNoti"  (click)="removeNotification(notification.idNotification)"><mat-icon>delete</mat-icon> </a></mat-card-actions>
+        </div>
+        <div class="column2 imageNoti">
+        <img mat-card-image width="100" src="data:image;base64,{{notification.imagePublication}}"></div></div>
+        
+        
+    </mat-card>
+</div>

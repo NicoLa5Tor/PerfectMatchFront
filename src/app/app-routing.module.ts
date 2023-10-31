@@ -16,6 +16,8 @@ import { ReLoginComponent } from './View/re-login/re-login.component';
 import { Relogin } from './Guards/ReloginGuard';
 import { MapComponent } from './View/Map/map.component';
 import { ErrorComponent } from './View/Property/error/error.component';
+import { NewPassComponent } from './View/Access/new-pass/new-pass.component';
+import { GenerateTokenComponent } from './View/Access/recover-pass/recover-pass.component';
 import { GuardAdmin } from './Guards/GuardAdmin';
 import { GuardPrincipal } from './Guards/GuardPrincipal';
 

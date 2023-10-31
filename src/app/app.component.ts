@@ -11,14 +11,12 @@ export class AppComponent implements OnInit {
   action  = false;
  constructor(private rout : Router,
   private tok : ActivatedRoute,
-
-
  ){
  
 //  transt.setIdiomDefault();
  }
  ngOnInit(): void {
-this.rout.navigate(['principal'])
+  this.rout.navigate(['principal'])
 }
 }
 

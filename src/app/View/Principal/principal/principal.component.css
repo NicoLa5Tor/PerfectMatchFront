@@ -3,10 +3,60 @@ body{
     width: 100%;
     overflow-x: hidden;
     max-height: max-content;
+    min-width: 500px;
+}
+.text-white{
+    color: #ffffff;
+}
+.row1{
+    margin:5px;
+}
+#notificationObj{
+    
+    min-width: 370px;
+    display:none;
+    width: 37%;
+    left:17%;
+    position: fixed !important; 
+    background-color: #333; /* Ancho fijo del contenedor */
+    max-height: 90vh; /* Altura fija del contenedor */
+    overflow: auto; /* Agrega barras de desplazamiento automáticamente cuando sea necesario */
+    border: 1px solid #ccc; /* Borde para mayor claridad */
+    z-index: 1000;
+    top:80px;
+    max-width:419.725px;
+    
+    height:auto;
 }
 .filter{
     display: none;
 }
+#togle{
+    display: none;
+}
+.buttonshow{
+    width:100%;
+}
+.mat-mdc-menu-item .mat-icon {
+    
+    margin-right:0 ;
+}
+
+.scrollable-container::-webkit-scrollbar {
+    width: 10px; /* Ancho de la barra de desplazamiento */
+}
+
+/* Estilo del pulgar de la barra de desplazamiento */
+.scrollable-container::-webkit-scrollbar-thumb {
+    background: #ccc; /* Color de fondo del pulgar de la barra de desplazamiento */
+    border-radius: 5px; /* Borde redondeado del pulgar */
+}
+
+/* Cambiar el color del pulgar al pasar el cursor */
+.scrollable-container::-webkit-scrollbar-thumb:hover {
+    background: #888; /* Color del pulgar cuando se pasa el cursor */
+}
+
 .menu{
     display: none;
     height: 60px;
@@ -180,6 +230,11 @@ h2{
     text-align: center;
 }
 }
+@media (max-width:400px) {
+    #notificationObj{
+        left: 0;
+    }
+    }
 footer{
     backdrop-filter: blur(10px); /* Aplicar difuminado al contenido detrás */
     bottom: 0;

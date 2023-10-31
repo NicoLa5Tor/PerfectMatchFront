@@ -10,14 +10,14 @@ import { Breed } from 'src/app/Models/Breed';
 import { City } from 'src/app/Models/City';
 import { AnimalType } from 'src/app/Models/AnimalType';
 import { gender } from 'src/app/Models/Gender';
-import { Client } from 'src/app/Models/Client';
 import { ApiBreedService } from 'src/app/Services/api-breed.service';
 import { ApiAnimalTypeService } from 'src/app/Services/api-animalType.services';
 import { ApiCityService } from 'src/app/Services/api-city.services';
-import { ApiClientService } from 'src/app/Services/api-client.services';
 import { ApiGenderService } from 'src/app/Services/api-gender.ervices.type';
 import { ErrorCom } from 'src/app/Models/Error';
 import { ErrorService } from 'src/app/Services/Error.Service';
+import { ApiUserService } from 'src/app/Services/api-user.service';
+import { User } from 'src/app/Models/User';
 
 @Component({
   selector: 'app-property-list',
@@ -30,13 +30,13 @@ export class PropertyListComponent implements OnInit {
   publications1:Publication[]=[];
 
   filter:Filter={ageF:20,ageI:0,idAnimalType:0,idBreed:0,idCity:0,idGender:0,weightF:700,weightI:0,idOwner:0};
-
+  query: string = "";
   Breeds:Breed[]=[];
   Breeds1:Breed[]=[];
   Citys:City[]=[];
   AnimalTypes:AnimalType[]=[];
   Genders:gender[]=[];
-  Sellers:Client[]=[];
+  Sellers:User[]=[];
 
 
   position: number = 0;
@@ -49,7 +49,7 @@ export class PropertyListComponent implements OnInit {
     private dialog: MatDialog,
     private router: Router,private _ApiBreed:ApiBreedService,
     private _ApiAnimalType:ApiAnimalTypeService, private _ApiCity:ApiCityService,
-    private _ApiGenderService:ApiGenderService,private _ApiClient:ApiClientService,
+    private _ApiGenderService:ApiGenderService,private _ApiClient:ApiUserService,
     private error : ErrorService
     ){
     
@@ -130,21 +130,104 @@ export class PropertyListComponent implements OnInit {
     this.publications.forEach(element => {
      
       if(
-      (element.idCity == this.filter.idCity || this.filter.idCity == 0 )&&
-      (element.idOwner == this.filter.idOwner || this.filter.idOwner == 0)&&
+        (element.idCity == this.filter.idCity || this.filter.idCity == 0) &&
+        (element.idOwner == this.filter.idOwner || this.filter.idOwner == 0) &&
+
+        (element.weight > this.filter.weightI - 1) &&
+        (element.weight < this.filter.weightF + 1 || this.filter.weightF == 0 || (typeof (this.filter.weightF) != "number")) &&
+        (element.idGender == this.filter.idGender || this.filter.idGender == 0) &&
+        (element.age > this.filter.ageI - 1) &&
+        (element.age < this.filter.ageF + 1 || this.filter.ageF == 0 || (typeof (this.filter.ageF) != "number")) &&
+        (element.idAnimalType == this.filter.idAnimalType || this.filter.idAnimalType == 0) &&
+        (element.idBreed == this.filter.idBreed || this.filter.idBreed == 0))
       
-      ( element.weight>this.filter.weightI-1)&&
-      (element.weight<this.filter.weightF+1||this.filter.weightF==0||(typeof(this.filter.weightF)!="number"))&&
-      (element.idGender==this.filter.idGender||this.filter.idGender==0)&&
-      (element.age>this.filter.ageI-1)&&
-      (element.age<this.filter.ageF+1||this.filter.ageF==0||(typeof(this.filter.ageF)!="number"))&&
-      (element.idAnimalType==this.filter.idAnimalType||this.filter.idAnimalType==0)&&
-      (element.idBreed==this.filter.idBreed||this.filter.idBreed==0)
-      )
       this.publications1.push(element);
       
     });
   
+  }
+  
+  sortInvers() {
+    this.publications1.reverse();
+  }
+  sortByCity() {
+    let truste = true;
+    while (truste) {
+      truste = false;
+      for (let i = 0; i < this.publications1.length - 1; i++) {
+        if (this.publications1[i].cityName > this.publications1[i + 1].cityName) {
+          let publi = this.publications1[i];
+          this.publications1[i] = this.publications1[i + 1];
+          this.publications1[i + 1] = publi;
+          truste = true;
+        }
+      }
+    }
+  }
+  sortByWeight() {
+    let menor!: Publication;
+    let position = 0;
+    let menorPosi = 0;
+    let truste = true;
+    while (truste) {
+      for (let i = position; i < this.publications1.length - 1; i++) {
+        if (i == position) {
+          menor = this.publications1[i];
+          menorPosi = i;
+        }
+        if (menor.weight > this.publications1[i + 1].weight) {
+          menor = this.publications1[i + 1];
+          menorPosi = i + 1;
+        }
+      }
+      if (menor != this.publications1[position]) {
+        let publi1: Publication = menor;
+        this.publications1[menorPosi] = this.publications1[position];
+        this.publications1[position] = publi1;
+      }
+      position++;
+      if (position === this.publications1.length - 1) { truste = false; }
+    }
+  }
+  showpublic() { 
+
+  }
+  sortByAnimalName() {
+    
+    let actualObj!: Publication;
+    for (let i = 1; i < this.publications1.length; i++) {
+      if (this.publications1[i].animalName < this.publications1[i - 1].animalName) {
+        for (let ni = i - 1; ni >= 0; ni--) {
+          if ((this.publications1[ni].animalName <= this.publications1[i].animalName)||ni==0) {
+            actualObj=this.publications1[i];
+            let nivali = ni==0&&this.publications1[ni].animalName > this.publications1[i].animalName?ni:ni+1;
+            for(let move = i-1;move>= ( nivali);move--)
+            {
+              this.publications1[move+1]=this.publications1[move];
+            }
+            this.publications1[nivali]=actualObj;
+            break;
+          }
+        }
+        
+      }
+    }
+  }
+  Query(){
+    this.publications1 = [];
+    this.publications.forEach(element => {
+      if (
+        ((element.cityName.toLowerCase()).search(this.query.toLowerCase())!=-1)||
+        ((element.animalName.toLowerCase()).search(this.query.toLowerCase())!=-1)||
+        ((element.breedName.toLowerCase()).search(this.query.toLowerCase())!=-1)||
+        ((element.nameOwner.toLowerCase()).search(this.query.toLowerCase())!=-1)||
+        (((element.genderName as string).toLowerCase()).search(this.query.toLowerCase())!=-1)||
+        ((element.typeName.toLowerCase()).search(this.query.toLowerCase())!=-1))
+        {
+          this.publications1.push(element);
+        }
+
+    });
   }
 
 }

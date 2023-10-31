@@ -1,5 +1,6 @@
 export interface Image{
     idImage ?:number,
     idPublication? :number,
-    dataImage :string;
+    dataImage ?:string;
+    number:number;
 }
