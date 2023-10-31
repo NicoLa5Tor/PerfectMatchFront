@@ -1,0 +1,42 @@
+<!-- form card change password -->
+<div class="form1">
+    <div class="recard">
+        <div class="card1">
+            <div class="card-header">
+                <h3 class="mb-0">Update Password</h3>
+            </div>
+            <div class="card-body">
+
+                <form class="form" role="form" autocomplete="off" (ngSubmit)="updatePass()" [formGroup]="formNPass">
+
+
+                    <mat-form-field appearance="fill" class="w100">
+                        <mat-label
+                            [ngStyle]="{'color': formNPass.get('pass')?.touched && (formNPass.get('pass')?.errors?.['required']&&formNPass.get('pass')?.errors?.['minlength'])?'red':'ligthblue'}">
+                            {{formNPass.get('pass')?.touched &&
+                            formNPass.get('pass')?.errors?.['required']?'required':formNPass.get('pass')?.touched &&
+                            formNPass.get('pass')?.errors?.['minlength']? 'must be at least 8 characters':
+                            formNPass.get('pass')?.touched? 'Good':'Type password'}}</mat-label>
+                        <input matInput type="password" id="pass" formControlName="pass">
+                    </mat-form-field>
+
+
+                    <mat-form-field appearance="fill" class="w100">
+                        <mat-label
+                            [ngStyle]="{'color': formNPass.get('pass2')?.touched && (formNPass.get('pass2')?.errors?.['required']&&formNPass.get('pass2')?.errors?.['minlength'])?'red':'ligthblue'}">
+                            {{formNPass.get('pass2')?.touched &&
+                            formNPass.get('pass2')?.errors?.['required']?'required':formNPass.get('pass2')?.touched &&
+                            formNPass.get('pass2')?.errors?.['minlength']? 'must be at least 8 characters':
+                            formNPass.get('pass2')?.touched? 'Good':'Repeat password'}}</mat-label>
+                        <input matInput type="password" id="pass2" formControlName="pass2">
+                    </mat-form-field>
+
+                    <button mat-raised-button color="primary" class="w100" type="submit"
+                        [disabled]="formNPass.invalid">Save</button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

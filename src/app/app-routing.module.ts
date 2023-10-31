@@ -15,15 +15,17 @@ import { ReLoginComponent } from './View/re-login/re-login.component';
 import { Relogin } from './Guards/ReloginGuard';
 import { MapComponent } from './View/Map/map.component';
 import { ErrorComponent } from './View/Property/error/error.component';
+import { NewPassComponent } from './View/Access/new-pass/new-pass.component';
+import { GenerateTokenComponent } from './View/Access/recover-pass/recover-pass.component';
 
 
 const routes: Routes = [
   { path: "logIndex/:token", component: AppComponent},
   { path: "login", component: LoginComponent, },
   { path: "register", component: RegisterComponent },
-  {path: "Relogin",component:ReLoginComponent , canActivate: [Relogin]
-       
-      },
+  {path: "Relogin",component:ReLoginComponent , canActivate: [Relogin]},
+  {path:"forgot", component: GenerateTokenComponent},
+  {path:"newpassword", component: NewPassComponent},
   {
     path: "principal", component: PrincipalComponent, canActivate: [ValidateToken], children: [
       {

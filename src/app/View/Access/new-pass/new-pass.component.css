@@ -1,0 +1,49 @@
+.error-message {
+    color: red;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+  }
+  
+  .error-message.show {
+    max-height: 100px; /* Ajusta el valor según sea necesario para el deslizamiento deseado */
+  }
+
+  .w100{
+    width:100%;
+  }
+  .card-header{
+    background: #5a5454;
+    color: white;
+    height:70%;
+    width:103%;
+    justify-self: center;
+  }
+  .card1{
+    width:40%;
+    height: 40%;
+    min-height: 298.875px;
+    min-width: 506.8px;
+    text-align: center;
+    display: grid;
+  }
+  .recard{
+    min-width: 522.237px;
+    max-width: 522.237px;
+    height: 50%;
+    min-height: 251.2px;
+    max-height: 299.2px;
+    background-color: aquamarine;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    border-radius: 5%;
+  }
+  .form1{
+    min-width: 591.237px;
+    min-height: 300px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

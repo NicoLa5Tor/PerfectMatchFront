@@ -10,109 +10,180 @@
     </div>
 </div>
 <div  class="w1-25  position-absolute justify-right top-0">
-    <div class="collapse fixe-position p-3 mb-2 bg-light " id="collapseSection">
-
-
-        <section class="cursor-hand user-select-none"  data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
-        <span class="w-25 bi bi-caret-down-fill "> City</span>
-        </section>
-        
-        <div class="collapse" id="collapse1">
-            <select class="form-select" (change)="updatePF()" [(ngModel)]="filter.idCity">
-                <option [value]="0">Any</option>
-                <option *ngFor="let city of Citys" [value]="city.idCity">{{city.cityName}}</option>
-            </select>
-        </div>
-
-
-        <section class="cursor-hand user-select-none"  data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
-        <span class="w-25 bi bi-caret-down-fill"> Seller</span>
-        </section>
-        
-        <div class="collapse" id="collapse2">
-           
-            <select class="form-select" (change)="updatePF()" [(ngModel)]="filter.idOwner">
-                <option [value]="0">Any</option>
-                <option *ngFor="let seller of Sellers" [value]="seller.idUser">{{seller.name}}</option>
-            </select>
-        </div>
-        
-        <section class="cursor-hand user-select-none"  data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
-            <span class="w-25 bi bi-caret-down-fill"> Weight</span>
-            </section>
+    <div class="fixe-position p-3 mb-2 bg-light " id="collapseSection">
+        <mat-toolbar class="row1">
+            <mat-form-field class="cols">
+                <mat-label>Type your query</mat-label>
+                <input id="query" matInput type="text" [(ngModel)]="query" (input)="Query()" >
+                <button *ngIf="query" matSuffix mat-icon-button aria-label="Clear" (click)="query=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
             
-            <div class="collapse" id="collapse3">
-                <form class="row">
-                    
-                    <div class="form-group col-md-6">
-                        <mat-form-field class="w-100">
-                        <mat-label>Initial Weight</mat-label>
-                        <input matInput type="number" class="form-control" [(ngModel)]="filter.weightI" name="weightI" (input)="updatePF()">
-                        </mat-form-field>
-                    </div>    
-                    <div class="form-group col-md-6">
-                        <mat-form-field class="w-100 min-vw-25">
-                            <mat-label>Final Weight</mat-label>
-                        <input matInput type="number" class="form-control" [(ngModel)]="filter.weightF" name="weightF" (input)="updatePF()">
-                        </mat-form-field>
-                    </div>
-                </form>
-            </div>
-
-            <section class="cursor-hand user-select-none"  data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-                <span class="w-25 bi bi-caret-down-fill"> Gender</span>
-                </section>
+            <button  mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-butto*n with a menu" matSuffix aria-label="Clear" id="buttonSorts" >
+                <mat-icon >more_vert</mat-icon>
                 
-                <div class="collapse" id="collapse4">
-                    <select class="form-select" (change)="updatePF()" [(ngModel)]="filter.idGender">
-                        <option [value]="0">Any</option>
-                        <option *ngFor="let gender of Genders" [value]="gender.idGender">{{gender.genderName}}</option>
-                    </select>
-                </div>
-
-
-                <section class="cursor-hand user-select-none"  data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
-                    <span class="w-25 bi bi-caret-down-fill"> Animal Type</span>
-                    </section>
-                    
-                    <div class="collapse" id="collapse5">
-                        <select class="form-select" (change)="updateBreed()" (change)="updatePF()" [(ngModel)]="filter.idAnimalType">
-                            <option [value]="0">Any</option>
-                            <option *ngFor="let type of AnimalTypes" [value]="type.idAnimalType">{{type.animalTypeName}}</option>
-                        </select>
-                    </div>
-                    
-                <section class="cursor-hand user-select-none"  data-toggle="collapse" data-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
-                    <span class="w-25 bi bi-caret-down-fill"> Breed</span>
-                    </section>
-                    
-                    <div class="collapse" id="collapse6">
-                        <select class="form-select" (change)="updatePF()" [(ngModel)]="filter.idBreed">
-                            <option [value]="0">Any</option>
-                            <option *ngFor="let Breed of Breeds1" [value]="Breed.idBreed">{{Breed.breedName}}</option>
-                        </select>
-                    </div>
-
-                    
-        <section class="cursor-hand user-select-none"  data-toggle="collapse" data-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
-            <span class="w-25 bi bi-caret-down-fill"> Age</span>
-            </section>
+              </button>
+              <mat-menu #menu="matMenu" id="menuSorts">
+                <p class="displaygrid">
+                <span class="title">Sort by</span></p>
+                <button id="sortByCity" mat-menu-item (click)="sortByCity()">
+                  <mat-icon>dialpad</mat-icon>
+                  <span>City</span>
+                </button>
+                <button id="sortByWeight" mat-menu-item (click)="sortByWeight()">
+                  <mat-icon>dialpad</mat-icon>
+                  <span>weight</span>
+                </button>
+                <button id="sortByAnimalName" mat-menu-item (click)="sortByAnimalName() ">
+                  <mat-icon>dialpad</mat-icon>
+                  <span>AnimalName</span>
+                </button>
+            </mat-menu>
+            <button id="sortInvers" mat-icon-button aria-label="Example icon-button with heart icon" (click)="sortInvers()">
+                <mat-icon>cached</mat-icon>
+            </button>
+          </mat-toolbar>
             
-            <div class="collapse" id="collapse7">
-                <form class="row">
-                    
-                    <div class="form-group col-md-6">
-                        <mat-form-field class="w-100">
-                        <mat-label>Initial Age</mat-label>
-                        <input matInput type="number" class="form-control" [(ngModel)]="filter.ageI" name="ageI" (input)="updatePF()">
-                        </mat-form-field>
-                    </div>    
-                    <div class="form-group col-md-6">
-                        <mat-form-field class="w-100 min-vw-25">
-                            <mat-label>Final Age</mat-label>
-                        <input matInput type="number" class="form-control" [(ngModel)]="filter.ageF" name="ageF" (input)="updatePF()">
-                        </mat-form-field>
-                    </div>
-                </form>
-            </div>
+        <mat-accordion class="row1">
+            <mat-expansion-panel id="cityPanel" class="row1">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        City
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Filter by cities
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-form-field>
+                    <mat-label>Select a city</mat-label>
+                    <mat-select name="selectCity" [(ngModel)]="filter.idCity">
+                        <mat-option id="optionCity" (click)="updatePF()" value="0">None</mat-option>
+                        <mat-option (click)="updatePF()" *ngFor="let city of Citys"
+                            [value]="city.idCity">{{city.cityName}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-expansion-panel>
+            <mat-expansion-panel id="panelSeller">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Seller
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Filter by sellers
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-form-field>
+                    <mat-label>Select a seller</mat-label>
+                    <mat-select name="selectSeller" [(ngModel)]="filter.idOwner">
+                        <mat-option id="optionSeller" (click)="updatePF()" value="0">None</mat-option>
+                        <mat-option (click)="updatePF()" *ngFor="let seller of Sellers"
+                            [value]="seller.idUser"><mat-icon>face</mat-icon>{{seller.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel id="panelWeight">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Weight
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Filter by weights
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-label>Select a range of weight</mat-label>
+                <mat-form-field>
+                    <mat-label>Greater than</mat-label>
+                    <input id="inputWeightI" matInput (input)="updatePF()" [(ngModel)]="filter.weightI">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Less than</mat-label>
+                    <input id="inputWeightF" matInput (input)="updatePF()" [(ngModel)]="filter.weightF">
+                </mat-form-field>
+            </mat-expansion-panel>
+
+
+            <mat-expansion-panel id="panelGender">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Gender
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Filter by gender
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-form-field>
+                    <mat-label>Select a gender</mat-label>
+                    <mat-select name="selectGender" [(ngModel)]="filter.idGender">
+                        <mat-option id="optionGender" (click)="updatePF()" value="0">None</mat-option>
+                        <mat-option (click)="updatePF()" *ngFor="let gender of Genders"
+                            [value]="gender.idGender">{{gender.genderName}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-expansion-panel>
+
+
+            <mat-expansion-panel id="PanelAnimalT">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Animal Type
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Filter by animal Type
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-form-field>
+                    <mat-label>Select a animal Type</mat-label>
+                    <mat-select name="selectAnimalT" [(ngModel)]="filter.idAnimalType">
+                        <mat-option id="optionAnimalT" (click)="updateBreed()" (click)="updatePF()" value="0">None</mat-option>
+                        <mat-option (click)="updateBreed()" (click)="updatePF()" *ngFor="let type of AnimalTypes"
+                            [value]="type.idAnimalType">{{type.animalTypeName}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-expansion-panel>
+
+
+            <mat-expansion-panel id="panelBreed">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Animal Breed
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Filter by animal breed
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-form-field>
+                    <mat-label>Select a animal breed</mat-label>
+                    <mat-select name="selectBreed" [(ngModel)]="filter.idBreed">
+                        <mat-option id="optionBreed" (click)="updatePF()" value="0">None</mat-option>
+                        <mat-option (click)="updatePF()" *ngFor="let Breed of Breeds1"
+                            [value]="Breed.idBreed">{{Breed.breedName}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-expansion-panel>
+
+
+            <mat-expansion-panel id="panelAge">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Age
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Filter by age
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-label>Select a range of age</mat-label>
+                <mat-form-field>
+                    <mat-label>Greater than</mat-label>
+                    <input id="inputAgeI" matInput (input)="updatePF()" [(ngModel)]="filter.ageI">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Less than</mat-label>
+                    <input id="inputAgeF" matInput (input)="updatePF()" [(ngModel)]="filter.ageF">
+                </mat-form-field>
+            </mat-expansion-panel>
+        </mat-accordion>
     </div>

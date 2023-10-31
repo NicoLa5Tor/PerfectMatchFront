@@ -31,8 +31,11 @@
             </a>
 
           
+        
+          
 
         </mat-menu>
+              
         <a>
             <div class="filter">
                 <a mat-list-item style="cursor: pointer;" *ngIf="hrefActual==='/principal/PropertyList'" name="button_filters"
@@ -58,8 +61,8 @@
                     <i class="{{link.icon}} display-8"></i>
                     {{link.text | translate}}
                 </a>
-
-                <a mat-list-item class="selected" *ngIf="hrefActual==='/principal/PropertyList'" name="button_filters"
+                <button class="buttonshow" (click)="showNotifications()" id="BShowNotifications" mat-menu-item><mat-icon class="buttonshow">notifications</mat-icon><span>notifications</span></button>
+                <a  mat-list-item class="selected" *ngIf="hrefActual==='/principal/PropertyList'" (click)="showFilters()" class="button_filters" name="button_filters"
                     type="submit" data-toggle="collapse" href="#collapseSection" aria-expanded="false"
                     aria-controls="collapseSection">
                     <i class="bi bi-funnel"></i>
@@ -73,6 +76,8 @@
 
         <div class="div-inlane">
 
+            <div id="notificationObj" class="scrollable-container">
+                <app-notification  ></app-notification></div>
             <router-outlet>
 
             </router-outlet>

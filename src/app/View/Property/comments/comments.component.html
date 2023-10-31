@@ -1,0 +1,22 @@
+
+<ng-container *ngFor="let comment of listComments">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      {{ comment.comment1 |translate }} |
+     <p class="textBlue">{{ comment.nameUser }}</p> 
+    </mat-expansion-panel-header>
+    <form [formGroup]="commentForm">
+      <mat-form-field >
+        <input matInput formControlName="commentText" placeholder="{{'Añadir un comentario'|translate}}">
+      </mat-form-field>
+      <button
+     [disabled]="commentForm.invalid"  mat-raised-button (click)="addComment(comment)">{{'Agregar Comentario'|translate}}</button>
+    </form>
+    <div *ngIf="comment.comments && comment.comments.length > 0">
+      <app-comments [listComments]="comment.comments"></app-comments>
+    </div>
+  </mat-expansion-panel>
+  </ng-container>
+
+
+      <!--app-comments [listComments]="comment.comments"></app-comments!-->
