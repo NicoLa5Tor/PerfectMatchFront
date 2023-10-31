@@ -1,7 +1,7 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { ResponseLogin } from 'src/app/Models/ResponseLogin';
 import { LoginService } from 'src/app/Services/login.service';
 import { Login } from 'src/app/Models/Login';
@@ -68,11 +68,18 @@ export class LoginComponent implements OnInit{
           
             this.user.getUser(this.tok.getIdUser()).subscribe({
               next:(data) => {
-                console.log("EL rol es: ",data);
+                if(data > 1){
+                  console.log("se va al principal por rol ; ",data)
+                  this.rout.navigate(['principal']);
+                }else{
+                  console.log("se va al principalAdmin por rol ; ",data)
+                 const id = this.tok.getIdUser()
+                  this.rout.navigate([`principalAdmin`])
+                }
               }
             })
             //console.log("datos ", this.token);
-            this.rout.navigate(['principal']);
+        
             
           } else {
             console.log("usuario no exitente")

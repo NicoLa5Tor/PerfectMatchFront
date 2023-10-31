@@ -16,6 +16,8 @@ import { ReLoginComponent } from './View/re-login/re-login.component';
 import { Relogin } from './Guards/ReloginGuard';
 import { MapComponent } from './View/Map/map.component';
 import { ErrorComponent } from './View/Property/error/error.component';
+import { GuardAdmin } from './Guards/GuardAdmin';
+import { GuardPrincipal } from './Guards/GuardPrincipal';
 
 
 const routes: Routes = [
@@ -25,8 +27,50 @@ const routes: Routes = [
   {path: "Relogin",component:ReLoginComponent , canActivate: [Relogin]
        
       },
+  {path : "principalAdmin" ,component : PrincipalComponent, canActivate: [ValidateToken] , children:[
+    {
+      path: "Profile", component: PropertyListComponent, canActivate: [ValidateToken],
+      data: {
+        authInterceptor: AuthInterceptor
+      }
+    },
+    {
+      path: "Map", component: MapComponent, canActivate: [GuardAdmin],
+      data: {
+        authInterceptor: AuthInterceptor
+      }
+    },
+    {
+      path: "Error", component: ErrorComponent,canActivate: [GuardAdmin],
+      data: {
+        authInterceptor: AuthInterceptor
+      }
+    },
+    {
+      path: "Form", component: AddPublicationComponent,canActivate: [GuardAdmin],
+       data: {
+        authInterceptor: AuthInterceptor
+      }
+    },
+    {
+      path: "dialogImage", component: ImgeDialogComponent, canActivate: [GuardAdmin],
+      data: {
+        authInterceptor: AuthInterceptor
+      }
+    },
+   
+    {
+      path: "pay", component: PaypalComponent, canActivate: [ValidateToken], canActivateChild:[GuardPrincipal],
+      data: {
+        authInterceptor: AuthInterceptor
+      }
+    },
+ 
+  ]
+ },
+  
   {
-    path: "principal", component: PrincipalComponent, canActivate: [ValidateToken], children: [
+    path: "principal", component: PrincipalComponent, canActivate: [ValidateToken], canActivateChild:[GuardPrincipal], children: [
       {
         path: "PropertyList", component: PropertyListComponent, canActivate: [ValidateToken],
         data: {
@@ -34,49 +78,49 @@ const routes: Routes = [
         }
       },
       {
-        path: "Map", component: MapComponent, canActivate: [ValidateToken],
+        path: "Map", component: MapComponent, canActivate: [ValidateToken], canActivateChild:[GuardPrincipal],
         data: {
           authInterceptor: AuthInterceptor
         }
       },
       {
-        path: "Error", component: ErrorComponent, canActivate: [ValidateToken],
+        path: "Error", component: ErrorComponent, canActivate: [ValidateToken],canActivateChild:[GuardPrincipal],
         data: {
           authInterceptor: AuthInterceptor
         }
       },
       {
-        path: "Profile/:id", component: PropertyListComponent, canActivate: [ValidateToken],
+        path: "Profile/:id", component: PropertyListComponent, canActivate: [ValidateToken],canActivateChild:[GuardPrincipal],
         data: {
           authInterceptor: AuthInterceptor
         }
       },
       {
-        path: "Form", component: AddPublicationComponent, canActivate: [ValidateToken]
-        , data: {
+        path: "Form", component: AddPublicationComponent, canActivate: [ValidateToken],canActivateChild:[GuardPrincipal],
+         data: {
           authInterceptor: AuthInterceptor
         }
       },
       {
-        path: "dialogImage", component: ImgeDialogComponent, canActivate: [ValidateToken], canActivateChild : [],
+        path: "dialogImage", component: ImgeDialogComponent, canActivate: [ValidateToken], canActivateChild:[GuardPrincipal],
         data: {
           authInterceptor: AuthInterceptor
         }
       },
       {
-        path: "card", component: PropertyCardComponent, canActivate: [ValidateToken],
+        path: "card", component: PropertyCardComponent, canActivate: [ValidateToken], canActivateChild:[GuardPrincipal],
         data: {
           authInterceptor: AuthInterceptor
         }
       },
       {
-        path: "pay", component: PaypalComponent, canActivate: [ValidateToken],
+        path: "pay", component: PaypalComponent, canActivate: [ValidateToken], canActivateChild:[GuardPrincipal],
         data: {
           authInterceptor: AuthInterceptor
         }
       },
       {
-        path: "Report", component: ReportViewerComponent, canActivate: [ValidateToken],
+        path: "Report", component: ReportViewerComponent, canActivate: [ValidateToken], canActivateChild:[GuardPrincipal],
         data: {
           authInterceptor: AuthInterceptor
         }

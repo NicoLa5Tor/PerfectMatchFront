@@ -4,24 +4,26 @@ import jwtDecode, { JwtPayload } from "jwt-decode";
 import { TokenService } from "../Services/token.service";
 import { RefreshToken } from "../Models/RefreshTok";
 import { LoginService } from "../Services/login.service";
+import { ApiUserService } from "../Services/api-user.service";
 export const ValidateToken = () => {
     let refresh : RefreshToken ;
 
-   
+   const user = inject(ApiUserService)
     const tokService = inject(LoginService)
     const rout = inject(Router);
     const tok = inject(TokenService)
     const jwtTok = tok.getTok("Token") || "";
     
     const currentTimestamp = Math.floor(Date.now() / 1000); 
-   console.log("EL token es:" + jwtTok)
+  // console.log("EL token es:" + jwtTok)
+
     if (jwtTok != null && jwtTok != "" ) {
         try {
             // Decodifica el token JWT
             const decodedToken : JwtPayload = jwtDecode(jwtTok);
-               const id = decodedToken.sub;
-           const userId = (decodedToken as any).nameid;
-            console.log('ID del usuario:', userId);
+          //     const id = decodedToken.sub;
+          // const userId = (decodedToken as any).nameid;
+           // console.log('ID del usuario:', userId);
        if (decodedToken.exp && decodedToken.exp > currentTimestamp) {
         console.log('El token JWT está vigente.');
 

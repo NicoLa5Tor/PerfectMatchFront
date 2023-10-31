@@ -1,5 +1,5 @@
 import { Component,HostListener,OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer,SafeResourceUrl } from '@angular/platform-browser';
 import { PropertyListComponent } from '../../Property/property-list/property-list.component';
 import jwtDecode, { JwtPayload } from 'jwt-decode';
@@ -15,7 +15,8 @@ export class PrincipalComponent {
   idUser : number  = 0;
   logoUrl: SafeResourceUrl;
   mostrarDiv = false;
-  id : number = 2;
+  
+  id! : number;
   hrefActual = "";
     links = [
       { isActive: false, text: 'Perfil', href: `/principal/Profile/${this.getIdUser()}`,icon: 'bi bi-person'},
@@ -24,11 +25,20 @@ export class PrincipalComponent {
       { isActive: false, text: ' Mapa', href: '/principal/Map',icon: 'fas fa-map-marker-alt' },
       { isActive: false, text: 'Reportes', href: '/principal/Report',icon: 'bi bi-book' }
     ];
+    linksAux = [
+      { isActive: false, text: 'Lista', href: `/principalAdmin/Profile/${this.getIdUser()}` ,icon: 'bi bi-list'},
+      { isActive: false, text: ' Mapa', href: '/principalAdmin/Map',icon: 'fas fa-map-marker-alt' },
+    ];
     constructor(private rout: Router,
     private tok : TokenService,
-   private sanitizer: DomSanitizer
+   private sanitizer: DomSanitizer,
+      private route: ActivatedRoute
 
       ) {
+        const id = this.route.snapshot.params["id"];
+        this.id = id;
+        console.log("el id es: ",id)
+
       const log = 'assets/logo-p.png'
       const img = 'assets/logo.png';
       this.imgUrl = this.sanitizer.bypassSecurityTrustResourceUrl(img);
@@ -36,7 +46,15 @@ export class PrincipalComponent {
  
     }
 ngOnInit(): void {
-  this.rout.navigate(['principal/PropertyList'])
+  const parseo = this.route.snapshot.paramMap.get('id');
+  if(this.id > 1){
+    this.rout.navigate(['principal/PropertyList'])
+  }else{
+    this.mostrarDiv = true;
+    this.rout.navigate([`principalAdmin/Profile`])
+
+  }
+
 }
 Routerl(href:string)
 {
