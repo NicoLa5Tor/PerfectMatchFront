@@ -1,0 +1,83 @@
+{
+
+
+
+    "Iniciar Sesión" : "Einloggen",
+    "Bienvenido de nuevo" : "Willkommen zurück",
+    "Vamos a hacer que las cosas fluyan" : "Lass uns die Dinge fließen",
+    "Correo Electrónico" : "E-Mail-Adresse",
+    "Contraseña" : "Passwort",
+    "¿No tienes cuenta?" : "Hast du kein Konto?",
+    "Registrarme" : "Registrieren",
+    "Acceder" : "Anmelden",
+     
+    "Código": "Code",
+    "código": "Code",
+    "a": "zu",
+    "nombre": "Name",
+    "Nombre": "Name",
+    "Ingresa tu": "Geben Sie Ihr",
+    "tu": "Ihr",
+    "Únete": "Treten Sie bei",
+    "Ciudad": "Stadt",
+    "contraseña": "Passwort",
+    "Código Paypal": "PayPal-Code",
+    "¿Ya estás registrado?": "Bist du bereits registriert?",
+    "correo": "E-Mail",
+    "es requerido": "ist erforderlich",
+    "Correo": "E-Mail",
+    "El": "Der",
+    "No es un correo electrónico válido": "Dies ist keine gültige E-Mail-Adresse",
+    "Selecciona una": "Wählen Sie eine",
+    "La contraseña debe tener al menos 6 caracteres": "Das Passwort muss mindestens 6 Zeichen lang sein",
+    "Contraseña requerida": "Passwort erforderlich",
+    "¿Ya tienes una cuenta?": "Hast du bereits ein Konto?",
+    "El correo electrónico ya está registrado": "Die E-Mail-Adresse ist bereits registriert",
+
+    "Pago por Paypal" : "Bezahlung mit PayPal",
+    "Compra del animal" : "Kauf des Tieres",
+    "Por un precio de" : "Für einen Preis von",
+
+    "Cerrar Sesión" : "Abmelden",
+    "Perfil" : "Profil",
+    "Lista" : "Liste",
+    "Añadir" : "Hinzufügen",
+    "Filtros" : "Filter",
+
+    "Tipo de animal" : "Art der Tier",
+    "Precio" : "Preis",
+    "Comprar" : "Kaufen",
+   
+    "Editar" : "Bearbeiten",
+    "Eliminar" : "Löschen",
+
+    "DD/MM/YYYY": "DD.MM.YYYY",
+    "de": "von",
+
+    "Selecciona tu fecha de nacimiento" : "Wähle dein Geburtsdatum",
+    "Elige una fecha" : "Wähle ein Datum" ,
+    "Siguiente" : "Nächste",
+    "publicación" : "veröffentlichung",
+    "Peso en" : "Gewicht in",
+    "Seleccionar" : "Auswählen",
+    "Raza" : "Rasse",
+    "Edad" : "Alter",
+    "Sexo" : "Geschlecht",
+    "Descripción" : "Beschreibung",
+    "Cancelar" : "Abbrechen",
+    "Dueño" : "Besitzer",
+
+    "Reconectar" : "Wieder verbinden",
+    "Tu sesión ha caducado" : "Deine Sitzung ist abgelaufen",
+    "Cerrar" : "Schließen",
+    "Aceptar" : "Akzeptieren",
+    "¿Quieres continuar en PeTFectMatch?" : "Möchtest du auf PeTFectMatch fortfahren?",
+    "Mapa" : "Karte",
+    "Mensaje Informativo" : "Informative Nachricht",
+    "No tienes publicaciones aún" : "Du hast noch keine Beiträge",
+    "Bovino" : "Rind",
+    "Equino" : "Pferd",
+    "Años" : "Jahre",
+    "COL$" : "€"
+
+}

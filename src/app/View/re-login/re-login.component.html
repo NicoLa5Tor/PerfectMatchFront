@@ -3,18 +3,18 @@
     <div class="container">
         <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
             <div class="bg-gradient text-center">
-                <h1 class="text-danger" >Reconect</h1>
-                <h5>your session has expired</h5>
+                <h1 class="text-danger" >{{"Reconectar" | translate}}</h1>
+                <h5>{{"Tu sesión ha caducado" | translate}}</h5>
                 <hr>
-                <p>Do you want to continue in PeTFectMatch?</p>
+                <p>{{"¿Quieres continuar en PeTFectMatch?" | translate}}</p>
                 <div class="row ">
                     <div class="col-6">
                         <button type="submit" class="btn btn-outline-danger " style="width: max-content;" (click)="cancel()">
-                            Closed</button>
+                            {{"Cerrar" | translate}}</button>
                     </div>
                   <div class="col-6">
                     <button type="submit" class="btn btn-outline-success " style="width: max-content;" (click)="acept()"
-                    >Acept</button>
+                    >{{"Aceptar" | translate}}</button>
                   </div>
                     
                      
@@ -26,3 +26,9 @@
         </div>
     
 </div>
+<footer>
+    <app-footer>
+
+    </app-footer>
+</footer>
+

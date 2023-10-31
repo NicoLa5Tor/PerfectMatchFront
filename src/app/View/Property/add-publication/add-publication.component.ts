@@ -10,20 +10,28 @@ import { ApiCityService } from 'src/app/Services/api-city.services';
 import { ApiGenderService } from 'src/app/Services/api-gender.ervices.type';
 import { ApiPublicationService } from 'src/app/Services/api-publication.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { TokenService } from 'src/app/Services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-publication',
   templateUrl: './add-publication.component.html',
-  styleUrls: ['./add-publication.component.css']
+  styleUrls: ['./add-publication.component.css'],
+  
 })
 export class AddPublicationComponent implements OnInit {
-  title = "add"
+  title = "Añadir"
   
   constructor(private _apipublication: ApiPublicationService, private _ApiBreed: ApiBreedService,
     private _ApiAnimalType: ApiAnimalTypeService, private _ApiCity: ApiCityService,
     private _ApiGenderService: ApiGenderService,
+    private tok : TokenService,
+    private rout : Router,
+  
     @Inject(MAT_DIALOG_DATA) public model: Publication
-  ) { }
+  ) { 
+ 
+  }
   MessageErr = "";
   imgs: Array<string> = new Array<string>(5);
   numImg: number = 0;
@@ -46,8 +54,8 @@ export class AddPublicationComponent implements OnInit {
     this.getCitys();
     this.getGenders();
     if (this.model.idPublication != undefined) {
-      this.title = "update";
-      console.log("entra")
+      this.title = "Actualizar";
+    //  console.log("entra")
       this.publication.idBreed = this.model.idBreed
       this.publication.idGender = this.model.idGender
       this.publication.idAnimalType = this.model.idAnimalType
@@ -62,15 +70,18 @@ export class AddPublicationComponent implements OnInit {
       this.updateBreed()
 
     }
+
+//console.log("el id es: ",this.tok.getId())
   }
   
   addEdit() {
     if (this.model.idPublication == undefined) {
-      this.publication.idOwner = 3;
-      console.log("agrega: " + this.publication.breedName)
+
+     // console.log("agrega: " + this.publication.breedName)
+      this.publication.idOwner =  this.tok.getId();
       this._apipublication.AddPublications(this.publication).subscribe({
         next: (data) => {
-          console.log(data)
+          this.rout.navigate(['principal/PropertyList'])
         }, error: (e) => {
         }
       })

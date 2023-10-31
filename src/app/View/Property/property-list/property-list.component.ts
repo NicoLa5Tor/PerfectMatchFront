@@ -16,6 +16,8 @@ import { ApiAnimalTypeService } from 'src/app/Services/api-animalType.services';
 import { ApiCityService } from 'src/app/Services/api-city.services';
 import { ApiClientService } from 'src/app/Services/api-client.services';
 import { ApiGenderService } from 'src/app/Services/api-gender.ervices.type';
+import { ErrorCom } from 'src/app/Models/Error';
+import { ErrorService } from 'src/app/Services/Error.Service';
 
 @Component({
   selector: 'app-property-list',
@@ -47,17 +49,19 @@ export class PropertyListComponent implements OnInit {
     private dialog: MatDialog,
     private router: Router,private _ApiBreed:ApiBreedService,
     private _ApiAnimalType:ApiAnimalTypeService, private _ApiCity:ApiCityService,
-    private _ApiGenderService:ApiGenderService,private _ApiClient:ApiClientService
+    private _ApiGenderService:ApiGenderService,private _ApiClient:ApiClientService,
+    private error : ErrorService
     ){
     
   }
   ngOnInit(): void {
    const parseo = this.rout.snapshot.paramMap.get('id');
+   //console.log("id = ",parseo)
    if(parseo != null)  this.id = parseInt(parseo,10);
-  
+   
    if (!isNaN(this.id)) {
     if(this.id > 0){
-     this.getUserPublications(this.id);
+      this.getUserPublications(this.id);
      }else{
       this.getPublications();
      }
@@ -76,10 +80,24 @@ export class PropertyListComponent implements OnInit {
   }
   getUserPublications(id : number)
   {
-    this.api.UserPublications(id).subscribe(x=>
-      {this.publications = x;
-        this.publications1=x;
-      }
+    this.api.UserPublications(id).subscribe(
+      {
+        next:(Data) => {       
+            this.publications = Data
+            this.publications1 = Data
+            if(Data[0] == undefined){
+              const error : ErrorCom = {
+                title : 'Mensaje Informativo',
+                header :'',
+                boddy: 'No tienes publicaciones aún',
+                textAux: ''
+              }
+              this.error.setComponent(error);
+              this.router.navigate(['principal/Error']);
+              }
+          }
+         }   
+     
     )
   }
     getBreeds(){

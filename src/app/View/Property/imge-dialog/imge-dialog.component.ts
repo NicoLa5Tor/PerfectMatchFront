@@ -1,6 +1,9 @@
-import { Component, Inject,Input,OnInit, Output } from '@angular/core';
+import { Component, Inject,Input,OnInit, Output,AfterViewInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Publication } from 'src/app/Models/publication';
+import { MapService } from 'src/app/Services/map.services';
+import { Location } from 'src/app/Models/Location';
+import { GeoNamesService } from 'src/app/Services/geonames.service';
 import {
   MatBottomSheet,
   MatBottomSheetModule,
@@ -17,11 +20,13 @@ import { ApiPublicationService } from 'src/app/Services/api-publication.service'
   templateUrl: './imge-dialog.component.html',
   styleUrls: ['./imge-dialog.component.css']
 })
-export class ImgeDialogComponent implements OnInit{
+export class ImgeDialogComponent implements OnInit,AfterViewInit{
 i : number  = 0;
 constructor(
   private _bottomSheet: MatBottomSheet,
   private api : ApiPublicationService,
+  private geoName : GeoNamesService,
+  private map : MapService,
   @Inject (MAT_DIALOG_DATA) public data: Publication
 ) {
 }
@@ -48,7 +53,10 @@ constructor(
   }
  
 ngOnInit(): void {
-  console.log("Consola: "+this.data)
+  //console.log("Consola: "+this.data)
+}
+ngAfterViewInit(): void {
+  this.outMap();
 }
 plus(){
  
@@ -73,5 +81,13 @@ openBottomSheet(): void {
     
     
   });
+}
+outMap(){
+this.geoName.getCoordinates(this.model.cityName, 'Colombia').subscribe({
+  next:(data) => {
+  const map : Location [] = [{Name : this.model.animalName, latitud : data[0].lat, longitud : data[0].lon}]
+  this.map.initMap(map,map[0].longitud,map[0].latitud)
+  },error:(e) => {console.log(e)}
+})
 }
 }
