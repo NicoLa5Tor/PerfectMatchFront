@@ -38,7 +38,7 @@ export class AddPublicationComponent implements OnInit {
   edit = false;
   i = 0;
   publication: Publication = {
-    idGender: 0, idAnimalType: 0, idBreed: 0, idCity: 0, animalName: "", nameOwner: "",
+    idGender: 0, idAnimalType: 0, idBreed: 0, idCity: 0, animalName: "", nameOwner: "",age:0,weight:0,
     typeName: "", breedName: "", cityName: "", description: "", idOwner: 1, idPublication: 0, images: [], price: 0
   };
 
@@ -73,12 +73,14 @@ export class AddPublicationComponent implements OnInit {
 
 //console.log("el id es: ",this.tok.getId())
   }
+  
   addEdit() {
-
     if (this.model.idPublication == undefined) {
 
      // console.log("agrega: " + this.publication.breedName)
       this.publication.idOwner =  this.tok.getId();
+      this.publication.idOwner = 3;
+      console.log("agrega: " + this.publication.breedName)
       this._apipublication.AddPublications(this.publication).subscribe({
         next: (data) => {
           this.rout.navigate(['principal/PropertyList'])
@@ -96,10 +98,8 @@ export class AddPublicationComponent implements OnInit {
   }
   getImage(event: any, num: number) {
     this.i++;
-    //console.log(event)
     this.numImg = num;
     this.imgToBase64(event.target.files[0]);
-    //console.log(this.publication.images);
   }
   private imgToBase64(file: Blob) {
     if (file) {

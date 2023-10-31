@@ -143,6 +143,7 @@ export class RegisterComponent implements OnInit {
       console.log("los datos son: " + model.birthDate)
     } else {
       console.log("No hya datos entonces no imprime")
+      console.log(this.form.value);
     }
   }
   login() {

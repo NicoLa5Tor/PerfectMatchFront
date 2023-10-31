@@ -49,6 +49,12 @@ import { PaypalComponent } from './View/Property/paypal/paypal.component';
 
 
 import { NgxPayPalModule } from 'ngx-paypal';
+import { ReportViewerComponent } from './View/report-viewer/report-viewer.component';
+
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import {NgChartsModule} from 'ng2-charts';
+import { DatePipe } from '@angular/common';
+
 import { LoginComponent } from './View/Access/login/login.component';
 import { RegisterComponent } from './View/Access/register/register.component';
 import { PrincipalComponent } from './View/Principal/principal/principal.component';
@@ -80,6 +86,7 @@ export function HttpLoaderFactory(http : HttpClient){
     ImgeDialogComponent,
     LinkDialogComponent,
     PaypalComponent,
+    ReportViewerComponent,
     LoginComponent,
     RegisterComponent,
     PrincipalComponent,
@@ -128,6 +135,9 @@ export function HttpLoaderFactory(http : HttpClient){
     }),
     
 
+    FormsModule,
+    PdfViewerModule,
+    NgChartsModule,
   ],
 
   providers: [

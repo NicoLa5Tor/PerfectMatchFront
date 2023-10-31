@@ -19,11 +19,13 @@ export const ValidateToken = () => {
         try {
             // Decodifica el token JWT
             const decodedToken : JwtPayload = jwtDecode(jwtTok);
-         //       const id = decodedToken.sub;
-          //  const userId = (decodedToken as any).nameid;
-            //console.log('ID del usuario:', userId);
+               const id = decodedToken.sub;
+           const userId = (decodedToken as any).nameid;
+            console.log('ID del usuario:', userId);
        if (decodedToken.exp && decodedToken.exp > currentTimestamp) {
         console.log('El token JWT está vigente.');
+
+        tok.setId(parseInt(userId));
         // El token está vigente, puedes permitir el acceso a recursos protegidos.
       } else {
         console.log('El token JWT ha caducado.');

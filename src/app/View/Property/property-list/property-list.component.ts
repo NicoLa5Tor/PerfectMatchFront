@@ -131,16 +131,16 @@ export class PropertyListComponent implements OnInit {
      
       if(
       (element.idCity == this.filter.idCity || this.filter.idCity == 0 )&&
-      (element.idOwner == this.filter.idOwner || this.filter.idOwner == 0)
-      )/*
+      (element.idOwner == this.filter.idOwner || this.filter.idOwner == 0)&&
+      
       ( element.weight>this.filter.weightI-1)&&
       (element.weight<this.filter.weightF+1||this.filter.weightF==0||(typeof(this.filter.weightF)!="number"))&&
       (element.idGender==this.filter.idGender||this.filter.idGender==0)&&
       (element.age>this.filter.ageI-1)&&
       (element.age<this.filter.ageF+1||this.filter.ageF==0||(typeof(this.filter.ageF)!="number"))&&
       (element.idAnimalType==this.filter.idAnimalType||this.filter.idAnimalType==0)&&
-      (element.idBreed==this.filter.idBreed||this.filter.idBreed==0)*/
-      
+      (element.idBreed==this.filter.idBreed||this.filter.idBreed==0)
+      )
       this.publications1.push(element);
       
     });

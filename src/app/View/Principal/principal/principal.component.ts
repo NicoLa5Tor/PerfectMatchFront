@@ -23,6 +23,7 @@ export class PrincipalComponent {
       { isActive: false, text: 'Añadir', href: '/principal/Form',icon: 'bi bi-plus' },
       { isActive: false, text: ' Mapa', href: '/principal/Map',icon: 'fas fa-map-marker-alt' },
 
+      { isActive: false, text: 'Reportes', href: '/principal/Report',icon: 'bi bi-book' }
     ];
     constructor(private rout: Router,
     private tok : TokenService,

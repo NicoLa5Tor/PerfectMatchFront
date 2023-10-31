@@ -6,6 +6,7 @@ import { PropertyListComponent } from './View/Property/property-list/property-li
 import { ImgeDialogComponent } from './View/Property/imge-dialog/imge-dialog.component';
 import { PropertyCardComponent } from './View/Property/property-card/property-card.component';
 import { PaypalComponent } from './View/Property/paypal/paypal.component';
+import { ReportViewerComponent } from './View/report-viewer/report-viewer.component';
 import { LoginComponent } from './View/Access/login/login.component';
 import { RegisterComponent } from './View/Access/register/register.component';
 import { PrincipalComponent } from './View/Principal/principal/principal.component';
@@ -70,6 +71,12 @@ const routes: Routes = [
       },
       {
         path: "pay", component: PaypalComponent, canActivate: [ValidateToken],
+        data: {
+          authInterceptor: AuthInterceptor
+        }
+      },
+      {
+        path: "Report", component: ReportViewerComponent, canActivate: [ValidateToken],
         data: {
           authInterceptor: AuthInterceptor
         }
