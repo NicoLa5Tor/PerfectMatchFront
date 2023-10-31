@@ -1,71 +1,69 @@
 <body class=" w-100 bg-image" *ngIf="dat == false">
-    <section class="w-100 h-100">
-        <div class="row w-100 h-100">
-            <div class="right text-center">
+    <section class="w-100 h-100 ">
+        <div class="row w-100 h-100 ">
+            <div class="text-center">
                 <div class="bg-dark text-light rounded">
-                    <h1>Unete a PeTFectMatch</h1>
+                    <h1>{{"Únete" | translate}} {{"a" | translate}} PeTFectMatch</h1>
                     <form [formGroup]="form" (submit)="addUser()">
                         <mat-grid-list cols="{{col}}" rowHeight="4:1">
                             <div class="group1" *ngIf="group1">
                                 <mat-grid-tile>
                                     <mat-form-field class="wit">
-                                        <mat-label>Name</mat-label>
-                                        <input matInput placeholder="Your name" formControlName="name">
-                                        <mat-hint>Name</mat-hint>
-                                        <mat-error *ngIf="form.get('name')?.hasError('required')">Name is
-                                            required</mat-error>
+                                        <mat-label>{{"Nombre" | translate}}</mat-label>
+                                        <input matInput placeholder="{{'Tu' | translate}} {{'nombre' | translate}}" formControlName="name">
+                                        <mat-hint>{{"nombre" | translate}}</mat-hint>
+                                        <mat-error *ngIf="form.get('name')?.hasError('required')">{{"El" | translate}} {{"nombre" | translate}} 
+                                            {{"es requerido" | translate}}</mat-error>
                                     </mat-form-field>
                                 </mat-grid-tile>
                                 <mat-grid-tile>
                                     <mat-form-field class="wit">
-                                        <mat-label>Enter your email</mat-label>
+                                        <mat-label>{{"Ingresa tu" | translate}} {{"correo" | translate}}</mat-label>
                                         <input matInput placeholder="pat@example.com" formControlName="email">
-                                        <mat-error *ngIf="form.get('email')?.hasError('required')">email is
-                                            required</mat-error>
-                                        <mat-error *ngIf="form.get('email')?.hasError('email')" form.invalid>Not a valid
-                                            email</mat-error>
-                                        <mat-error *ngIf="form.get('email')?.hasError('emailExists')">Email is already
-                                            registered</mat-error>
-                                        <mat-hint>Email</mat-hint>
+                                        <mat-error *ngIf="form.get('email')?.hasError('required')"> {{'El' | translate}} {{'correo' | translate}} 
+                                        {{'es requerido' | translate}}</mat-error>
+                                        <mat-error *ngIf="form.get('email')?.hasError('email')" form.invalid>
+                                            {{"No es un correo electrónico válido" | translate}}</mat-error>
+                                        <mat-error *ngIf="form.get('email')?.hasError('emailExists')">
+                                            {{'El correo electrónico ya está registrado' | translate}}</mat-error>
+                                        <mat-hint>{{"Correo" | translate}}</mat-hint>
                                     </mat-form-field>
                                 </mat-grid-tile>
                                 <mat-grid-tile>
                                     <mat-form-field class="wit">
-                                        <mat-label>Enter your password</mat-label>
+                                        <mat-label>{{"Ingresa tu" | translate}} {{"contraseña" | translate}}"</mat-label>
                                         <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
                                         <button mat-icon-button matSuffix (click)="hide = !hide"
                                             [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                         </button>
-                                        <mat-error *ngIf="form.get('password')?.hasError('required')">Password is
-                                            required</mat-error>
-                                        <mat-error *ngIf="form.get('password')?.hasError('minlength')">Password must be
-                                            at
-                                            least 6 characters long</mat-error>
-                                        <mat-hint>Password</mat-hint>
+                                        <mat-error *ngIf="form.get('password')?.hasError('required')">
+                                            {{"Contraseña requerida" | translate}}</mat-error>
+                                        <mat-error *ngIf="form.get('password')?.hasError('minlength')">
+                                           {{'La contraseña debe tener al menos 6 caracteres' | translate}}</mat-error>
+                                        <mat-hint>{{"Contraseña" | translate}}</mat-hint>
                                     </mat-form-field>
                                 </mat-grid-tile>
                             </div>
                             <div class="group2" *ngIf="next">
                                 <mat-grid-tile>
                                     <mat-form-field class="wit">
-                                        <mat-label>City</mat-label>
+                                        <mat-label>{{"Ciudad" | translate}}</mat-label>
                                         <mat-select formControlName="idCity">
                                             <mat-option *ngFor="let item of listCity"
                                                 [value]="item.idCity">{{item.cityName}}</mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="form.get('idCity')?.hasError('required')">Select a
-                                            City</mat-error>
-                                        <mat-hint>City</mat-hint>
+                                        <mat-error *ngIf="form.get('idCity')?.hasError('required')">{{'Selecciona una' | translate}}
+                                            {{'Ciudad' | translate}}</mat-error>
+                                        <mat-hint>{{"Ciudad" | translate}}</mat-hint>
                                     </mat-form-field>
                                 </mat-grid-tile>
                                 <mat-grid-tile>
                                     <mat-form-field class="wit">
-                                        <mat-label>Choose a date</mat-label>
+                                        <mat-label>{{"Elige una fecha" | translate}}</mat-label>
                                         <input matInput [matDatepicker]="picker" formControlName="birthDate">
-                                        <mat-error *ngIf="form.get('birthDate')?.hasError('required')">Select your birth
-                                            date</mat-error>
-                                        <mat-hint>MM/DD/YYYY</mat-hint>
+                                        <mat-error *ngIf="form.get('birthDate')?.hasError('required')">{{'Selecciona tu fecha de nacimiento' | translate}}</mat-error>
+                                        <mat-hint>{{'DD/MM/YYYY' | translate}}</mat-hint>
                                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                                         <mat-datepicker #picker></mat-datepicker>
 
@@ -74,11 +72,11 @@
                                 </mat-grid-tile>
                                 <mat-grid-tile>
                                     <mat-form-field class="wit">
-                                        <mat-label>Code Paypal</mat-label>
-                                        <input matInput placeholder="Your code" formControlName="codePay">
-                                        <mat-error *ngIf="form.get('codePay')?.hasError('required')">Code is
-                                            required</mat-error>
-                                        <mat-hint>Code Paypal</mat-hint>
+                                        <mat-label>{{"Código Paypal" | translate}}</mat-label>
+                                        <input matInput placeholder="{{'Tu'| translate}} {{'código' | translate}}" formControlName="codePay">
+                                        <mat-error *ngIf="form.get('codePay')?.hasError('required')">{{'El' | translate}} {{'código'| translate}} 
+                                          {{'es requerido' | translate}}</mat-error>
+                                        <mat-hint>{{'Código' | translate}} Paypal</mat-hint>
                                     </mat-form-field>
                                 </mat-grid-tile>
 
@@ -87,13 +85,12 @@
 
 
                         <button class="btn btn-lg btn-primary btn-block  but" type="submit"
-                            *ngIf="next">Register</button>
+                            *ngIf="next">{{"Registrarme" | translate}}</button>
                     </form>
                     <button class="btn btn-outline btn-warning next" (click)="otherOptionsRegister()"
-                        *ngIf="!next">Next</button>
-                    <p class="w-100 p-tras">¿Ya estás registrad@? <a routerLink="/login" style="cursor: pointer;">
-                            log
-                            in</a> </p>
+                        *ngIf="!next">{{'Siguiente' | translate}}</button>
+                    <p class="w-100 p-tras">{{"¿Ya tienes una cuenta?" | translate}} <a routerLink="/login" style="cursor: pointer;">
+                            {{"Iniciar Sesión" | translate}}</a> </p>
                 </div>
             </div>
         </div>

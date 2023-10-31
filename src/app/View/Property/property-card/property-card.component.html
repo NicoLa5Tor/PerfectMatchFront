@@ -4,18 +4,18 @@
 <mat-menu #menu="matMenu">
   <button mat-menu-item (click)="openAdd(objeto)">
     <mat-icon>edit</mat-icon>
-    Editar
+    {{"Editar" | translate}}
   </button>
   <button mat-menu-item (click)="deletePublication(objeto)">
     <mat-icon>delete</mat-icon>
-    Eliminar
+    {{"Eliminar" | translate}}
   </button>
 </mat-menu>
 <div class="card">
   <div class="container">
 
     <div class="card-img-wrapper">
-      <h3 class="text-success">{{objeto.animalName}} de {{objeto.nameOwner}}</h3>
+      <h3 class="text-success">{{objeto.animalName}} {{"de" | translate}} {{objeto.nameOwner}}</h3>
       <div style="height: 30px;">
 
       </div>
@@ -28,15 +28,15 @@
       <div class="card-body p-1">
 
         <div class="row">
-          <p class="text-success col-md-6">Tipo de animal: </p>
-          <h4 class="col-md-6">{{objeto.typeName}}</h4>
-          <p class="text-success col-md-6">Precio: </p>
-          <p class="col-md-6">{{objeto.price}}</p>
+          <p class="text-success col-md-6">{{"Tipo de animal" | translate}}: </p>
+          <h4 class="col-md-6">{{objeto.typeName | translate}}</h4>
+          <p class="text-success col-md-6">{{"Precio" |  translate}}: </p>
+          <p class="col-md-6">{{objeto.price}} {{'COL$' | translate}}</p>
         </div>
 
         <div class="card-body" *ngIf="dat == false">
           <button (click)="buy(objeto)" class="btn btn-outline-success">
-            <i class="fas fa-shopping-cart"></i> Buy 🐾🐴 
+            <i class="fas fa-shopping-cart"></i> {{"Comprar" | translate}} 🐾🐴 
           </button>
         </div>
       </div>

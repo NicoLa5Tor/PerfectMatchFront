@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SafeResourceUrl,DomSanitizer } from '@angular/platform-browser';
+import { TranslateService } from '@ngx-translate/core';
 import {
   IPayPalConfig,
   ICreateOrderRequest
@@ -17,7 +18,7 @@ export class PaypalComponent implements OnInit {
   imgUrl: SafeResourceUrl;
   constructor(
     @Inject(MAT_DIALOG_DATA) public model: Publication,
-    private saniticer : DomSanitizer ){
+    private saniticer : DomSanitizer, private trans : TranslateService ){
       const img = 'assets/logo.png';
       this.imgUrl = this.saniticer.bypassSecurityTrustResourceUrl(img);
   }
@@ -45,7 +46,7 @@ export class PaypalComponent implements OnInit {
             }
           },
           items: [{
-            name: 'Compra del animal: '+this.model.animalName,
+            name: ''+this.model.animalName,
             quantity: '1',
             category: 'DIGITAL_GOODS',
             unit_amount: {

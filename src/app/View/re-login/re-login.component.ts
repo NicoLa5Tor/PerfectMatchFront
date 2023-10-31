@@ -3,6 +3,7 @@ import { TokenService } from 'src/app/Services/token.service';
 import { RefreshToken } from 'src/app/Models/RefreshTok';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/Services/login.service';
+import {TranslateService} from '@ngx-translate/core'
 
 @Component({
   selector: 'app-re-login',
@@ -11,7 +12,7 @@ import { LoginService } from 'src/app/Services/login.service';
 })
 export class ReLoginComponent {
 
-constructor(private  tok : TokenService , private rout : Router, private recov : LoginService) {
+constructor(private  tok : TokenService , private rout : Router, private recov : LoginService , private trans : TranslateService) {
   
 }
 cancel(){
@@ -22,8 +23,10 @@ cancel(){
  acept(){
  const refresh : RefreshToken = {
   refreshToken : this.tok.getTok("Refresh") || "",
+  
   tokenExpire : this.tok.getTok("Token") || ""
  }
+ console.log("El refresh es: ",refresh.refreshToken);
 this.recov.RefreshToken(refresh).subscribe({
 next:(data) => 
 {

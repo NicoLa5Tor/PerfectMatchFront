@@ -7,6 +7,10 @@ import { LoginService } from 'src/app/Services/login.service';
 import { Login } from 'src/app/Models/Login';
 import { EncryptXOR } from 'src/app/Models/Encryption';
 import { TokenService } from 'src/app/Services/token.service';
+import {TranslateService} from '@ngx-translate/core';
+import { ApiUserService } from 'src/app/Services/api-user.service';
+import { Carousel, initTE } from "tw-elements";
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,7 +22,14 @@ export class LoginComponent implements OnInit{
   form!: FormGroup;
   log! : Login;
   private token!: string;
-  constructor(private actRout: ActivatedRoute, private rout: Router, private fb: FormBuilder, private serviceLog: LoginService, private tok: TokenService) {
+  currentIndex: number = 1;
+  images: string[] = [
+    'assets/loginBack.png',
+    'https://www.cleverfiles.com/howto/wp-content/uploads/2018/03/minion.jpg',
+    'https://www.cleverfiles.com/howto/wp-content/uploads/2018/03/minion.jpg',
+  ];
+  constructor(private actRout: ActivatedRoute, private rout: Router, private fb: FormBuilder,
+     private serviceLog: LoginService, private tok: TokenService, private trans : TranslateService, private user : ApiUserService) {
     const state  = this.rout.getCurrentNavigation()?.extras.state;
     this.form = this.fb.group({
       email: ['', Validators.required],
@@ -27,6 +38,9 @@ export class LoginComponent implements OnInit{
     if(state){
     this.log = state["loginModel"];
     }
+    initTE({
+      Carousel,
+    });
   }
   ngOnInit(): void {
     if(this.log != null){
@@ -35,9 +49,9 @@ export class LoginComponent implements OnInit{
       password : this.log.password
      })
     }
+  
   }
  
-
   onClick() {
     if (this.form.valid) {
       const model: Login = {
@@ -51,8 +65,15 @@ export class LoginComponent implements OnInit{
             this.tok.setToken(data.token,"Token")
             this.tok.setToken(data.refreshToken, "Refresh")
             //  localStorage.setItem('token_user',data.token);
-            console.log("datos ", this.token);
+          
+            this.user.getUser(this.tok.getId()).subscribe({
+              next:(data) => {
+                console.log("EL rol es: ",data);
+              }
+            })
+            //console.log("datos ", this.token);
             this.rout.navigate(['principal']);
+            
           } else {
             console.log("usuario no exitente")
           }
@@ -64,6 +85,18 @@ export class LoginComponent implements OnInit{
     }
 
 
+  }
+  
+  previous() {
+    if (this.currentIndex > 1) {
+      this.currentIndex = this.currentIndex - 1;
+    }
+  }
+
+  forward() {
+    if (this.currentIndex < this.images.length) {
+      this.currentIndex = this.currentIndex + 1;
+    }
   }
 }
 

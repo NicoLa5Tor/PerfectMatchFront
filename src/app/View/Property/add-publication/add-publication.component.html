@@ -3,7 +3,7 @@
 
         <form class="container p-2 starter-template w-90" novalidate>
 
-          <h1 class="text-success">{{title}} publication</h1>
+          <h1 class="text-success">{{title | translate}} {{"publicación" | translate}}</h1>
 
           <h3 *ngIf="MessageErr!=''" class="text-light bg-danger p-1">{{MessageErr}}</h3>
           <div class="form-row w-90">
@@ -19,14 +19,14 @@
 
             <div class="form-group col-md-10">
               <mat-form-field class="w-100">
-                <mat-label>Name</mat-label>
+                <mat-label>{{"Nombre" | translate}}</mat-label>
                 <input matInput type="text" class="form-control" [(ngModel)]="publication.animalName" name="animalName"
                   required>
               </mat-form-field>
             </div>
             <div class="form-group col-md-10 p-1">
               <div class="w-100">
-                <label>Select City</label>
+                <label>{{"Selecciona una" | translate}} {{"Ciudad" | translate}}</label>
                 <select class="form-select form-select-lg mb-3" [(ngModel)]="publication.idCity" name="city">
                   <option *ngFor="let city of Citys" [value]="city.idCity">{{city.cityName}}</option>
                 </select>
@@ -34,20 +34,20 @@
             </div>
             <div class="form-group col-md-10">
               <mat-form-field class="w-100">
-                <mat-label>Weight in kg</mat-label>
+                <mat-label>{{"Peso en" | translate}} kg</mat-label>
                 <input matInput type="text" class="form-control" [(ngModel)]="publication.weight" name="weight"
                   required>
               </mat-form-field>
             </div>
             <div class="form-group col-md-10">
               <mat-form-field class="w-100">
-                <mat-label>Price</mat-label>
+                <mat-label>{{"Precio" | translate}}</mat-label>
                 <input matInput type="text" class="form-control" [(ngModel)]="publication.price" name="price" required>
               </mat-form-field>
             </div>
             <div class="form-group col-md-10 p-1">
               <div class="w-100">
-                <label>Gender</label>
+                <label>{{"Sexo" | translate}}</label>
                 <select class="form-select form-select-lg mb-3" [(ngModel)]="publication.idGender" name="gender">
                   <option *ngFor="let gender of Genders" [value]="gender.idGender">{{gender.genderName}}</option>
                 </select>
@@ -55,13 +55,13 @@
             </div>
             <div class="form-group col-md-10">
               <mat-form-field class="w-100">
-                <mat-label>Age</mat-label>
+                <mat-label>{{"Edad" | translate}}</mat-label>
                 <input matInput type="text" class="form-control" [(ngModel)]="publication.age" name="age" required>
               </mat-form-field>
             </div>
             <div class="form-group col-md-10 p-1">
               <div class="w-100">
-                <label>Select AnimalType</label>
+                <label>{{"Seleccionar" | translate}} {{"Tipo de animal" | translate}}</label>
                 <select class="form-select form-select-lg mb-3" [(ngModel)]="publication.idAnimalType"
                   (change)="updateBreed()" name="animalType">
                   <option *ngFor="let type of AnimalTypes" [value]="type.idAnimalType">{{type.animalTypeName}}</option>
@@ -70,7 +70,7 @@
             </div>
             <div class="form-group col-md-10 p-1">
               <div class="w-100">
-                <label>Select Breed</label>
+                <label>{{"Seleccionar" | translate}} {{"Raza" | translate}}</label>
                 <select (click)=" updateBreed()" class="form-select form-select-lg mb-3"
                   [(ngModel)]="publication.idBreed" name="breed">
 
@@ -82,7 +82,7 @@
 
             <div class="form-group col-md-10">
               <mat-form-field class="w-100">
-                <mat-label for="exampleFormControlTextarea1">Description</mat-label>
+                <mat-label for="exampleFormControlTextarea1">{{"Descripción" | translate}}</mat-label>
                 <textarea matInput class="form-control w-100" [(ngModel)]="publication.description" name="description"
                   rows="3" required></textarea>
               </mat-form-field>
@@ -91,9 +91,9 @@
 
 
             <div class="buttons">
-              <a href="PropertyList" class="btn btn-outline-warning w-25  ">Cancel</a>
+              <a href="PropertyList" class="btn btn-outline-warning w-25  ">{{"Cancelar" | translate}}</a>
               <button type="submit" class="btn btn-outline-success w-25 "
-                (click)="addEdit()">{{title}}</button>
+                (click)="addEdit()">{{title | translate}}</button>
             </div>
           </div>
 

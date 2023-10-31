@@ -4,27 +4,31 @@
 </button>
 
 <div class="container" >
-  <h2>Dueño: {{model.nameOwner}}</h2>
+  <h2>{{"Dueño"| translate}}: {{model.nameOwner}}</h2>
+  <hr> 
   <p>
-    Nombre: {{model.animalName}}
+    {{"Nombre" | translate}}: {{model.animalName}}
   </p>
   <p>
-    Tipo de animal: {{model.typeName}}
+    {{"Tipo de animal" | translate}}: {{model.typeName | translate}}
   </p>
   <p>
-    Raza: {{model.breedName}}
+    {{"Precio" | translate}} : {{model.price}} {{"COL$" | translate}}
   </p>
   <p>
-    Edad: {{model.age}}
+    {{"Raza" | translate}}: {{model.breedName}}
   </p>
   <p>
-    Peso: {{model.weight}} kilos
+    {{"Edad" | translate}}: {{model.age}} {{'Años' | translate}}
   </p>
   <p>
-    Ciudad: {{model.cityName}}
+    {{"Peso" | translate}}: {{model.weight}} kg
   </p>
   <p>
-    Descripción: {{model.description}}
+    {{"Ciudad" | translate}}: {{model.cityName}}
+  </p>
+  <p>
+    {{"Descripción" | translate}}: {{model.description}}
   </p>
 </div>
   
