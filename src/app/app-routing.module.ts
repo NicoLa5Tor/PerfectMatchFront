@@ -29,7 +29,7 @@ const routes: Routes = [
       },
   {path : "principalAdmin" ,component : PrincipalComponent, canActivate: [ValidateToken] , children:[
     {
-      path: "Profile", component: PropertyListComponent, canActivate: [ValidateToken],
+      path: "Profile", component: PropertyListComponent, canActivate: [GuardAdmin],
       data: {
         authInterceptor: AuthInterceptor
       }

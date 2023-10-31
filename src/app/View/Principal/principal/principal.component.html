@@ -11,7 +11,8 @@
         </div>
         <div class="options">
             <p id="p1">
-                <a (click)="onClickLogout()" style="cursor: pointer;">{{"Cerrar Sesión" | translate}} <i class="fas fa-sign-out-alt"></i></a>
+                <a (click)="onClickLogout()" style="cursor: pointer;">{{"Cerrar Sesión" | translate}} <i
+                        class="fas fa-sign-out-alt"></i></a>
             </p>
 
         </div>
@@ -19,31 +20,49 @@
             <mat-icon>menu</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-    
+
             <a mat-list-item (click)="onClickLogout()" class="selected">
                 <i class="fas fa-sign-out-alt"></i> {{"Cerrar Sesión" | translate}}
             </a>
-    
-            <a mat-list-item class="selected " *ngFor="let link of links" [routerLink]="link.href"
-                (click)="Routerl(link.href)" data-bs-original-title="Customers">
-                <i class="{{link.icon}} display-8"></i>
-                {{link.text | translate}}
-            </a>
+            <div *ngIf="mostrarDiv == false">
+                <a mat-list-item class="selected " *ngFor="let link of links" [routerLink]="link.href"
+                    (click)="Routerl(link.href)" data-bs-original-title="Customers">
+                    <i class="{{link.icon}} display-8"></i>
+                    {{link.text | translate}}
+                </a>
+            </div>
+            <div *ngIf="mostrarDiv">
+                <a mat-list-item class="selected " *ngFor="let link of linksAux" [routerLink]="link.href"
+                    (click)="Routerl(link.href)" data-bs-original-title="Customers">
+                    <i class="{{link.icon}} display-8"></i>
+                    {{link.text | translate}}
+                </a>
+            </div>
 
-          
+ 
+
 
         </mat-menu>
         <a>
             <div class="filter">
-                <a mat-list-item style="cursor: pointer;" *ngIf="hrefActual==='/principal/PropertyList'" name="button_filters"
-                type="submit" data-toggle="collapse" href="#collapseSection" aria-expanded="false"
-                aria-controls="collapseSection">
-                <i class="bi bi-funnel"></i>
-                {{"Filtros" | translate}}</a>
+                <a mat-list-item style="cursor: pointer;" *ngIf="hrefActual==='/principal/PropertyList'"
+                    name="button_filters" type="submit" data-toggle="collapse" href="#collapseSection"
+                    aria-expanded="false" aria-controls="collapseSection">
+                    <i class="bi bi-funnel"></i>
+                    {{"Filtros" | translate}}</a>
             </div>
         </a>
-       
-       
+        <a>
+            <div class="filter">
+                <a mat-list-item style="cursor: pointer;" *ngIf="hrefActual==='/principalAdmin/Profile'"
+                    name="button_filters" type="submit" data-toggle="collapse" href="#collapseSection"
+                    aria-expanded="false" aria-controls="collapseSection">
+                    <i class="bi bi-funnel"></i>
+                    {{"Filtros" | translate}}</a>
+            </div>
+        </a>
+
+
 
 
     </header>

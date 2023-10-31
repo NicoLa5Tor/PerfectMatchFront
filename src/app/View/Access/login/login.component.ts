@@ -64,23 +64,9 @@ export class LoginComponent implements OnInit{
           if (data.result) {
             this.tok.setToken(data.token,"Token")
             this.tok.setToken(data.refreshToken, "Refresh")
-            //  localStorage.setItem('token_user',data.token);
-          
-            this.user.getUser(this.tok.getIdUser()).subscribe({
-              next:(data) => {
-                if(data > 1){
-                  console.log("se va al principal por rol ; ",data)
-                  this.rout.navigate(['principal']);
-                }else{
-                  console.log("se va al principalAdmin por rol ; ",data)
-                 const id = this.tok.getIdUser()
-                  this.rout.navigate([`principalAdmin`])
-                }
-              }
-            })
-            //console.log("datos ", this.token);
-        
-            
+            this.rout.navigate(['/principal']);
+            //  localStorage.setItem('token_user',data.token);      
+            //console.log("datos ", this.token)
           } else {
             console.log("usuario no exitente")
           }
@@ -89,6 +75,7 @@ export class LoginComponent implements OnInit{
 
         }
       })
+     
     }
 
 

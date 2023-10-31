@@ -1,9 +1,11 @@
-import { Component,HostListener,OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DomSanitizer,SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { PropertyListComponent } from '../../Property/property-list/property-list.component';
 import jwtDecode, { JwtPayload } from 'jwt-decode';
 import { TokenService } from 'src/app/Services/token.service';
+import { ApiUserService } from 'src/app/Services/api-user.service';
+
 
 @Component({
   selector: 'app-principal',
@@ -11,70 +13,67 @@ import { TokenService } from 'src/app/Services/token.service';
   styleUrls: ['./principal.component.css']
 })
 export class PrincipalComponent {
-  imgUrl : SafeResourceUrl;
-  idUser : number  = 0;
+  imgUrl: SafeResourceUrl;
+  idUser: number = 0;
   logoUrl: SafeResourceUrl;
-  mostrarDiv = false;
-  
-  id! : number;
+  mostrarDiv = true;
+
+  id!: number;
   hrefActual = "";
-    links = [
-      { isActive: false, text: 'Perfil', href: `/principal/Profile/${this.getIdUser()}`,icon: 'bi bi-person'},
-      { isActive: false, text: 'Lista', href: '/principal/PropertyList' ,icon: 'bi bi-list'},
-      { isActive: false, text: 'Añadir', href: '/principal/Form',icon: 'bi bi-plus' },
-      { isActive: false, text: ' Mapa', href: '/principal/Map',icon: 'fas fa-map-marker-alt' },
-      { isActive: false, text: 'Reportes', href: '/principal/Report',icon: 'bi bi-book' }
-    ];
-    linksAux = [
-      { isActive: false, text: 'Lista', href: `/principalAdmin/Profile/${this.getIdUser()}` ,icon: 'bi bi-list'},
-      { isActive: false, text: ' Mapa', href: '/principalAdmin/Map',icon: 'fas fa-map-marker-alt' },
-    ];
-    constructor(private rout: Router,
-    private tok : TokenService,
-   private sanitizer: DomSanitizer,
-      private route: ActivatedRoute
+  links = [
+    { isActive: false, text: 'Perfil', href: `/principal/Profile/${this.tok.getIdUser()}`, icon: 'bi bi-person' },
+    { isActive: false, text: 'Lista', href: '/principal/PropertyList', icon: 'bi bi-list' },
+    { isActive: false, text: 'Añadir', href: '/principal/Form', icon: 'bi bi-plus' },
+    { isActive: false, text: 'Mapa', href: '/principal/Map', icon: 'fas fa-map-marker-alt' },
+    { isActive: false, text: 'Reportes', href: '/principal/Report', icon: 'bi bi-book' }
+  ];
+  linksAux = [
+    { isActive: false, text: 'Lista', href: '/principalAdmin/Profile', icon: 'bi bi-list' },
+    { isActive: false, text: 'Mapa', href: '/principalAdmin/Map', icon: 'fas fa-map-marker-alt' },
+  ];
+  constructor(private rout: Router,
+    private tok: TokenService,
+    private sanitizer: DomSanitizer,
+    private route: ActivatedRoute,
+    private userS: ApiUserService
+  ) {
+    const id = this.route.snapshot.params["id"];
+    this.id = id;
+    console.log("el id es: ", id)
 
-      ) {
-        const id = this.route.snapshot.params["id"];
-        this.id = id;
-        console.log("el id es: ",id)
-
-      const log = 'assets/logo-p.png'
-      const img = 'assets/logo.png';
-      this.imgUrl = this.sanitizer.bypassSecurityTrustResourceUrl(img);
-      this.logoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(log);
- 
-    }
-ngOnInit(): void {
-  const parseo = this.route.snapshot.paramMap.get('id');
-  if(this.id > 1){
-    this.rout.navigate(['principal/PropertyList'])
-  }else{
-    this.mostrarDiv = true;
-    this.rout.navigate([`principalAdmin/Profile`])
+    const log = 'assets/logo-p.png'
+    const img = 'assets/logo.png';
+    this.imgUrl = this.sanitizer.bypassSecurityTrustResourceUrl(img);
+    this.logoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(log);
 
   }
+  ngOnInit(): void {
+    this.userS.getUser(this.tok.getIdUser()).subscribe({
+      next: (dat) => {
 
-}
-Routerl(href:string)
-{
-  this.hrefActual=href;
- // this.rout.navigateByUrl(href);
-}
-onClickLogout(){
- this.tok.deleteCookie("Token")
- this.tok.deleteCookie("Refresh")
-  this.rout.navigate(['login'])
-}
-getIdUser(): number{
-   
-  const token = this.tok.getTok("Token");
-  if(token){
-  const decodeToken : JwtPayload  = jwtDecode(token);
-   return (decodeToken as any).nameid;
-  
-}
-return 0
-}
+        if (dat > 1) {
+          this.mostrarDiv = false;
+          console.log("entra al normal ")
+          this.rout.navigate(['principal/PropertyList'])
+        } else {
+          console.log("Este es admin")
+          this.mostrarDiv = true;
+          this.rout.navigate(['principalAdmin/Profile'])
+
+        }
+      }
+
+    })
+  }
+  Routerl(href: string) {
+    this.hrefActual = href;
+    // this.rout.navigateByUrl(href);
+  }
+  onClickLogout() {
+    this.tok.deleteCookie("Token")
+    this.tok.deleteCookie("Refresh")
+    this.rout.navigate(['login'])
+  }
+
 }
 
