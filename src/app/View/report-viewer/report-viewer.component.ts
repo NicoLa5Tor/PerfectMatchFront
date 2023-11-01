@@ -11,6 +11,12 @@ import DataLabelsPlugin from 'chartjs-plugin-datalabels';
 import { NewUserTable } from 'src/app/Models/NewUserTable';
 import { AllMovementTable } from 'src/app/Models/AllMovementTable';
 
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatNativeDateModule} from '@angular/material/core';
+import {FormGroup, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {NgIf, JsonPipe} from '@angular/common';
+
 @Component({
   selector: 'app-report-viewer',
   templateUrl: './report-viewer.component.html',
@@ -23,8 +29,14 @@ export class ReportViewerComponent {
   reportPath: string = '';
   reportTypes: string[] = [];
 
-  startDate: string = '';
-  endDate: string = '';
+  startDateStr: string = '';
+  endDateStr: string = '';
+
+  range = new FormGroup({
+    start: new FormControl<Date | null>(null),
+    end: new FormControl<Date | null>(null),
+  });
+
   idUser: number = 0;
   originalTableDataSales: PurchaseSale[] = [];
   originalTableDataUser: NewUserTable[] = [];
@@ -63,8 +75,11 @@ export class ReportViewerComponent {
   }
 
   applyDateFilter(){
-    const dStartDate = new Date(this.startDate);
-    const dEndDate = new Date(this.endDate);
+
+    this.startDateStr = this.range.value.start ? this.range.value.start.toISOString().slice(0, 10) : '';;
+    this.endDateStr = this.range.value.end ? this.range.value.end.toISOString().slice(0, 10) : '';
+    const dStartDate = new Date(this.startDateStr);
+    const dEndDate = new Date(this.endDateStr);
 
     console.log(dStartDate)
     if (!isNaN(dStartDate.getTime()) && !isNaN(dEndDate.getTime())) {
@@ -82,9 +97,14 @@ export class ReportViewerComponent {
   getTableList() {
     this.getReportPath(this.selectedReportType);
 
+    this.startDateStr = this.range.value.start ? this.range.value.start.toISOString().slice(0, 10) : '';;
+    this.endDateStr = this.range.value.end ? this.range.value.end.toISOString().slice(0, 10) : '';
+
+    console.log(`Inicio: ${this.startDateStr} - Fin: ${this.endDateStr}`);
+
     if(this.reportPath == "NewUserReport")
     {
-      this._apiReportService.getUserTableList(this.startDate, this.endDate).subscribe((data) => {
+      this._apiReportService.getUserTableList(this.startDateStr, this.endDateStr).subscribe((data) => {
         console.log(data);
         this.originalTableDataUser = data;
         this.tableDataUser = data;
@@ -95,7 +115,7 @@ export class ReportViewerComponent {
         this.showViewer = false;
       });
 
-      this._apiReportService.getUserGraphList(this.startDate, this.endDate).subscribe(data => {
+      this._apiReportService.getUserGraphList(this.startDateStr, this.endDateStr).subscribe(data => {
         this.barChartData.labels = data.map(item => `${item.yearNumber} - Wk ${item.weekNumber}`);
         this.barChartData.datasets[0].data = data.map(item => item.userQuantity);
         // Actualiza el gráfico después de llenar los datos
@@ -104,7 +124,7 @@ export class ReportViewerComponent {
 
     }else if(this.reportPath == "AllMovementReport")
     {
-      this._apiReportService.getMovementTableList(this.startDate, this.endDate).subscribe((data) => {
+      this._apiReportService.getMovementTableList(this.startDateStr, this.endDateStr).subscribe((data) => {
         console.log(data);
         this.originalTableDataMov = data;
         this.tableDataMov = data;
@@ -154,6 +174,9 @@ export class ReportViewerComponent {
     this.showGraph = false;
     this.showViewer = true;
     this.getReportPath(this.selectedReportType);
+
+    this.startDateStr = this.range.value.start ? this.range.value.start.toISOString().slice(0, 10) : '';;
+    this.endDateStr = this.range.value.end ? this.range.value.end.toISOString().slice(0, 10) : '';
   
     if (!this.reportPath) {
       console.log("La ruta del informe no está disponible.");
@@ -164,7 +187,7 @@ export class ReportViewerComponent {
         .subscribe((data: ArrayBuffer) => this.displayReport(data));
     }
     if (this.reportPath === 'NewUserReport' || this.reportPath === 'AllMovementReport') {
-      this._apiReportService.getReportPdfWithParams(this.idUser, this.reportPath, this.startDate, this.endDate)
+      this._apiReportService.getReportPdfWithParams(this.idUser, this.reportPath, this.startDateStr, this.endDateStr)
         .subscribe((data: ArrayBuffer) => this.displayReport(data));
     }
   }
@@ -176,6 +199,10 @@ export class ReportViewerComponent {
   }
 
   downloadReport() {
+
+    this.startDateStr = this.range.value.start ? this.range.value.start.toISOString().slice(0, 10) : '';;
+    this.endDateStr = this.range.value.end ? this.range.value.end.toISOString().slice(0, 10) : '';
+
     if (this.pdfSrc) {
       const reportName = this.reportPath;
       if (this.reportPath === 'SalesReport' || this.reportPath === 'PurchaseReport') {
@@ -194,7 +221,7 @@ export class ReportViewerComponent {
         });
       }
       if (this.reportPath === 'NewUserReport' || this.reportPath === 'AllMovementReport') {
-        this._apiReportService.downloadParamsPdf(this.idUser,reportName, this.startDate, this.endDate)
+        this._apiReportService.downloadParamsPdf(this.idUser,reportName, this.startDateStr, this.endDateStr)
         .subscribe((data: Blob) => {
           const blobUrl = window.URL.createObjectURL(data);
           const anchor = document.createElement('a');
