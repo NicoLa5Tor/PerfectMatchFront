@@ -17,8 +17,8 @@
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-date-range-picker #picker></mat-date-range-picker>
       
-        <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
-        <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+        <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Fecha de inicio invalida</mat-error>
+        <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Fecha de fin invalida</mat-error>
       </mat-form-field>
       
       <mat-datepicker #startPicker></mat-datepicker>
@@ -50,22 +50,22 @@
     </ng-container>
 
     <ng-container matColumnDef="week">
-      <th mat-header-cell *matHeaderCellDef> Week </th>
+      <th mat-header-cell *matHeaderCellDef> Semana </th>
       <td mat-cell *matCellDef="let element"> {{element.week}} </td>
     </ng-container>
 
     <ng-container matColumnDef="startDate">
-      <th mat-header-cell *matHeaderCellDef> Start Date </th>
+      <th mat-header-cell *matHeaderCellDef> Fecha de inicio </th>
       <td mat-cell *matCellDef="let element"> {{element.startDate}} </td>
     </ng-container>
 
     <ng-container matColumnDef="endDate">
-      <th mat-header-cell *matHeaderCellDef> End Date </th>
+      <th mat-header-cell *matHeaderCellDef> Fecha de fin </th>
       <td mat-cell *matCellDef="let element"> {{element.endDate}}</td>
     </ng-container>
 
     <ng-container matColumnDef="userQuantity">
-      <th mat-header-cell *matHeaderCellDef> User Quantity </th>
+      <th mat-header-cell *matHeaderCellDef> Cantidad de usuarios </th>
       <td mat-cell *matCellDef="let element"> {{element.userQuantity}}</td>
     </ng-container>
   <tr mat-header-row *matHeaderRowDef="userDisplayedColumns"></tr>
@@ -79,27 +79,27 @@
   <table mat-table [dataSource]="tableDataMov" class="mat-elevation-z8">
 
     <ng-container matColumnDef="date">
-      <th mat-header-cell *matHeaderCellDef> Date </th>
+      <th mat-header-cell *matHeaderCellDef> Fecha </th>
       <td mat-cell *matCellDef="let element"> {{element.date}} </td>
     </ng-container>
 
     <ng-container matColumnDef="seller">
-      <th mat-header-cell *matHeaderCellDef> Seller </th>
+      <th mat-header-cell *matHeaderCellDef> Vendedor </th>
       <td mat-cell *matCellDef="let element"> {{element.seller}} </td>
     </ng-container>
 
     <ng-container matColumnDef="buyer">
-      <th mat-header-cell *matHeaderCellDef> Buyer </th>
+      <th mat-header-cell *matHeaderCellDef> Comprador </th>
       <td mat-cell *matCellDef="let element"> {{element.buyer}} </td>
     </ng-container>
 
     <ng-container matColumnDef="publication">
-      <th mat-header-cell *matHeaderCellDef> Publication </th>
+      <th mat-header-cell *matHeaderCellDef> Publicacion </th>
       <td mat-cell *matCellDef="let element"> {{element.publication}} </td>
     </ng-container>
 
     <ng-container matColumnDef="amount">
-      <th mat-header-cell *matHeaderCellDef> Amount </th>
+      <th mat-header-cell *matHeaderCellDef> Monto </th>
       <td mat-cell *matCellDef="let element"> {{element.amount}}</td>
     </ng-container>
   <tr mat-header-row *matHeaderRowDef="movDisplayedColumns"></tr>
@@ -113,22 +113,22 @@
   <table mat-table [dataSource]="tableDataSales" class="mat-elevation-z8">
 
     <ng-container matColumnDef="date">
-      <th mat-header-cell *matHeaderCellDef> Date </th>
+      <th mat-header-cell *matHeaderCellDef> Fecha </th>
       <td mat-cell *matCellDef="let element"> {{element.date}} </td>
     </ng-container>
 
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
       <td mat-cell *matCellDef="let element"> {{element.name}} </td>
     </ng-container>
 
     <ng-container matColumnDef="publication">
-      <th mat-header-cell *matHeaderCellDef> Publication </th>
+      <th mat-header-cell *matHeaderCellDef> Publicacion </th>
       <td mat-cell *matCellDef="let element"> {{element.publication}} </td>
     </ng-container>
 
     <ng-container matColumnDef="amount">
-      <th mat-header-cell *matHeaderCellDef> Amount </th>
+      <th mat-header-cell *matHeaderCellDef> Monto </th>
       <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="salesDisplayedColumns"></tr>
