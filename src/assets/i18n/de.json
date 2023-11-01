@@ -83,6 +83,21 @@
     "Agregar una imagen." : "Füge ein Bild hinzu.",
     "Reportes" : "Berichte",
     "Se el primero en comentar" : "Sei der Erste, der kommentiert",
-    "Añadir un comentario" : "Einen Kommentar hinzufügen", "Agregar Comentario" : "Kommentar hinzufügen"
+    "Añadir un comentario" : "Einen Kommentar hinzufügen", 
+    "Agregar Comentario" : "Kommentar hinzufügen",
+    "Selecciona un tipo de informe" : "Wähle einen Berichtstyp aus",
+    "Ingrese el rango de Fechas" : "Geben Sie den Datumsbereich ein",
+    "Filtrar fechas" : "Datumsfilter",
+    "Obtener Reporte" : "Bericht erhalten",
+    "Cargar Tabla" : "Tabelle laden",
+    "Filtrar por nombre" : "Nach Namen filtern",
+    "Semana" : "Woche",
+    "Fecha de inicio" : "Startdatum",
+    "Fecha de fin" : "Enddatum",
+    "Cantidad de usuarios" : "Anzahl der Benutzer",
+    "Mes" : "Monat",
+    "Comprador" : "Käufer",
+    "Vendedor" : "Verkäufer",
+    "Año" : "Jahr"
 
 }

@@ -82,6 +82,20 @@
      "Reportes" : "Relatórios",
      "Se el primero en comentar" : "Seja o primeiro a comentar",
      "Añadir un comentario" : "Adicionar um comentário", 
-     "Agregar Comentario" : "Adicionar Comentário"
+     "Agregar Comentario" : "Adicionar Comentário",
+     "Selecciona un tipo de informe" : "Selecione um tipo de relatório",
+     "Ingrese el rango de Fechas" : "Insira o intervalo de datas",
+     "Filtrar fechas" : "Filtrar datas",
+     "Obtener Reporte" : "Obter relatório",
+     "Cargar Tabla" : "Carregar tabela",
+     "Filtrar por nombre" : "Filtrar por nome",
+     "Semana" : "Semana",
+     "Fecha de inicio" : "Data de início",
+     "Fecha de fin" : "Data de término",
+     "Cantidad de usuarios" : "Número de usuários",
+     "Mes" : "Mês",
+"Comprador" : "Comprador",
+"Vendedor" : "Vendedor",
+"Año" : "Ano"
 
 }

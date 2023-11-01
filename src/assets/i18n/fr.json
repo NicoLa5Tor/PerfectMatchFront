@@ -85,6 +85,20 @@
     "Reportes" : "Rapports",
     "Se el primero en comentar" : "Soyez le premier à commenter",
     "Añadir un comentario" : "Ajouter un commentaire",
-     "Agregar Comentario" : "Ajouter un commentaire"
+     "Agregar Comentario" : "Ajouter un commentaire",
+     "Selecciona un tipo de informe" : "Sélectionnez un type de rapport",
+     "Ingrese el rango de Fechas" : "Entrez la plage de dates",
+     "Filtrar fechas" : "Filtrer les dates",
+     "Obtener Reporte" : "Obtenir un rapport",
+     "Cargar Tabla" : "Charger le tableau",
+     "Filtrar por nombre" : "Filtrer par nom",
+     "Semana" : "Semaine",
+     "Fecha de inicio" : "Date de début",
+     "Fecha de fin" : "Date de fin",
+     "Cantidad de usuarios" : "Nombre d'utilisateurs",
+     "Mes" : "Mois",
+     "Comprador" : "Acheteur",
+     "Vendedor" : "Vendeur",
+     "Año" : "An"
 
 }

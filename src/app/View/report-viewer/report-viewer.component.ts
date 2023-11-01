@@ -6,6 +6,7 @@ import { PurchaseSale } from 'src/app/Models/PurchaseSale';
 
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
+import { TimeZoneService } from 'src/app/Services/time-zone.service';
 
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
 import { NewUserTable } from 'src/app/Models/NewUserTable';
@@ -16,6 +17,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatNativeDateModule} from '@angular/material/core';
 import {FormGroup, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgIf, JsonPipe} from '@angular/common';
+import { MAT_DATE_LOCALE,DateAdapter } from '@angular/material/core';
+
+
 
 @Component({
   selector: 'app-report-viewer',
@@ -57,10 +61,17 @@ export class ReportViewerComponent {
   showGraph: boolean = false;
   nameFilter: string = '';
 
-  constructor(private http: HttpClient, private _apiReportService:ApiReportService, private _tok:TokenService){
+  constructor(private http: HttpClient, private _apiReportService:ApiReportService, private _tok:TokenService,
+     private timeZoneService : TimeZoneService,
+     private dateAdapter : DateAdapter<Date>){
     this.idUser = _tok.getIdUser();
   }
   ngOnInit(): void {
+    this.timeZoneService.getLanguage().subscribe((language) => {
+      // Configura el idioma del mat-datepicker con el idioma actual.
+      // Esto se ejecutará cada vez que cambie el idioma.
+      this.dateAdapter.setLocale(language);
+    });
     this.getReportTypes();
   }
 
