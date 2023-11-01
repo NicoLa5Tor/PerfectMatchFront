@@ -77,7 +77,12 @@
     "Bovino" : "Bovine",
     "Equino" : "Equine",
     "Años" : "Years",
-    "COL$" : "$"
+    "COL$" : "$",
+    "un" : "a" ,
+    "Agregar una imagen." : "Add an image.",
+    "Reportes" : "Reports",
+    "Se el primero en comentar" : "Be the first to comment",
+    "Añadir un comentario" : "Add a comment", "Agregar Comentario" : "Add Comment"
     
 
 

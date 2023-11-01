@@ -78,6 +78,11 @@
     "Bovino" : "Rind",
     "Equino" : "Pferd",
     "Años" : "Jahre",
-    "COL$" : "€"
+    "COL$" : "€",
+    "un" : "einen",
+    "Agregar una imagen." : "Füge ein Bild hinzu.",
+    "Reportes" : "Berichte",
+    "Se el primero en comentar" : "Sei der Erste, der kommentiert",
+    "Añadir un comentario" : "Einen Kommentar hinzufügen", "Agregar Comentario" : "Kommentar hinzufügen"
 
 }

@@ -13,6 +13,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TokenService } from 'src/app/Services/token.service';
 import { Router } from '@angular/router';
 import { Image } from 'src/app/Models/Image';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-publication',
@@ -26,6 +27,7 @@ export class AddPublicationComponent implements OnInit {
   constructor(private _apipublication: ApiPublicationService, private _ApiBreed: ApiBreedService,
     private _ApiAnimalType: ApiAnimalTypeService, private _ApiCity: ApiCityService,
     private _ApiGenderService: ApiGenderService,
+    private tnas : TranslateService,
     private tok : TokenService,
     private rout : Router,
   

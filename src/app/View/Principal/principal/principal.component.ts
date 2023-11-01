@@ -91,14 +91,17 @@ export class PrincipalComponent {
   filterLoad(){
   
     const button_filters = document.querySelector(".button_filters") as HTMLButtonElement;
-    const collapseSection = document.getElementById("collapseSection") as HTMLElement;
+    const collapseSection = document.getElementById("collapseSections") as HTMLElement;
     this.notificationObj[1]=collapseSection;
-    button_filters.addEventListener("click", () => {
+    button_filters.addEventListener("click"
+  
+    , () => {
       collapseSection.style.display = collapseSection.style.display!="block"?"block":"none"; // Mostrar el objeto
       collapseSection.focus(); // Asignar el foco al objeto
     });
     if(collapseSection)
     collapseSection.style.display = "block";
+    
   
   }
   documentLoad():void {

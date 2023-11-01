@@ -16,7 +16,7 @@
 .displaygrid{
     display:grid;
 }
-#collapseSection{
+#collapseSections{
 display: none;
 
 position: fixed !important; 

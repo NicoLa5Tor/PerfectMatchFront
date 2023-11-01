@@ -76,6 +76,12 @@
     "Bovino" : "Bovino",
     "Equino" : "Equino",
     "Años" : "Anos",
-    "COL$" : "€"
+    "COL$" : "€",
+    "un" : "um", 
+     "Agregar una imagen." : "Adicionar uma imagem." ,
+     "Reportes" : "Relatórios",
+     "Se el primero en comentar" : "Seja o primeiro a comentar",
+     "Añadir un comentario" : "Adicionar um comentário", 
+     "Agregar Comentario" : "Adicionar Comentário"
 
 }
