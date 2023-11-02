@@ -11,6 +11,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import { TokenService } from 'src/app/Services/token.service';
 import { ApiUserService } from 'src/app/Services/api-user.service';
+import { notificationService } from 'src/app/Services/api-notifications.services';
+import { MovementService } from 'src/app/Services/movements.service';
 @Component({
   selector: 'app-property-card',
   templateUrl: './property-card.component.html',
@@ -21,6 +23,7 @@ export class PropertyCardComponent implements OnInit, AfterViewInit {
   date !: number;
   dat = false;
   price: any;
+  iduser!:number;
   @Input() propertyId!: number
   @Input() objeto: Publication = {
     nameOwner: "",
@@ -28,6 +31,7 @@ export class PropertyCardComponent implements OnInit, AfterViewInit {
     idOwner: 1, weight: 0, idPublication: 0, images: [], idGender: 0, idAnimalType: 0, idBreed: 0, idCity: 0, price: 0
   };
   constructor(
+    private _user:TokenService,
     private dialogMat: MatDialog,
     private _service: ApiPublicationService,
     private _message: MessageService,
@@ -35,7 +39,9 @@ export class PropertyCardComponent implements OnInit, AfterViewInit {
     private trn: TranslateService,
     private rout: Router,
     private tok: TokenService,
-    private user: ApiUserService
+    private user: ApiUserService,
+    private _notiS:notificationService,
+    private _movementService:MovementService
   ) {
 
   }
@@ -95,12 +101,14 @@ export class PropertyCardComponent implements OnInit, AfterViewInit {
   }
   buy(obj: Publication) {
     this.dialogMat.open(PaypalComponent, {
-
-
       data: obj,
       panelClass: 'dialog-custom-style'
-
-    }).afterClosed().subscribe(result => { })
+    }).afterClosed().subscribe(result => {
+      this._movementService.AddMovements({idBuyer:this.objeto.idOwner as number,idPublication:this.objeto.idPublication,idSeller:this.iduser}).subscribe(x=>{this._notiS.setNotification({
+        accessLink: "", idNotification: undefined, idMovement:x.idMovement, idPublication:this.objeto.idPublication,idUserFK:this._user.getIdUser(), idUser:this.objeto.idOwner as number ,
+        imagePublication: "", nameUser: "",nameUserFK: "", namePublication: "", state: 0,namePublication1:"",typeNotification: 0
+      }).subscribe(x=>{})})
+       })
   }
 
 }

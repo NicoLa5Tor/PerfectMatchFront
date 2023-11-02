@@ -55,11 +55,12 @@ export class PrincipalComponent {
           this.mostrarDiv = false;
           console.log("entra al normal ")
           this.rout.navigate(['principal/PropertyList'])
+          this.Routerl('principal/PropertyList');
         } else {
           console.log("Este es admin")
           this.mostrarDiv = true;
-          this.rout.navigate(['principalAdmin/Profile'])
-
+          this.rout.navigate(['principalAdmin/Profile']);
+          this.Routerl('principalAdmin/Profile');
         }
       }
 
