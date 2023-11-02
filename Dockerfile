@@ -1,12 +1,15 @@
-FROM node:16-bullseye
+FROM node:16-alpine as build-step 
+RUN mkdir -p /app
 
 WORKDIR /app
-
-
- COPY . .
+COPY  package.json /app/
 
 RUN npm install
 
-EXPOSE 4200
+COPY . /app
 
-CMD [ "npm","start" ]
+RUN npm run build --prod
+
+FROM nginx:1.17.1-alpine
+
+COPY --from=build-step /app/dist/perfect-match-front /usr/share/nginx/html

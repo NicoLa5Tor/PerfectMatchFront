@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Comment } from 'src/app/Models/Comment';
+import { notificationService } from 'src/app/Services/api-notifications.services';
+import { ApiUserService } from 'src/app/Services/api-user.service';
 import { CommentService } from 'src/app/Services/comment.service';
 import { TokenService } from 'src/app/Services/token.service';
 
@@ -14,7 +16,11 @@ export class CommentsComponent implements OnInit {
   @Input() listComments!: Comment[]
   commentForm: FormGroup;
   iduser!:number;
-  constructor(private fb: FormBuilder,private _apiComment:CommentService, private _user:TokenService) {
+  constructor(private fb: FormBuilder,private _apiComment:CommentService, private _user:TokenService,
+    private _notiS:notificationService,
+    private _user1:ApiUserService,
+
+    ) {
     this.commentForm = this.fb.group({
       commentText: [''],
     });
@@ -42,28 +48,35 @@ export class CommentsComponent implements OnInit {
       comment1: newComment,
       nameOwnerComment: comment.nameUser,
       nameOwnerPublication: comment.nameOwnerPublication,
-      nameUser:"Andres",
+      nameUser:"",
       idCommentFk:comment.idComment==0?undefined:comment.idComment,
       comments: []};
 
     this.commentForm.get('commentText')?.setValue(''); // Limpia el campo después de agregar el comentario
     console.log(comment1)
-    this._apiComment.addComment(comment1).subscribe(x=>{
-      if(x){
-        comment1.idComment=x.idComment;
-        if(comment1.idCommentFk)
-        {comment.comments.push(comment1);}
-        else{
-          comment.comment1 = comment1.comment1
-          comment.nameUser = comment1.nameUser
-        }
+    this._user1.getCompleteUser(this.iduser).subscribe(x=>{
+      comment1.nameUser=x.name;
+        this._apiComment.addComment(comment1).subscribe(x=>{
+          if(x){
+            comment1.idComment=x.idComment;
+            if(comment1.idCommentFk)
+            {comment.comments.push(comment1);}
+            else{
+              comment.comment1 = comment1.comment1
+              comment.nameUser = comment1.nameUser
+            }
+            this._user1.getCompleteUser(this.iduser).subscribe(x=>{
 
-      }});
-    
+              this._notiS.setNotification({
+                accessLink: "", idNotification: 0, idPublication: (comment.idPublication), idUser:comment.idUser ,idUserFK:this.iduser,
+                imagePublication: "", nameUser: "", nameUserFK:"",namePublication: "", state: 0,
+                typeNotification: 2,namePublication1:"",description1:""
+              }).subscribe(x=>{})
+              
+            })
+          }});
+     })
   }
-
-
-
   GroupInListComment(listComments:Comment[]){
     let listNC:Map<number,Comment[]> = new Map<number,Comment[]>() ;
     let listcomment1:Comment[]=[];

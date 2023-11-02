@@ -32,6 +32,9 @@ export class ApiUserService {
   getUser(id : number) : Observable<number>{
     return this.http.get<number>(`${this.url}GetUser/${id}`);
   }
+  getCompleteUser(id : number) : Observable<User>{
+    return this.http.get<User>(`${this.url}GetTotalUser/${id}`);
+  }
   getSellers():Observable<User[]>
   {
       return this.http.get<User[]>(this.url+"Seller");

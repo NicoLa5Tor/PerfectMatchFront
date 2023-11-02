@@ -55,11 +55,12 @@ export class PrincipalComponent {
           this.mostrarDiv = false;
           console.log("entra al normal ")
           this.rout.navigate(['principal/PropertyList'])
+          this.Routerl('principal/PropertyList');
         } else {
           console.log("Este es admin")
           this.mostrarDiv = true;
-          this.rout.navigate(['principalAdmin/Profile'])
-
+          this.rout.navigate(['principalAdmin/Profile']);
+          this.Routerl('principalAdmin/Profile');
         }
       }
 
@@ -91,7 +92,7 @@ export class PrincipalComponent {
   filterLoad(){
   
     const button_filters = document.querySelector(".button_filters") as HTMLButtonElement;
-    const collapseSection = document.getElementById("collapseSection") as HTMLElement;
+    const collapseSection = document.getElementById("collapseSections") as HTMLElement;
     this.notificationObj[1]=collapseSection;
     button_filters.addEventListener("click", () => {
       collapseSection.style.display = collapseSection.style.display!="block"?"block":"none"; // Mostrar el objeto
