@@ -11,7 +11,7 @@
         <div  class="divforlabel"> 
           <button *ngIf="image.dataImage" class="cancelButton" mat-icon-button aria-label="Example icon-button with a menu" matSuffix
             aria-label="Clear" (click)="deleteSpace(image.number)" id="deleteSpace{{image.number}}"><mat-icon
-             >{{'Cancelar' |translate}}</mat-icon></button>
+             >cancel</mat-icon></button>
           <label for="image{{image.number}}"  class="label displayBlock">
             <div class="divImg" [style]="image.dataImage!==undefined?'border: none':'' ">
               <p *ngIf="!image.dataImage"><mat-icon>add_photo_alternate</mat-icon>{{'Agregar una imagen.' | translate}}</p>

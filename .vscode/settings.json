@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/84550071-7f60-4ff7-9fd0-4239ac7e6b83/resourceGroups/peTfecTMatch-Front_group/providers/Microsoft.Web/sites/peTfecTMatch-Front",
+    "appService.deploySubpath": "dist\\perfect-match-front"
+}

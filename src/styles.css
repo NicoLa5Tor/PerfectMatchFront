@@ -24,6 +24,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   
    }
 }
+.dialog-custom-style-2{
+    width: 60%;
+    overflow-y: scroll;
+    height: max-content;
+    @media (max-width: 750px) {
+     width: 85%;
+   
+    }
+ }
 .snackRegister{
     background-color: blue;
 }

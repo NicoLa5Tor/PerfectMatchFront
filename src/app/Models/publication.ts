@@ -16,6 +16,6 @@ export interface Publication {
         description :string,
         idOwner?:number,
         nameOwner:string,
-         images :Array<Image>
+        images :Array<Image>
 
 }

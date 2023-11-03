@@ -49,12 +49,6 @@ const routes: Routes = [
       }
     },
     {
-      path: "Form", component: AddPublicationComponent,canActivate: [GuardAdmin],
-       data: {
-        authInterceptor: AuthInterceptor
-      }
-    },
-    {
       path: "dialogImage", component: ImgeDialogComponent, canActivate: [GuardAdmin],
       data: {
         authInterceptor: AuthInterceptor

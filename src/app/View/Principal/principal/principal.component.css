@@ -65,12 +65,12 @@ body{
     padding-right: 0;
 }
 #logo{
-    position: relative;
-    left: 60px;
+    position: absolute;
     display: inline-block;
-    width: 2%;
-    height: 30px;
-    top: 2px;
+    width: 300px;
+    left: 15px;
+    height: 23px;
+    top: 23px;
 
 }
 .selected:active, .selected:hover{

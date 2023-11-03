@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Optional } from '@angular/core';
 import { AnimalType } from 'src/app/Models/AnimalType';
 import { Breed } from 'src/app/Models/Breed';
 import { City } from 'src/app/Models/City';
@@ -30,7 +30,7 @@ export class AddPublicationComponent implements OnInit {
     private tnas : TranslateService,
     private tok : TokenService,
     private rout : Router,
-  
+    @Optional() public dialogRef: MatDialogRef<AddPublicationComponent>,
     @Inject(MAT_DIALOG_DATA) public model: Publication
   ) { 
  
@@ -91,7 +91,6 @@ export class AddPublicationComponent implements OnInit {
 
      // console.log("agrega: " + this.publication.breedName)
       this.publication.idOwner =  this.tok.getIdUser();
-      this.publication.idOwner = 3;
       console.log("agrega: " + this.publication.breedName)
       this._apipublication.AddPublications(this.publication).subscribe({
         next: (data) => {
@@ -100,10 +99,11 @@ export class AddPublicationComponent implements OnInit {
         }
       })
     } else {
-      console.log("edita: " + this.model);
+   
       this._apipublication.UpdatePublication(this.model.idPublication, this.publication).subscribe({
         next: (data) => {
-          console.log("guarda: " + data);
+          
+          this.dialogRef.close("Actulizado");
         }, error: (e) => { }
       })
     }

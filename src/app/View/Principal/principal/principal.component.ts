@@ -41,7 +41,7 @@ export class PrincipalComponent {
     this.id = id;
     console.log("el id es: ", id)
 
-    const log = 'assets/logo-p.png'
+    const log = 'assets/name_logo.png'
     const img = 'assets/logo.png';
     this.imgUrl = this.sanitizer.bypassSecurityTrustResourceUrl(img);
     this.logoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(log);
@@ -53,11 +53,11 @@ export class PrincipalComponent {
 
         if (dat > 1) {
           this.mostrarDiv = false;
-          console.log("entra al normal ")
+         // console.log("entra al normal ")
           this.rout.navigate(['principal/PropertyList'])
           this.Routerl('principal/PropertyList');
         } else {
-          console.log("Este es admin")
+         // console.log("Este es admin")
           this.mostrarDiv = true;
           this.rout.navigate(['principalAdmin/Profile']);
           this.Routerl('principalAdmin/Profile');

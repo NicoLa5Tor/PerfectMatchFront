@@ -91,12 +91,13 @@ export class PropertyCardComponent implements OnInit, AfterViewInit {
   }
   openAdd(obj: Publication) {
     this.dialogMat.open(AddPublicationComponent, {
-      width: "50%",
-      height: "70vh",
+      panelClass: "dialog-custom-style-2",
       data: obj
 
     }).afterClosed().subscribe(result => {
-
+      if(result == "Actulizado"){
+        this._service.UserPublications(this.tok.getIdUser())
+      }
     })
   }
   buy(obj: Publication) {
