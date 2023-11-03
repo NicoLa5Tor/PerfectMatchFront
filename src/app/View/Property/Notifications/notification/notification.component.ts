@@ -26,7 +26,7 @@ console.log(this.endPoint+"chatHub");
 
   this.hubConnection.on("ReceiveMessage", (user: Notification, message: string) => {
     console.log(user);
-    this._apiNotification.getNotifications(this.tok.getIdUser()).subscribe(x=>{this.notifications=x;});
+    this._apiNotification.getNotifications(this.tok.getIdUser()).subscribe(x=>{this.notifications=x;console.log(x)});
   });
   
   this._apiNotification.getNotifications(this.tok.getIdUser()).subscribe(x=>{this.notifications=x;console.log(x)});

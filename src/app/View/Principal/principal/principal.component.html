@@ -9,6 +9,11 @@
         <div id="logo">
             <img [src]="logoUrl" class="h-100 w-50">
         </div>
+        <div class="center">
+            <button class="buttonshow button1" (click)="showNotifications()" id="BShowNotifications">
+                <mat-icon
+                    mat-list-item>notifications</mat-icon></button>
+        </div>
         <div class="options">
             <p id="p1">
                 <a (click)="onClickLogout()" style="cursor: pointer;">{{"Cerrar Sesión" | translate}} <i
@@ -37,25 +42,27 @@
                     <i class="{{link.icon}} display-8"></i>
                     {{link.text | translate}}
                 </a>
+
             </div>
 
- 
+
+
 
 
         </mat-menu>
-              
-        <a>
-            <div class="filter">
-                <a mat-list-item style="cursor: pointer;" *ngIf="hrefActual==='/principal/PropertyList'"
-                    name="button_filters" type="submit" >
-                    <i class="bi bi-funnel"></i>
-                    {{"Filtros" | translate}}</a>
-            </div>
-        </a>
+
+            <a>
+                <div class="filter">
+                    <a mat-list-item style="cursor: pointer;" *ngIf="hrefActual==='/principal/PropertyList'"
+                        name="button_filters" type="submit">
+                        <i class="bi bi-funnel"></i>
+                        {{"Filtros" | translate}}</a>
+                </div>
+            </a>
         <a>
             <div class="filter">
                 <a mat-list-item style="cursor: pointer;" *ngIf="hrefActual==='/principalAdmin/Profile'"
-                    name="button_filters" type="submit" >
+                    name="button_filters" type="submit">
                     <i class="bi bi-funnel"></i>
                     {{"Filtros" | translate}}</a>
             </div>
@@ -70,16 +77,15 @@
 
         <div class="container-inputs d-flex flex-column flex-shrink-0  bg-body-tertiary">
             <hr>
-            <mat-nav-list  *ngIf="mostrarDiv == false">
+            <mat-nav-list *ngIf="mostrarDiv == false">
                 <a mat-list-item class="selected" *ngFor="let link of links" [routerLink]="link.href"
                     (click)="Routerl(link.href)" data-bs-original-title="Customers">
                     <i class="{{link.icon}} display-8"></i>
                     {{link.text | translate}}
                 </a>
-                <button class="buttonshow" (click)="showNotifications()" id="BShowNotifications" mat-menu-item><mat-icon class="buttonshow">notifications</mat-icon><span>notifications</span></button>
-                <a  mat-list-item class="selected" *ngIf="hrefActual==='/principal/PropertyList'" (click)="showFilters()" class="button_filters" name="button_filters"
-                    type="submit" data-toggle="collapse" href="#collapseSection" aria-expanded="false"
-                    aria-controls="collapseSection">
+                <a mat-list-item class="selected" *ngIf="hrefActual==='/principal/PropertyList'" (click)="showFilters()"
+                    class="button_filters" name="button_filters" type="submit" data-toggle="collapse"
+                    href="#collapseSection" aria-expanded="false" aria-controls="collapseSection">
                     <i class="bi bi-funnel"></i>
                     {{"Filtros" | translate}}</a>
 
@@ -106,7 +112,7 @@
         <div class="div-inlane">
 
             <div id="notificationObj" class="scrollable-container">
-                <app-notification  ></app-notification>
+                <app-notification></app-notification>
             </div>
             <router-outlet>
 

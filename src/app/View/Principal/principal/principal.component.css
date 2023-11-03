@@ -11,6 +11,15 @@ body{
 .row1{
     margin:5px;
 }
+.center{
+    display:inline-block;
+    width:30%;
+    right:0;
+    position: absolute;
+    top:15px;
+    padding-left: 80px;
+
+}
 #notificationObj{
     
     min-width: 370px;
@@ -34,11 +43,14 @@ body{
 #togle{
     display: none;
 }
-.buttonshow{
-    width:100%;
+.button1{
+    position: relative !important;
+    left:60% !important;
+    top:0;
+    padding-right: 6px;
+
 }
 .mat-mdc-menu-item .mat-icon {
-    
     margin-right:0 ;
 }
 
@@ -56,7 +68,18 @@ body{
 .scrollable-container::-webkit-scrollbar-thumb:hover {
     background: #888; /* Color del pulgar cuando se pasa el cursor */
 }
+.buttonshow1{display :block;
+}
+.icon-noti{
+    width: 30px;
+    float: left;
+    padding-left: 15px;
 
+}
+.p{
+    float: left;
+    padding-left: 5px;
+}
 .menu{
     display: none;
     height: 60px;
@@ -113,6 +136,7 @@ body{
 }
 
 .head{
+    min-width: 437.04;
     overflow-y: hidden;
    background: linear-gradient(to right, #FFD700, #FFC200, #FFAE00, #FF9900, #FF8500, #FF7100, #FF5C00, #FF4800, #FF3300);
   /*  background: linear-gradient(to right, #2a0b46, #52128a,#6915b3,#7f0ce4,#7c107c,#be0ebe,#f702f7); */

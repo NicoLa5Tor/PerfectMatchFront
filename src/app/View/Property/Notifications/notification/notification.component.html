@@ -5,13 +5,13 @@
         <div class="row1">
             <div class="column1">
     <mat-card-header *ngIf="notification.typeNotification==0" >
-        {{notification.nameUserFK}} <p class="text-color">{{"realizo la compra de"| translate}} </p> {{notification.namePublication}}</mat-card-header>
+        <p class="text-color">{{notification.nameUserFK}} {{"realizo la compra de"| translate}}  {{notification.namePublication}}</p></mat-card-header>
         <mat-card-header *ngIf="notification.typeNotification==1" >
-             <p class="text-color">{{"ha realizado la compra de"| translate}}</p>&nbsp;{{notification.namePublication}}</mat-card-header>
+             <p class="text-color">{{"ha realizado la compra de"| translate}}&nbsp;{{notification.namePublication}}</p></mat-card-header>
             <mat-card-header *ngIf="notification.typeNotification==2" >
-                {{notification.nameUserFK}}&nbsp; <p class="text-color">{{"ha repondido a la publicacion de"| translate}}</p>&nbsp;{{notification.namePublication1}}</mat-card-header>
-                <mat-card-header *ngIf="notification.typeNotification==3" >
-                    {{notification.nameUserFK}}&nbsp;<p class="text-color">{{"ha respondido a tu comentario de la publicacion"| translate}}</p>&nbsp;{{notification.namePublication1}}</mat-card-header>
+                <p class="text-color">{{notification.nameUserFK}}&nbsp; {{"ha repondido a la publicacion de"| translate}}&nbsp;{{notification.namePublication1}}</p></mat-card-header>
+                <mat-card-header *ngIf="notification.typeNotification==3" ><p class="text-color">
+                    {{notification.nameUserFK}}&nbsp;{{"ha respondido a tu comentario de la publicacion"| translate}}&nbsp;{{notification.namePublication1}}</p></mat-card-header>
        
         <mat-card-content>{{notification.description}}</mat-card-content>
         <mat-card-actions><a class="deleteNoti"  (click)="removeNotification((notification.idNotification) )"><mat-icon>delete</mat-icon> </a></mat-card-actions>

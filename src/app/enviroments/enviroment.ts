@@ -1,4 +1,4 @@
 export const enviroment = {
-    endPoint: "https://perfectmatchback.azurewebsites.net/",
+    endPoint: "https://localhost:44370/",
     endPointDaviplata :"https://apislab.daviplata.com/"
 }
