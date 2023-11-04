@@ -48,6 +48,7 @@ body{
     left:60% !important;
     top:0;
     padding-right: 6px;
+    z-index: 100;
 
 }
 .mat-mdc-menu-item .mat-icon {
@@ -117,7 +118,8 @@ body{
      position: relative;
     left: 70%;
 }
-
+footer{
+    position: relative;}
 .img-left{
   max-width: 20%;
   height: 20%;
