@@ -16,10 +16,10 @@ export class AppComponent implements OnInit {
 //  transt.setIdiomDefault();
  }
  ngOnInit(): void {
-  let href = document.location.href.substring(document.location.origin.length,document.location.origin.length + ("newpassword").length)
-  if(href != "newpassword")
-  this.rout.navigate(['principal'])
+  let href = document.location.href.substring(document.location.origin.length,document.location.origin.length + ("/newpassword").length)
+  if(href .search("/newpassword"))
+  {this.rout.navigate(['principal'])
 }
 }
 
-
+}
