@@ -39,7 +39,7 @@ export class GenerateTokenComponent implements OnInit{
   initForm():FormGroup{
   return  this.fb.group({
     email:['',[Validators.required, Validators.email,Validators.minLength(8)]],
-    domain:[document.location.hostname]
+    domain:[document.location.origin]
     })
   }
 }
