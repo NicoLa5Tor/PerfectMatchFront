@@ -25,6 +25,8 @@ import { GuardPrincipal } from './Guards/GuardPrincipal';
 const routes: Routes = [
   { path: "logIndex/:token", component: AppComponent},
   { path: "login", component: LoginComponent, },
+  { path: "forgotpass", component:GenerateTokenComponent , },
+  { path: "newpassword", component: NewPassComponent, },
   { path: "register", component: RegisterComponent },
   {path: "Relogin",component:ReLoginComponent , canActivate: [Relogin]
        

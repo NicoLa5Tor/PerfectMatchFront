@@ -11,7 +11,7 @@ import { FloatLabelType } from '@angular/material/form-field';
   styleUrls: ['./recover-pass.component.css']
 })
 export class GenerateTokenComponent implements OnInit{
-  public email:Email={content:"",email:"",subject:""};
+  public email:Email={content:"",email:"",subject:"",domain:""};
   recoverForm!:FormGroup;
   floatLabelControl = new FormControl('auto' as FloatLabelType);
   constructor(private _apiuser:LoginService,private _snackbar:MatSnackBar, private readonly fb:FormBuilder) {}
@@ -39,7 +39,7 @@ export class GenerateTokenComponent implements OnInit{
   initForm():FormGroup{
   return  this.fb.group({
     email:['',[Validators.required, Validators.email,Validators.minLength(8)]],
-
+    domain:[document.location.hostname]
     })
   }
 }
