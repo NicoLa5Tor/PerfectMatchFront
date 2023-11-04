@@ -2,8 +2,8 @@
 <ng-container *ngFor="let comment of listComments">
   <mat-expansion-panel>
     <mat-expansion-panel-header>
-      {{ comment.comment1 |translate }} |
-     <p class="textBlue">{{ comment.nameUser }}</p> 
+      {{ comment.comment1 |translate }} 
+     <p class="textBlue">|{{ comment.nameUser }}</p> 
     </mat-expansion-panel-header>
     <form [formGroup]="commentForm">
       <mat-form-field >
