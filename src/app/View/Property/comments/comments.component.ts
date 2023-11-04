@@ -30,7 +30,7 @@ export class CommentsComponent implements OnInit {
     if(!this.listComments)
     {
       this._apiComment.getCommentsFromPublication(this.id).subscribe(x=>{this.GroupInListComment(x);
-      console.log(this.listComments);
+      
       if(!(this.listComments.length>0))
       {this.listComments=[{comment1:"Se el primero en comentar",comments: [],idComment:0,idPublication:this.id,
       idUser:0,nameOwnerComment:"",nameOwnerPublication:"",nameUser:"",isSon:false}];}
@@ -54,8 +54,8 @@ export class CommentsComponent implements OnInit {
 
     this.commentForm.get('commentText')?.setValue(''); // Limpia el campo después de agregar el comentario
     console.log(comment1)
-    this._user1.getCompleteUser(this.iduser).subscribe(x=>{
-      comment1.nameUser=x.name;
+    this._user1.getCompleteUser(this._user.getIdUser()).subscribe(x1=>{console.log(x1)
+      comment1.nameUser=x1.name;
         this._apiComment.addComment(comment1).subscribe(x=>{
           if(x){
             comment1.idComment=x.idComment;
@@ -65,16 +65,16 @@ export class CommentsComponent implements OnInit {
               comment.comment1 = comment1.comment1
               comment.nameUser = comment1.nameUser
             }
-            this._user1.getCompleteUser(this.iduser).subscribe(x=>{
-
               this._notiS.setNotification({
-                accessLink: "", idNotification: 0, idPublication: (comment.idPublication), idUser:comment.idUser ,idUserFK:this.iduser,
+                accessLink: "", idNotification: 0, idPublication: (comment.idPublication),
+                idUser:comment.idUser ,idUserFK:this._user.getIdUser(),
                 imagePublication: "", nameUser: "", nameUserFK:"",namePublication: "", state: 0,
                 typeNotification: 2,namePublication1:"",description1:""
               }).subscribe(x=>{})
               
-            })
-          }});
+          }
+        
+        });
      })
   }
   GroupInListComment(listComments:Comment[]){
@@ -95,7 +95,6 @@ export class CommentsComponent implements OnInit {
     });
     this.GroupSubComments(listcomment1,listNC);
     this.listComments= listcomment1;
-    console.log(this.listComments)
   }
   private GroupSubComments(listComments:Comment[],listNC:Map<number,Comment[]>){
 
