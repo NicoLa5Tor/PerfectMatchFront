@@ -17,3 +17,9 @@
   #map {
     height: 100%;
   }
+  .spinner{
+    position:relative;
+    left: 50%;
+    top: 50% ;
+  }
+ 

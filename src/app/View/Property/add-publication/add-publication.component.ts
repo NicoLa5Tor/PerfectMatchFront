@@ -89,16 +89,16 @@ export class AddPublicationComponent implements OnInit {
   addEdit() {
     if (this.model.idPublication == undefined) {
 
-     // console.log("agrega: " + this.publication.breedName)
-      this.publication.idOwner =  this.tok.getIdUser();
-      console.log("agrega: " + this.publication.breedName)
-      this._apipublication.AddPublications(this.publication).subscribe({
-        next: (data) => {
-          this.rout.navigate(['principal/PropertyList'])
-        }, error: (e) => {
-        }
-      })
-    } else {
+      // console.log("agrega: " + this.publication.breedName)
+       this.publication.idOwner =  this.tok.getIdUser();
+       console.log("agrega: " + this.publication.breedName)
+       this._apipublication.AddPublications(this.publication).subscribe({
+         next: (data) => {
+           this.rout.navigate(['principal/PropertyList'])
+         }, error: (e) => {
+         }
+       })
+     } else {
    
       this._apipublication.UpdatePublication(this.model.idPublication, this.publication).subscribe({
         next: (data) => {

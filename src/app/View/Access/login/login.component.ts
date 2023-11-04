@@ -10,6 +10,8 @@ import { TokenService } from 'src/app/Services/token.service';
 import {TranslateService} from '@ngx-translate/core';
 import { ApiUserService } from 'src/app/Services/api-user.service';
 import { Carousel, initTE } from "tw-elements";
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-login',
@@ -29,7 +31,7 @@ export class LoginComponent implements OnInit{
     'https://www.cleverfiles.com/howto/wp-content/uploads/2018/03/minion.jpg',
   ];
   constructor(private actRout: ActivatedRoute, private rout: Router, private fb: FormBuilder,
-     private serviceLog: LoginService, private tok: TokenService, private trans : TranslateService, private user : ApiUserService) {
+     private serviceLog: LoginService, private tok: TokenService, private trans : TranslateService, private user : ApiUserService, private _snackBar :MatSnackBar) {
     const state  = this.rout.getCurrentNavigation()?.extras.state;
     this.form = this.fb.group({
       email: ['', Validators.required],
@@ -68,11 +70,12 @@ export class LoginComponent implements OnInit{
             //  localStorage.setItem('token_user',data.token);      
             //console.log("datos ", this.token)
           } else {
+            this.messageAlert("Algo salió mal ", "¡contraseña incorrecto!")
             console.log("usuario no exitente")
           }
 
         }, error: (er) => {
-
+          this.messageAlert("Algo salió mal ", "¡usiario o contraseña incorrecto!")
         }
       })
      
@@ -80,7 +83,13 @@ export class LoginComponent implements OnInit{
 
 
   }
-  
+  messageAlert(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      verticalPosition: "top",
+      horizontalPosition: "center",
+      duration: 3000,
+    })
+  }
   previous() {
     if (this.currentIndex > 1) {
       this.currentIndex = this.currentIndex - 1;

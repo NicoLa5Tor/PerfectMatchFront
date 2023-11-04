@@ -1,3 +1,9 @@
+<app-error *ngIf="isError">
+
+</app-error>
+<app-spinner *ngIf="isLoading">
+
+</app-spinner>
 <div class="row">
    
     <div class="col-sm-10 p-3 shadow-lg" *ngFor="let card of publications1" >

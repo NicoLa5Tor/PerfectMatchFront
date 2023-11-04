@@ -22,6 +22,7 @@ import { ApiPublicationService } from 'src/app/Services/api-publication.service'
 })
 export class ImgeDialogComponent implements OnInit,AfterViewInit{
 i : number  = 0;
+isLoading = true;
 constructor(
   private _bottomSheet: MatBottomSheet,
   private api : ApiPublicationService,

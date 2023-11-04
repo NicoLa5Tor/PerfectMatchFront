@@ -73,8 +73,9 @@ import { CommentsComponent } from './View/Property/comments/comments.component';
 import { GenerateTokenComponent } from './View/Access/recover-pass/recover-pass.component';
 import { NotificationComponent } from './View/Property/Notifications/notification/notification.component';
 import { NewPassComponent } from './View/Access/new-pass/new-pass.component';
-
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MapComponent } from './View/Map/map.component';
+import { SpinnerComponent } from './View/spinner/spinner.component';
 
 
 export function HttpLoaderFactory(http : HttpClient){
@@ -100,10 +101,11 @@ export function HttpLoaderFactory(http : HttpClient){
     NewPassComponent,
     NotificationComponent,
     CommentsComponent,
-    GenerateTokenComponent
+    GenerateTokenComponent,
+     MapComponent,
+     SpinnerComponent
   ],
   imports: [
-    
     NgxPayPalModule,
     BrowserModule,
     MatBottomSheetModule,
@@ -134,6 +136,7 @@ export function HttpLoaderFactory(http : HttpClient){
     NgbModule,
     FormsModule,
     HttpClientModule,
+    MatProgressSpinnerModule,
     TranslateModule.forRoot({
       loader:{
         provide : TranslateLoader,

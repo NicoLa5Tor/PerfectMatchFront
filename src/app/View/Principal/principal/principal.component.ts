@@ -22,13 +22,13 @@ export class PrincipalComponent {
   hrefActual = document.location.href.substring(document.location.origin.length,document.location.href.length)
   links = [
     {id : 1, isActive: false, text: 'Perfil', href: `/principal/Profile/${this.tok.getIdUser()}`, icon: 'bi bi-person' },
-    {id : 2, isActive: false, text: 'Lista', href: '/principal/PropertyList', icon: 'bi bi-list' },
+    {id : 2, isActive: false, text: 'Catálogo', href: '/principal/PropertyList', icon: 'bi bi-list' },
     {id : 3, isActive: false, text: 'Añadir', href: '/principal/Form', icon: 'bi bi-plus' },
     {id : 4, isActive: false, text: 'Mapa', href: '/principal/Map', icon: 'fas fa-map-marker-alt' },
     {id : 5, isActive: false, text: 'Reportes', href: '/principal/Report', icon: 'bi bi-book' }
   ];
   linksAux = [
-    {id : 1, isActive: false, text: 'Lista', href: '/principalAdmin/Profile', icon: 'bi bi-list' },
+    {id : 1, isActive: false, text: 'Catálogo', href: '/principalAdmin/Profile', icon: 'bi bi-list' },
     {id : 2, isActive: false, text: 'Mapa', href: '/principalAdmin/Map', icon: 'fas fa-map-marker-alt' },
   ];
   constructor(private rout: Router,
@@ -82,10 +82,10 @@ export class PrincipalComponent {
     }
   }
   showFilters(){
-    console.log(this.notificationObj)
+   // console.log(this.notificationObj)
     if(!this.notificationObj[1])
     {
-      console.log(this.notificationObj)
+    //  console.log(this.notificationObj)
       this.filterLoad();
     }
   }

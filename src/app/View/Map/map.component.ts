@@ -1,4 +1,4 @@
-import { Component,  AfterViewInit } from '@angular/core';
+import { Component,  AfterViewInit, OnInit } from '@angular/core';
 import { GeoNamesService } from 'src/app/Services/geonames.service';
 import { ApiPublicationService } from 'src/app/Services/api-publication.service';
 import { from } from 'rxjs';
@@ -8,24 +8,34 @@ import { concatMap, delay } from 'rxjs/operators';
 import { MapService } from 'src/app/Services/map.services';
 import { Location } from 'src/app/Models/Location';
 import { da } from 'date-fns/locale';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ErrorService } from 'src/app/Services/Error.Service';
+import { ErrorCom } from 'src/app/Models/Error';
+
+
 
 
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.css']
+  styleUrls: ['./map.component.css'],
+
 })
-export class MapComponent implements AfterViewInit {
+export class MapComponent implements AfterViewInit, OnInit {
 
 //
+  isError = false;
+  isloading = true;
   date: any;
   listAnimals: Publication[] = [];
   maping : Location [] = []
 
   constructor(private geoN: GeoNamesService,
     private listA: ApiPublicationService,
-    private map_Service : MapService) {
+    private map_Service : MapService,
+    private error_Service : ErrorService
+     ) {
     //Pone todos los puntos en el mapa
    this.listA.getPublications().subscribe({
     next:(data) => {
@@ -42,13 +52,20 @@ export class MapComponent implements AfterViewInit {
        this.maping.push(aux)
        const lastIndex = this.listAnimals.length - 1;
        if(this.maping.length -1  == lastIndex){
-        console.log("ya acabó: ");
+        this.isloading = false;
         this.map_Service.initMap(this.maping,null,null);
        }else{
-        console.log("aun no es el final")
        }
-      
       },error:(e) => {
+        this.isloading = false;
+        const error : ErrorCom = {
+          title : "Algo ha sucedido 😥",
+          header : "Aún no podrás ver el mapa 😞",
+          boddy : "Por favor inténtelo más tarde",
+          textAux : ""
+        }
+        this.error_Service.setComponent(error);
+        this.isError = true;
         console.log("Error: ", e)
       }
      })
@@ -56,6 +73,9 @@ export class MapComponent implements AfterViewInit {
     }
     
    })
+  
+  }
+  ngOnInit(): void {
   
   }
   ngAfterViewInit(): void {

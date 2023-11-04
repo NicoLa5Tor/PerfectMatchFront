@@ -25,8 +25,9 @@ import { User } from 'src/app/Models/User';
   styleUrls: ['./property-list.component.css']
 })
 export class PropertyListComponent implements OnInit {
-  
-  publications:Publication[]=[];
+  isError = false;
+  isLoading = true;
+    publications:Publication[]=[];
   publications1:Publication[]=[];
 
   filter:Filter={ageF:20,ageI:0,idAnimalType:0,idBreed:0,idCity:0,idGender:0,weightF:700,weightI:0,idOwner:0};
@@ -37,13 +38,8 @@ export class PropertyListComponent implements OnInit {
   AnimalTypes:AnimalType[]=[];
   Genders:gender[]=[];
   Sellers:User[]=[];
-
-
   position: number = 0;
   id : number = 0 ;
-
-
-
   constructor(private api:ApiPublicationService,
     private rout : ActivatedRoute,
     private dialog: MatDialog,
@@ -75,8 +71,24 @@ export class PropertyListComponent implements OnInit {
 
   getPublications()
   {
-    this.api.getPublications().subscribe(response=>{this.publications=response;
-      this.publications1=response;} );
+    this.api.getPublications().subscribe({
+      next :(data) => {
+        this.publications = data;
+        this.publications1 = data;
+        this.isLoading = false;
+        if(data[0] == undefined){
+          const error : ErrorCom = {
+            title : 'Mensaje Informativo',
+            header :'',
+            boddy: 'No hay publicaciones aún',
+            textAux: 'Gracias por escogernos 😁'
+          }
+          this.error.setComponent(error);
+          this.isLoading = false;
+          this.isError = true;
+          }
+      }
+    });
   }
   getUserPublications(id : number)
   {
@@ -85,6 +97,7 @@ export class PropertyListComponent implements OnInit {
         next:(Data) => {       
             this.publications = Data
             this.publications1 = Data
+            this.isLoading = false;
             if(Data[0] == undefined){
               const error : ErrorCom = {
                 title : 'Mensaje Informativo',
@@ -93,7 +106,8 @@ export class PropertyListComponent implements OnInit {
                 textAux: ''
               }
               this.error.setComponent(error);
-              this.router.navigate(['principal/Error']);
+              this.isLoading = false;
+              this.isError = true;
               }
           }
          }   
