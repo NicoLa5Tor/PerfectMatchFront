@@ -94,8 +94,10 @@ export class AddPublicationComponent implements OnInit {
        console.log("agrega: " + this.publication.breedName)
        this._apipublication.AddPublications(this.publication).subscribe({
          next: (data) => {
+          console.log("Guarda")
            this.rout.navigate(['principal/PropertyList'])
          }, error: (e) => {
+          console.log(e)
          }
        })
      } else {

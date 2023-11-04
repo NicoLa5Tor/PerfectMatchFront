@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit{
             //  localStorage.setItem('token_user',data.token);      
             //console.log("datos ", this.token)
           } else {
-            this.messageAlert("Algo salió mal ", "¡contraseña incorrecto!")
+            this.messageAlert("Algo salió mal ", "¡contraseña incorrecta!")
             console.log("usuario no exitente")
           }
 
